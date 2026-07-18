@@ -411,32 +411,33 @@
                 </div>
 
                 <div class="contact-form-box glass">
-                    <form id="refurbishForm">
+                    <form id="refurbishForm" name="contact" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="clientName">Full Name</label>
-                                <input type="text" id="clientName" required placeholder="John Doe">
+                                <input type="text" id="clientName" name="clientName" required placeholder="John Doe">
                             </div>
                             <div class="form-group">
                                 <label for="businessName">Business Name</label>
-                                <input type="text" id="businessName" required placeholder="Tony's Pizzeria">
+                                <input type="text" id="businessName" name="businessName" required placeholder="Tony's Pizzeria">
                             </div>
                         </div>
 
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="clientEmail">Email Address</label>
-                                <input type="email" id="clientEmail" required placeholder="john@example.com">
+                                <input type="email" id="clientEmail" name="clientEmail" required placeholder="john@example.com">
                             </div>
                             <div class="form-group">
                                 <label for="currentUrl">Current Website URL</label>
-                                <input type="url" id="currentUrl" placeholder="https://www.tonyspizza.com">
+                                <input type="url" id="currentUrl" name="currentUrl" placeholder="https://www.tonyspizza.com">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="chosenPackage">Requested Package</label>
-                            <select id="chosenPackage">
+                            <select id="chosenPackage" name="chosenPackage">
                                 <option value="General Consultation">General Refurbish Consultation</option>
                                 <option value="Local Refresh">The Local Refresh ($499)</option>
                                 <option value="Local Growth">The Local Growth ($999)</option>
@@ -447,7 +448,7 @@
 
                         <div class="form-group">
                             <label for="clientMessage">Message (Optional)</label>
-                            <textarea id="clientMessage" rows="4" placeholder="Tell us what you'd like to improve on your current website..."></textarea>
+                            <textarea id="clientMessage" name="clientMessage" rows="4" placeholder="Tell us what you'd like to improve on your current website..."></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block" id="formSubmitBtn">Get My Free Quote</button>

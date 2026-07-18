@@ -247,14 +247,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Simulate form submission status
+            // Show submission status
             submitBtn.textContent = 'Analyzing Site & Packaging Quote...';
             submitBtn.disabled = true;
 
-            setTimeout(() => {
+            // Submit to Netlify forms and show success after minimum 1.8s for UX
+            const formData = new FormData(refurbishForm);
+            Promise.all([
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                }),
+                new Promise(resolve => setTimeout(resolve, 1800))
+            ])
+            .then(() => {
                 refurbishForm.classList.add('hidden');
                 formSuccess.classList.remove('hidden');
-            }, 1800);
+            })
+            .catch((error) => {
+                console.error('Submission error:', error);
+                submitBtn.textContent = 'Get My Free Quote';
+                submitBtn.disabled = false;
+                alert('There was a problem submitting your form. Please try again.');
+            });
         });
     }
 });
