@@ -213,6 +213,21 @@ p {
     color: var(--color-secondary);
 }
 
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-subtext {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+}
+
 .nav {
     display: flex;
     align-items: center;
