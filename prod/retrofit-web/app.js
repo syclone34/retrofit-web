@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const seoCb = document.getElementById('seoFeature');
     const cmsCb = document.getElementById('cmsFeature');
     const ecommerceCb = document.getElementById('ecommerceFeature');
+    const adsCb = document.getElementById('adsFeature');
     const estimatedPriceText = document.getElementById('estimatedPrice');
     const claimQuoteBtn = document.getElementById('claimQuoteBtn');
 
@@ -179,13 +180,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (seoCb && seoCb.checked) total += parseInt(seoCb.value);
         if (cmsCb && cmsCb.checked) total += parseInt(cmsCb.value);
         if (ecommerceCb && ecommerceCb.checked) total += parseInt(ecommerceCb.value);
+        if (adsCb && adsCb.checked) total += parseInt(adsCb.value);
 
         estimatedPriceText.textContent = `$${total}`;
     }
 
     if (pageSlider) {
         pageSlider.addEventListener('input', calculateEstimate);
-        [bookingCb, seoCb, cmsCb, ecommerceCb].forEach(cb => {
+        [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb].forEach(cb => {
             if (cb) cb.addEventListener('change', calculateEstimate);
         });
         
@@ -208,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (seoCb && seoCb.checked) features.push('Local SEO Boost');
                 if (cmsCb && cmsCb.checked) features.push('Content Management (CMS)');
                 if (ecommerceCb && ecommerceCb.checked) features.push('E-Commerce Catalog');
+                if (adsCb && adsCb.checked) features.push('Google Ads Campaign Setup');
                 
                 messageArea.value = `I calculated my custom refurbish quote: Estimated ${pages} pages. Additional features: ${features.join(', ') || 'None'}. Please verify my quote!`;
             }
