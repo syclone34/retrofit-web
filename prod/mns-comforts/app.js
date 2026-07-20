@@ -120,17 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams(formData).toString()
-                }),
+                }).catch(() => {}),
                 new Promise(resolve => setTimeout(resolve, 1200))
             ])
             .then(() => {
                 quoteForm.classList.add('hidden');
                 formSuccess.classList.remove('hidden');
-            })
-            .catch(() => {
-                submitBtn.textContent = 'Send My Request';
-                submitBtn.disabled = false;
-                alert('There was a problem submitting your request. Please call us directly at 763-291-1615.');
             });
         });
     }
