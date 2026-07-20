@@ -4,26 +4,27 @@
    ========================================== */
 
 :root {
-    --navy-deepest: #060e1a;
-    --navy-dark: #0b1929;
-    --navy: #102240;
-    --navy-light: #1a3a5c;
+    --navy-deepest: #f8fafc;
+    --navy-dark: #f1f5f9;
+    --navy: #e2e8f0;
+    --navy-light: #cbd5e1;
     --accent: #FF6B35;
     --accent-dark: #e05520;
-    --accent-light: #ff8c5a;
-    --accent-glow: rgba(255, 107, 53, 0.25);
+    --accent-light: #c2410c;
+    --accent-glow: rgba(255, 107, 53, 0.15);
     --white: #ffffff;
-    --text-primary: #e8edf5;
-    --text-secondary: #94a3b8;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
     --text-muted: #64748b;
-    --border: rgba(255, 255, 255, 0.08);
-    --glass: rgba(255, 255, 255, 0.04);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --success: #22c55e;
-    --emergency: #ef4444;
+    --border: rgba(15, 23, 42, 0.08);
+    --glass: #ffffff;
+    --glass-border: rgba(15, 23, 42, 0.08);
+    --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    --success: #16a34a;
+    --emergency: #dc2626;
     --radius: 16px;
     --radius-sm: 10px;
-    --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -41,7 +42,7 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--navy-dark);
+    background-color: var(--navy-deepest);
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -88,25 +89,25 @@ ul {
 
 .btn-primary {
     background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    color: var(--white);
+    color: #ffffff;
     box-shadow: 0 4px 20px var(--accent-glow);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px var(--accent-glow);
-    background: linear-gradient(135deg, var(--accent-light), var(--accent));
+    background: linear-gradient(135deg, #ff8c5a, var(--accent));
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--white);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
+    background: #1e293b;
+    color: #ffffff;
+    border: 1px solid #1e293b;
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.14);
+    background: #0f172a;
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
@@ -115,12 +116,12 @@ ul {
 }
 
 /* ==========================================
-   GLASS
+   GLASS CARDS & UTILITIES
    ========================================== */
 .glass {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(20px);
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: var(--card-shadow);
 }
 
 /* ==========================================
@@ -153,7 +154,7 @@ ul {
     font-family: 'Outfit', sans-serif;
     font-size: clamp(1.8rem, 4vw, 2.6rem);
     font-weight: 800;
-    color: var(--white);
+    color: #0f172a;
     margin-bottom: 16px;
     line-height: 1.2;
 }
@@ -682,7 +683,7 @@ ul {
     font-family: 'Outfit', sans-serif;
     font-size: 1.15rem;
     font-weight: 700;
-    color: var(--white);
+    color: #0f172a;
     margin-bottom: 10px;
 }
 
@@ -792,8 +793,8 @@ ul {
 
 .badge-item strong {
     display: block;
-    color: var(--white);
-    font-weight: 600;
+    color: #0f172a;
+    font-weight: 700;
     margin-bottom: 4px;
     line-height: 1.3;
 }
@@ -903,7 +904,7 @@ ul {
     font-family: 'Outfit', sans-serif;
     font-size: 1.15rem;
     font-weight: 800;
-    color: #ffffff;
+    color: #0f172a;
     margin-bottom: 10px;
 }
 
@@ -921,11 +922,14 @@ ul {
     border-radius: 12px;
     padding: 24px 32px;
     text-align: center;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: var(--card-shadow);
 }
 
 .quote-text {
     font-style: italic;
-    color: #ffffff;
+    color: #0f172a;
     font-size: 1.05rem;
     line-height: 1.6;
     margin-bottom: 8px;
@@ -935,7 +939,7 @@ ul {
     display: block;
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--sky-blue);
+    color: var(--accent-light);
     letter-spacing: 0.5px;
 }
 
@@ -989,7 +993,7 @@ ul {
     font-family: 'Outfit', sans-serif;
     font-size: 1.4rem;
     font-weight: 800;
-    color: var(--white);
+    color: #0f172a;
 }
 
 .mini-label {
@@ -1129,7 +1133,7 @@ ul {
 .reviewer strong {
     display: block;
     font-size: 0.92rem;
-    color: var(--white);
+    color: #0f172a;
 }
 
 .reviewer span {
@@ -1282,7 +1286,7 @@ ul {
     font-family: 'Outfit', sans-serif;
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--white);
+    color: #0f172a;
     margin-bottom: 24px;
 }
 
@@ -1301,18 +1305,18 @@ ul {
 
 .form-group label {
     font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-secondary);
+    font-weight: 600;
+    color: #334155;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.15);
     border-radius: var(--radius-sm);
     padding: 12px 16px;
-    color: var(--white);
+    color: #0f172a;
     font-size: 0.95rem;
     font-family: 'Inter', sans-serif;
     transition: var(--transition);
@@ -1322,19 +1326,20 @@ ul {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: var(--text-muted);
+    color: #94a3b8;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--accent);
-    background: rgba(255, 107, 53, 0.05);
+    background: #ffffff;
     box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
 .form-group select option {
-    background: var(--navy-dark);
+    background: #ffffff;
+    color: #0f172a;
 }
 
 .form-success {
@@ -1377,8 +1382,9 @@ ul {
    FOOTER
    ========================================== */
 .footer {
-    background: var(--navy-deepest);
-    border-top: 1px solid var(--border);
+    background: #0f172a;
+    border-top: 1px solid #1e293b;
+    color: #cbd5e1;
 }
 
 .footer-content {
@@ -1392,13 +1398,13 @@ ul {
     font-family: 'Outfit', sans-serif;
     font-size: 1.1rem;
     font-weight: 800;
-    color: var(--white);
+    color: #ffffff;
     margin-bottom: 12px;
 }
 
 .footer-brand p {
     font-size: 0.88rem;
-    color: var(--text-muted);
+    color: #94a3b8;
     line-height: 1.7;
     margin-bottom: 16px;
 }
@@ -1417,19 +1423,19 @@ ul {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--text-muted);
+    color: #94a3b8;
     margin-bottom: 16px;
 }
 
-.footer-links {
+.footer-links ul {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .footer-links a {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    padding: 5px 0;
+    font-size: 0.88rem;
+    color: #cbd5e1;
     transition: var(--transition);
 }
 
