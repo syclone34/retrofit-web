@@ -25,7 +25,7 @@
     <header class="header" id="mainHeader">
         <div class="container navbar">
             <a href="#" class="logo">
-                <div class="logo-icon">❄️</div>
+                <img src="assets/client-logo.png" alt="MN's All Seasons Comforts Logo" class="logo-img">
                 <div class="logo-text">
                     <span class="logo-name">MN's All Seasons</span>
                     <span class="logo-sub">Comforts</span>
@@ -33,9 +33,11 @@
             </a>
             <nav class="nav" id="mainNav">
                 <a href="#services" class="nav-link">Services</a>
+                <a href="#about" class="nav-link">About Us</a>
                 <a href="#why-us" class="nav-link">Why Choose Us</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
                 <a href="#testimonials" class="nav-link">Reviews</a>
-                <a href="#service-areas" class="nav-link">Service Areas</a>
+                <a href="#service-areas" class="nav-link">Cities We Serve</a>
                 <a href="tel:7632911615" class="nav-link nav-cta">📞 Call Now</a>
             </nav>
             <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -78,6 +80,11 @@
             </div>
             <div class="hero-stats">
                 <div class="stat">
+                    <img src="assets/bbb.avif" alt="BBB A+ Accredited Business Logo" style="height:38px;width:auto;margin:0 auto;display:block;object-fit:contain;">
+                    <div class="stat-label" style="margin-top:4px;">Accredited A+ Rating</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
                     <div class="stat-num">24/7</div>
                     <div class="stat-label">Emergency Response</div>
                 </div>
@@ -85,11 +92,6 @@
                 <div class="stat">
                     <div class="stat-num">Licensed</div>
                     <div class="stat-label">& Fully Insured</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <div class="stat-num">Same-Day</div>
-                    <div class="stat-label">Service Available</div>
                 </div>
             </div>
         </div>
@@ -134,14 +136,14 @@
                 <div class="service-card emergency-card">
                     <div class="service-icon">🚨</div>
                     <h3>24/7 Emergency Service</h3>
-                    <p>HVAC emergencies don't wait for business hours. Neither do we. Same-day emergency dispatch available.</p>
+                    <p>No heat in January? AC failed in July? Our emergency technicians are on standby 24 hours a day, 365 days a year.</p>
                     <ul class="service-list">
-                        <li>No Extra Charge After Hours</li>
-                        <li>Same-Day Dispatch</li>
-                        <li>All Makes & Models</li>
-                        <li>Nights, Weekends & Holidays</li>
+                        <li>Sub-Zero Emergency Dispatch</li>
+                        <li>No Overtime Shock Fees</li>
+                        <li>All Makes & Models Serviced</li>
+                        <li>Immediate Phone Triage</li>
                     </ul>
-                    <a href="tel:7632911615" class="service-link emergency-link">📞 Call Now →</a>
+                    <a href="tel:7632911615" class="service-link emergency-link">Call 763-291-1615 →</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🔧</div>
@@ -183,6 +185,53 @@
         </div>
     </section>
 
+    <!-- About / Local Family-Owned Showcase Section -->
+    <section id="about" class="section about-family-section">
+        <div class="container">
+            <!-- Full Un-Obscured Team Photo Showcase -->
+            <div class="team-photo-banner">
+                <img src="assets/employees.avif" alt="MN's All Seasons Comforts Family Team Photo" class="team-full-photo">
+                <div class="team-banner-badge">
+                    <span class="badge-icon">🏡</span>
+                    <div>
+                        <strong>Local & Family-Owned HVAC Company</strong>
+                        <p>Coon Rapids, MN Residents Serving the NW Metro Area</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story & Values Below Photo -->
+            <div class="about-family-header text-center">
+                <span class="section-tag">Rooted in Minnesota</span>
+                <h2 class="section-title">Your Neighbors in Heating & Cooling</h2>
+                <p class="about-lead">MN's All Seasons Comforts isn't a big national chain or an out-of-state call center. We are local Coon Rapids residents built on neighborly trust, honest craftsmanship, and fast 24/7 service.</p>
+            </div>
+            
+            <div class="family-features-grid">
+                <div class="family-feature-card glass">
+                    <div class="feature-icon">🤝</div>
+                    <h4>Local Family Values</h4>
+                    <p>We treat every customer’s home like our own — with honest advice, clean workspaces, and zero high-pressure sales tactics.</p>
+                </div>
+                <div class="family-feature-card glass">
+                    <div class="feature-icon">❄️</div>
+                    <h4>Tested in Minnesota Winters</h4>
+                    <p>We understand sub-zero emergency furnace breakdowns because we live here too. When your heat quits on a freezing night, our family shows up fast.</p>
+                </div>
+                <div class="family-feature-card glass">
+                    <div class="feature-icon">📞</div>
+                    <h4>Direct Owner Accountability</h4>
+                    <p>You deal directly with licensed technicians who take personal pride in every furnace repair and air conditioning installation.</p>
+                </div>
+            </div>
+
+            <div class="family-quote-box glass">
+                <p class="quote-text">“Our family’s promise to yours: upfront pricing, honest diagnosis, and quality work that keeps your home comfortable all year long.”</p>
+                <span class="quote-author">— The Team at MN's All Seasons Comforts · Coon Rapids, MN</span>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Choose Us -->
     <section id="why-us" class="section why-section">
         <div class="container why-grid">
@@ -192,17 +241,17 @@
                 <p class="why-desc">We're not a big national chain — we're your neighbors in Coon Rapids. When your furnace quits on a -20°F Minnesota night, you need someone who picks up the phone and shows up fast.</p>
                 <div class="trust-badges">
                     <div class="badge-item">
+                        <img src="assets/bbb.avif" alt="BBB A+ Accredited Business Logo" style="height:44px;width:auto;flex-shrink:0;margin-top:2px;object-fit:contain;">
+                        <div>
+                            <strong>A+ Rating & Accredited Business</strong>
+                            <p>Recognized for ethical business practices, honest pricing, and high customer satisfaction.</p>
+                        </div>
+                    </div>
+                    <div class="badge-item">
                         <div class="badge-icon">✅</div>
                         <div>
                             <strong>Licensed & Insured</strong>
                             <p>Fully licensed HVAC contractors in the state of Minnesota.</p>
-                        </div>
-                    </div>
-                    <div class="badge-item">
-                        <div class="badge-icon">⚡</div>
-                        <div>
-                            <strong>Fast Response Times</strong>
-                            <p>Same-day and emergency appointments available 24 hours a day.</p>
                         </div>
                     </div>
                     <div class="badge-item">
@@ -299,24 +348,67 @@
         </div>
     </section>
 
+    <!-- Certifications & Accreditations -->
+    <section id="certifications" class="section certs-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">Verified Quality</span>
+                <h2 class="section-title">Certifications & Accreditations</h2>
+                <p class="section-subtitle">Fully licensed, bonded, insured, and certified HVAC contractors serving Minnesota homeowners with integrity.</p>
+            </div>
+            <div class="certs-grid">
+                <div class="cert-card glass">
+                    <img src="assets/bbb.avif" alt="BBB A+ Accredited Business Logo" class="cert-logo" style="height:56px;width:auto;margin:0 auto 16px;object-fit:contain;">
+                    <h3>BBB A+ Accredited</h3>
+                    <p>Accredited with an A+ rating by the Better Business Bureau for ethical practices and customer trust.</p>
+                </div>
+                <div class="cert-card glass">
+                    <div class="cert-icon">🏛️</div>
+                    <h3>MN License #MB668175</h3>
+                    <p>State of Minnesota licensed, bonded, and insured HVAC Mechanical Contractor.</p>
+                </div>
+                <div class="cert-card glass">
+                    <img src="assets/Energystar.jpg.avif" alt="ENERGY STAR Partner Logo" class="cert-logo" style="height:56px;width:auto;margin:0 auto 16px;object-fit:contain;">
+                    <h3>ENERGY STAR® Partner</h3>
+                    <p>Certified energy-efficient furnace, heat pump, and air conditioning system installations.</p>
+                </div>
+                <div class="cert-card glass">
+                    <img src="assets/york.avif" alt="York Authorized Partner Logo" class="cert-logo" style="height:56px;width:auto;margin:0 auto 16px;object-fit:contain;">
+                    <h3>York Authorized Partner</h3>
+                    <p>Factory-trained partner and certified installer for York heating and cooling systems.</p>
+                </div>
+                <div class="cert-card glass">
+                    <img src="assets/Thumbtack.avif" alt="Thumbtack Top Pro Logo" class="cert-logo" style="height:56px;width:auto;margin:0 auto 16px;object-fit:contain;">
+                    <h3>Thumbtack Top Pro</h3>
+                    <p>Recognized for outstanding service quality, rapid response times, and verified customer reviews.</p>
+                </div>
+                <div class="cert-card glass">
+                    <div class="cert-icon">💳</div>
+                    <h3>Synchrony Financing</h3>
+                    <p>Authorized partner offering flexible monthly financing options for new system replacements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Service Areas -->
     <section id="service-areas" class="section areas-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Where We Work</span>
-                <h2 class="section-title">Proudly Serving the Northwest Metro</h2>
-                <p class="section-subtitle">We provide HVAC services throughout the Coon Rapids area and surrounding communities.</p>
+                <span class="section-tag">Coverage</span>
+                <h2 class="section-title">Cities We Serve</h2>
+                <p class="section-subtitle">We provide prompt 24/7 HVAC services throughout Coon Rapids and surrounding communities.</p>
             </div>
             <div class="areas-grid">
-                <div class="area-card glass">📍 Coon Rapids</div>
-                <div class="area-card glass">📍 Maple Grove</div>
-                <div class="area-card glass">📍 Plymouth</div>
-                <div class="area-card glass">📍 Blaine</div>
-                <div class="area-card glass">📍 Brooklyn Park</div>
-                <div class="area-card glass">📍 Champlin</div>
-                <div class="area-card glass">📍 Andover</div>
-                <div class="area-card glass">📍 Anoka</div>
-                <div class="area-card glass">📍 Rogers</div>
+                <a href="#contact" data-city="Coon Rapids" class="area-card glass"><span class="area-pin">📍</span><span class="area-name">Coon Rapids</span></a>
+                <a href="#contact" data-city="Maple Grove" class="area-card glass"><span class="area-pin">📍</span><span class="area-name">Maple Grove</span></a>
+                <a href="#contact" data-city="Plymouth" class="area-card glass"><span class="area-pin">📍</span><span class="area-name">Plymouth</span></a>
+                <a href="#contact" data-city="Blaine" class="area-card glass"><span class="area-pin">📍</span><span class="area-name">Blaine</span></a>
+                <a href="#contact" data-city="Brooklyn Park" class="area-card glass"><span class="area-pin">📍</span><span class="area-name">Brooklyn Park</span></a>
+                <a href="#contact" data-city="Champlin" class="area-card glass"><span class="area-pin">📍</span><span class="area-name">Champlin</span></a>
+                <a href="#contact" data-city="Andover" class="area-card glass"><span class="area-pin">📍</span><span class="area-name">Andover</span></a>
+                <a href="#contact" data-city="Anoka" class="area-card glass"><span class="area-pin">📍</span><span class="area-name">Anoka</span></a>
+                <a href="#contact" data-city="Rogers" class="area-card glass"><span class="area-pin">📍</span><span class="area-name">Rogers</span></a>
             </div>
             <p class="areas-note">Not sure if we serve your area? <a href="tel:7632911615">Call us at 763-291-1615</a> — we'll let you know!</p>
         </div>
@@ -361,6 +453,10 @@
                         <input type="email" id="email" name="email" placeholder="john@example.com">
                     </div>
                     <div class="form-group">
+                        <label for="cityLocation">City / Location</label>
+                        <input type="text" id="cityLocation" name="cityLocation" placeholder="e.g. Coon Rapids, Maple Grove...">
+                    </div>
+                    <div class="form-group">
                         <label for="service">Service Needed</label>
                         <select id="service" name="service">
                             <option value="">Select a service...</option>
@@ -393,7 +489,10 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-brand">
-                <div class="footer-logo">❄️ MN's All Seasons Comforts</div>
+                <div class="footer-logo">
+                    <img src="assets/client-logo.png" alt="MN's All Seasons Comforts Logo" style="height:32px;width:auto;vertical-align:middle;margin-right:8px;">
+                    MN's All Seasons Comforts
+                </div>
                 <p>Licensed HVAC contractors serving the Coon Rapids area and Northwest Metro since day one.</p>
                 <a href="tel:7632911615" class="footer-phone">📞 763-291-1615</a>
             </div>

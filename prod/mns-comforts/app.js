@@ -55,6 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const offset = 80;
                 const top = target.getBoundingClientRect().top + window.scrollY - offset;
                 window.scrollTo({ top, behavior: 'smooth' });
+
+                // If clicking a city card, pre-fill city in quote form
+                const cityName = this.getAttribute('data-city');
+                const cityInput = document.getElementById('cityLocation');
+                if (cityName && cityInput) {
+                    cityInput.value = cityName + ', MN';
+                    setTimeout(() => {
+                        cityInput.focus();
+                    }, 500);
+                }
             }
         });
     });
@@ -123,5 +133,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('There was a problem submitting your request. Please call us directly at 763-291-1615.');
             });
         });
+    }
+
+    // ==========================================
+    // 6. Area Cards Navigation
+    // ==========================================
+    // City cards (<a>) navigate directly to dedicated local city landing pages.
+
+    // ==========================================
+    // 7. Desktop Phone Interceptor & Toast
+    // ==========================================
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth <= 768 && ('ontouchstart' in window));
+
+    if (!isMobileDevice) {
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // Stop desktop browser from launching apps or secondary browsers
+                
+                const rawTel = link.getAttribute('href').replace('tel:', '');
+                const formattedTel = link.textContent.trim().replace(/^📞\s*/, '') || '763-291-1615';
+                
+                // Copy to clipboard
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(formattedTel);
+                }
+                
+                // Show clean toast
+                showPhoneToast(`📋 Copied ${formattedTel} to clipboard!`);
+            });
+        });
+    }
+
+    function showPhoneToast(message) {
+        let existingToast = document.querySelector('.phone-toast');
+        if (existingToast) existingToast.remove();
+
+        const toast = document.createElement('div');
+        toast.className = 'phone-toast';
+        toast.innerHTML = `<span>${message}</span>`;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transition = 'opacity 0.4s ease';
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
     }
 });
