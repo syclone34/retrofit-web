@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault(); // Stop desktop browser from launching apps or secondary browsers
                 
                 const rawTel = link.getAttribute('href').replace('tel:', '');
-                const formattedTel = link.textContent.trim().replace(/^📞\s*/, '') || '763-291-1615';
+                const formattedTel = rawTel.length === 10 ? `${rawTel.slice(0,3)}-${rawTel.slice(3,6)}-${rawTel.slice(6)}` : rawTel;
                 
                 // Copy to clipboard
                 if (navigator.clipboard) {
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 // Show clean toast
-                showPhoneToast(`📋 Copied ${formattedTel} to clipboard!`);
+                showPhoneToast(`Copied ${formattedTel} to clipboard!`);
             });
         });
     }
