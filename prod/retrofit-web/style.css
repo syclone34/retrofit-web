@@ -178,7 +178,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 96px;
 }
 
 .logo {
@@ -193,7 +193,8 @@ p {
 }
 
 .logo-img {
-    height: 64px;
+    height: 80px;
+    max-height: 80px;
     width: auto;
     object-fit: contain;
     transition: var(--transition-smooth);
@@ -1306,7 +1307,7 @@ input[type=range]::-webkit-slider-thumb:hover {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 96px;
         left: 0;
         width: 100%;
         background: var(--bg-main);
