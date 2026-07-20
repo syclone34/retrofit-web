@@ -314,15 +314,21 @@ ul {
 }
 
 .nav-cta {
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    color: var(--white) !important;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+    color: #ffffff !important;
     font-weight: 700;
     padding: 8px 18px;
     box-shadow: 0 4px 15px var(--accent-glow);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: var(--radius-sm);
 }
 
 .nav-cta:hover {
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #ff8c5a, var(--accent)) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
     box-shadow: 0 6px 20px var(--accent-glow);
 }
 
