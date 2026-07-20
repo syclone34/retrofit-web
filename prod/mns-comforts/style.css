@@ -772,9 +772,22 @@ ul {
 }
 
 .badge-icon {
+    width: 36px;
+    height: 36px;
     font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    margin-top: 2px;
+}
+
+.badge-img {
+    max-height: 32px;
+    max-width: 36px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 .badge-item strong {
@@ -782,6 +795,7 @@ ul {
     color: var(--white);
     font-weight: 600;
     margin-bottom: 4px;
+    line-height: 1.3;
 }
 
 .badge-item p {
