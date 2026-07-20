@@ -570,32 +570,57 @@ ul {
 .hero-stats {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 28px;
     flex-wrap: wrap;
+    background: rgba(10, 22, 40, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 18px 28px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
 }
 
 .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+}
+
+.stat-top {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+.hero-stat-logo {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
 }
 
 .stat-num {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 800;
+    font-size: 1.45rem;
+    font-weight: 900;
     color: var(--accent);
     line-height: 1;
-    margin-bottom: 4px;
 }
 
 .stat-label {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
 }
 
 .stat-divider {
     width: 1px;
     height: 40px;
-    background: var(--border);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .hero-scroll-hint {
