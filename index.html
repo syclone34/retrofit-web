@@ -196,11 +196,11 @@
                             <div class="score-circle-wrapper">
                                 <svg class="score-svg" viewBox="0 0 36 36">
                                     <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle-val red-val" stroke-dasharray="35, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path id="perfScoreCircle" class="circle-val red-val" stroke-dasharray="35, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
-                                <div class="score-number red-text">35%</div>
+                                <div id="perfScoreText" class="score-number red-text">35%</div>
                             </div>
-                            <p class="score-desc">Poor. Large uncompressed images and bloated obsolete scripts delay page load.</p>
+                            <p id="perfScoreDesc" class="score-desc">Poor. Large uncompressed images and bloated obsolete scripts delay page load.</p>
                         </div>
                         
                         <div class="score-card">
@@ -208,11 +208,11 @@
                             <div class="score-circle-wrapper">
                                 <svg class="score-svg" viewBox="0 0 36 36">
                                     <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle-val red-val" stroke-dasharray="15, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path id="mobileScoreCircle" class="circle-val red-val" stroke-dasharray="15, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
-                                <div class="score-number red-text">15%</div>
+                                <div id="mobileScoreText" class="score-number red-text">15%</div>
                             </div>
-                            <p class="score-desc">Critical. Website content does not fit mobile screen widths. Users must zoom in.</p>
+                            <p id="mobileScoreDesc" class="score-desc">Critical. Website content does not fit mobile screen widths. Users must zoom in.</p>
                         </div>
 
                         <div class="score-card">
@@ -220,11 +220,11 @@
                             <div class="score-circle-wrapper">
                                 <svg class="score-svg" viewBox="0 0 36 36">
                                     <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle-val yellow-val" stroke-dasharray="40, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path id="seoScoreCircle" class="circle-val yellow-val" stroke-dasharray="40, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
-                                <div class="score-number yellow-text">40%</div>
+                                <div id="seoScoreText" class="score-number yellow-text">40%</div>
                             </div>
-                            <p class="score-desc">Needs Work. Missing local schemas, viewport meta tags, and structured headers.</p>
+                            <p id="seoScoreDesc" class="score-desc">Needs Work. Missing local schemas, viewport meta tags, and structured headers.</p>
                         </div>
 
                         <div class="score-card">
@@ -232,16 +232,16 @@
                             <div class="score-circle-wrapper">
                                 <svg class="score-svg" viewBox="0 0 36 36">
                                     <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle-val yellow-val" stroke-dasharray="50, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path id="secScoreCircle" class="circle-val yellow-val" stroke-dasharray="50, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                 </svg>
-                                <div class="score-number yellow-text">50%</div>
+                                <div id="secScoreText" class="score-number yellow-text">50%</div>
                             </div>
-                            <p class="score-desc">At Risk. Running on outdated server software versions without modern SSL headers.</p>
+                            <p id="secScoreDesc" class="score-desc">At Risk. Running on outdated server software versions without modern SSL headers.</p>
                         </div>
                     </div>
 
                     <div class="results-cta">
-                        <div class="cta-message">
+                        <div class="cta-message" id="recommendationMsg">
                             <strong>RetroFit Recommendation:</strong> A complete visual redesign and code rebuild will boost your loading speed to <strong>98%</strong> and make your website fully mobile-friendly.
                         </div>
                         <button class="btn btn-primary" id="scrollQuoteBtn">Calculate Refurbishment Cost</button>
@@ -262,13 +262,14 @@
 
             <!-- Standard Packages -->
             <div class="packages-grid">
-                <div class="package-card glass">
+                <div class="package-card glass" id="cardLocalRefresh">
                     <div class="package-header">
                         <h3 class="package-name">The Local Refresh</h3>
                         <div class="package-price">$499<span class="price-suffix">one-time</span></div>
                         <p class="package-description">Perfect for small businesses looking for a cosmetic update and speed boost without rebuilding core structures.</p>
                     </div>
                     <ul class="package-features">
+                        <li><strong>Up to 3 pages included</strong></li>
                         <li>Modernized CSS styling & typography</li>
                         <li>Basic responsive mobile layout</li>
                         <li>Page speed optimization (under 2s)</li>
@@ -279,14 +280,15 @@
                     <a href="#contact" class="btn btn-secondary select-package" data-package="Local Refresh">Choose Package</a>
                 </div>
 
-                <div class="package-card glass featured">
-                    <div class="featured-tag">Most Popular</div>
+                <div class="package-card glass featured" id="cardLocalGrowth">
+                    <div class="featured-tag">Recommended Package</div>
                     <div class="package-header">
                         <h3 class="package-name">The Local Growth</h3>
                         <div class="package-price">$999<span class="price-suffix">one-time</span></div>
                         <p class="package-description">Perfect for service contractors and shops who need active customer leads and local Google search traffic.</p>
                     </div>
                     <ul class="package-features">
+                        <li><strong>Up to 7 pages included</strong></li>
                         <li><strong>Complete custom visual overhaul</strong></li>
                         <li>100% mobile-first design</li>
                         <li>Local SEO keyword optimization</li>
@@ -298,13 +300,14 @@
                     <a href="#contact" class="btn btn-primary select-package" data-package="Local Growth">Choose Package</a>
                 </div>
 
-                <div class="package-card glass">
+                <div class="package-card glass" id="cardFullUpgrade">
                     <div class="package-header">
                         <h3 class="package-name">The Full Digital Upgrade</h3>
                         <div class="package-price">$1,999<span class="price-suffix">one-time</span></div>
                         <p class="package-description">Complete code migration to modern JAMstack. Extremely secure, infinitely fast, and ready to scale.</p>
                     </div>
                     <ul class="package-features">
+                        <li><strong>Up to 15 pages included</strong></li>
                         <li>Custom structural code architecture</li>
                         <li>Ultra-secure, serverless framework</li>
                         <li>Integrated visual booking/ordering</li>
@@ -320,7 +323,7 @@
             <!-- Cost Estimator Tool -->
             <div class="estimator-box glass">
                 <h3 class="estimator-title text-center">Interactive Price Estimator</h3>
-                <p class="estimator-subtitle text-center">Customize your refurbishment and get an instant custom estimate.</p>
+                <p class="estimator-subtitle text-center">Adjust pages & features below. The best matching package above will highlight automatically!</p>
                 
                 <div class="estimator-grid">
                     <div class="estimator-controls">
@@ -367,8 +370,8 @@
                     <div class="estimator-display">
                         <div class="price-gauge">
                             <span class="gauge-label">Estimated Investment</span>
-                            <span class="gauge-value" id="estimatedPrice">$699</span>
-                            <span class="gauge-sub">Fully inclusive, no hidden fees</span>
+                            <span class="gauge-value" id="estimatedPrice">$999</span>
+                            <span class="gauge-sub" id="recommendedPlanName">Matching Plan: The Local Growth ($999)</span>
                         </div>
                         <button class="btn btn-primary" id="claimQuoteBtn">Claim This Quote</button>
                     </div>
@@ -535,7 +538,7 @@
                 <img src="assets/logo.png" alt="RetroFit Web Design Logo" class="logo-img">
             </a>
             <p class="footer-tagline">Restoring the web, one outdated site at a time.</p>
-            <p class="footer-copy">&copy; 2026 RetroFit Web Design. All rights reserved. Created in pair programming with Antigravity.</p>
+            <p class="footer-copy">&copy; 2026 RetroFit Web Design LLC. All rights reserved.</p>
         </div>
     </footer>
 

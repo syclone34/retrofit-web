@@ -778,6 +778,7 @@ section {
 
 .circle-val.red-val { stroke: var(--color-danger); }
 .circle-val.yellow-val { stroke: var(--color-warning); }
+.circle-val.green-val { stroke: var(--color-success); }
 
 .score-number {
     position: absolute;
@@ -1462,8 +1463,8 @@ input[type=range]::-webkit-slider-thumb:hover {
 /* About Section - Two Column Photo Layout */
 .about-inner-grid {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 48px;
+    grid-template-columns: 190px 1fr;
+    gap: 40px;
     align-items: center;
 }
 
@@ -1476,18 +1477,18 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 .founder-photo-wrap {
     position: relative;
-    width: 240px;
-    height: 240px;
+    width: 160px;
+    height: 160px;
 }
 
 .founder-photo {
-    width: 240px;
-    height: 240px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
     border: 3px solid rgba(0, 242, 254, 0.35);
-    box-shadow: 0 0 30px rgba(0, 242, 254, 0.2), 0 20px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.2), 0 15px 40px rgba(0, 0, 0, 0.4);
     display: block;
     position: relative;
     z-index: 1;
