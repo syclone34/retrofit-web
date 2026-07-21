@@ -24,25 +24,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 2. Before/After Image Slider
+    // 2. Before/After Image Slider (Multi-Industry Showcase)
     // ==========================================
     const slider = document.getElementById('comparisonSlider');
     const afterImage = document.getElementById('afterImageLayer');
     const handle = document.getElementById('sliderHandle');
+
+    const sliderSubtitle = document.getElementById('sliderSubtitle');
+    const beforeImgTag = document.getElementById('beforeImgTag');
+    const beforeLabelTag = document.getElementById('beforeLabelTag');
+    const afterImgTag = document.getElementById('afterImgTag');
+    const afterLabelTag = document.getElementById('afterLabelTag');
+    const sliderTabs = document.querySelectorAll('.slider-tab');
+
+    const presets = {
+        pizza: {
+            subtitle: 'Slide to see how we took "Tony\'s Pizzeria" from a cluttered, non-mobile website built in 2005 to a modern, high-converting digital storefront.',
+            beforeImg: 'assets/old_pizza.png',
+            beforeAlt: 'Tony\'s Pizzeria Legacy Website Design',
+            beforeLabel: 'Tony\'s Pizzeria (Legacy 2005)',
+            afterImg: 'assets/new_pizza.png',
+            afterAlt: 'Tony\'s Pizzeria Modern Refurbished Website',
+            afterLabel: 'RetroFit Modernized Website'
+        },
+        hvac: {
+            subtitle: 'Slide to see how we transformed "Apex Heating & Cooling" from an unoptimized 2000s table layout to an enterprise-grade 24/7 service booking app.',
+            beforeImg: 'assets/old_hvac.png',
+            beforeAlt: 'Apex Heating & Cooling Legacy Website Design',
+            beforeLabel: 'Apex HVAC (Legacy 2005)',
+            afterImg: 'assets/new_hvac.png',
+            afterAlt: 'Apex Heating & Cooling Modernized Website',
+            afterLabel: 'RetroFit Modernized Website'
+        },
+        auto: {
+            subtitle: 'Slide to see how we upgraded "Precision Auto Care" from a slow, outdated site into an ultra-fast digital storefront with instant quote tools.',
+            beforeImg: 'assets/old_auto.png',
+            beforeAlt: 'Precision Auto Care Legacy Website Design',
+            beforeLabel: 'Precision Auto (Legacy 2004)',
+            afterImg: 'assets/new_auto.png',
+            afterAlt: 'Precision Auto Care Modernized Website',
+            afterLabel: 'RetroFit Modernized Website'
+        }
+    };
 
     if (slider && afterImage && handle) {
         let isResizing = false;
 
         function setSliderPos(xPosition) {
             const rect = slider.getBoundingClientRect();
-            // Calculate percentage from left side of slider
             let position = ((xPosition - rect.left) / rect.width) * 100;
             
-            // Constrain between 0% and 100%
             if (position < 0) position = 0;
             if (position > 100) position = 100;
             
-            // Update widths
             afterImage.style.width = `${position}%`;
             handle.style.left = `${position}%`;
         }
@@ -80,17 +114,51 @@ document.addEventListener('DOMContentLoaded', () => {
         // Handle window resizing to keep image layers aligned
         window.addEventListener('resize', () => {
             const rect = slider.getBoundingClientRect();
-            const afterImageTag = afterImage.querySelector('img');
-            if (afterImageTag) {
-                afterImageTag.style.width = `${rect.width}px`;
+            if (afterImgTag) {
+                afterImgTag.style.width = `${rect.width}px`;
             }
+        });
+
+        function updateSliderPreset(presetKey) {
+            const data = presets[presetKey];
+            if (!data) return;
+
+            if (sliderSubtitle) sliderSubtitle.textContent = data.subtitle;
+            if (beforeImgTag) {
+                beforeImgTag.src = data.beforeImg;
+                beforeImgTag.alt = data.beforeAlt;
+            }
+            if (beforeLabelTag) beforeLabelTag.textContent = data.beforeLabel;
+            if (afterImgTag) {
+                afterImgTag.src = data.afterImg;
+                afterImgTag.alt = data.afterAlt;
+            }
+            if (afterLabelTag) afterLabelTag.textContent = data.afterLabel;
+
+            // Reset slider handle position to 50%
+            afterImage.style.width = '50%';
+            handle.style.left = '50%';
+
+            // Re-align image width to match slider box width
+            const rect = slider.getBoundingClientRect();
+            if (afterImgTag) {
+                afterImgTag.style.width = `${rect.width}px`;
+            }
+        }
+
+        sliderTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                sliderTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const presetKey = tab.getAttribute('data-preset');
+                updateSliderPreset(presetKey);
+            });
         });
         
         // Initial set
         const rect = slider.getBoundingClientRect();
-        const afterImageTag = afterImage.querySelector('img');
-        if (afterImageTag) {
-            afterImageTag.style.width = `${rect.width}px`;
+        if (afterImgTag) {
+            afterImgTag.style.width = `${rect.width}px`;
         }
     }
 
