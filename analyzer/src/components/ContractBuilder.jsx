@@ -115,16 +115,16 @@ export default function ContractBuilder({ selectedAudits }) {
     let matchedPlan = 'The Local Growth';
     let matchedBase = 999;
 
-    if (pages <= 3 && featureCount <= 1 && !ecommerceFeature) {
-      matchedPlan = 'The Local Refresh';
-      matchedBase = 499;
+    if (pages === 1 && featureCount <= 1 && !ecommerceFeature) {
+      matchedPlan = 'The Lead Lander';
+      matchedBase = 399;
     } else {
       matchedPlan = 'The Local Growth';
       matchedBase = 999;
     }
 
     let extraPageCost = 0;
-    const maxIncludedPages = matchedPlan === 'The Local Refresh' ? 3 : 7;
+    const maxIncludedPages = matchedPlan === 'The Lead Lander' ? 1 : 7;
     if (pages > maxIncludedPages) {
       extraPageCost = (pages - maxIncludedPages) * 100;
     }
@@ -648,7 +648,7 @@ export default function ContractBuilder({ selectedAudits }) {
             <div className="space-y-4 text-xs mb-8">
               <h3 className="font-bold text-zinc-900 uppercase border-b border-zinc-200 pb-1.5">1. Scope of Work & Deliverables</h3>
               <p className="text-zinc-600 leading-relaxed">
-                RetroFit Web Design LLC will modernize the Client's legacy website assets into an ultra-fast, mobile-first responsive layout (the "Refurbishment"). The project scope includes the development of <span className="font-bold text-zinc-900">{pages} web pages</span> and deployment of the following deliverables:
+                RetroFit Web Design LLC will modernize the Client's legacy website assets into an ultra-fast, mobile-first responsive layout (the "Refurbishment"). The project scope includes the development of <span className="font-bold text-zinc-900">{pages} web page{pages === 1 ? '' : 's'}</span> and deployment of the following deliverables:
               </p>
               <ul className="list-disc list-inside space-y-1.5 text-zinc-600 pl-2">
                 <li>Refactor unoptimized visual code into modern clean layouts</li>
@@ -691,14 +691,14 @@ export default function ContractBuilder({ selectedAudits }) {
                 <tbody className="divide-y divide-zinc-200">
                   <tr>
                     <td className="py-2.5">
-                      <span className="font-bold">{selectedPlan}</span> Base Package Refurbish (Up to {selectedPlan === 'The Local Refresh' ? 3 : 7} pages included)
+                      <span className="font-bold">{selectedPlan}</span> Base Package Refurbish (Up to {selectedPlan === 'The Lead Lander' ? 1 : 7} page{selectedPlan === 'The Lead Lander' ? '' : 's'} included)
                     </td>
                     <td className="py-2.5 text-right font-semibold">${basePrice}</td>
                   </tr>
-                  {pages > (selectedPlan === 'The Local Refresh' ? 3 : 7) && (
+                  {pages > (selectedPlan === 'The Lead Lander' ? 1 : 7) && (
                     <tr>
-                      <td className="py-2.5">Custom Extra Page Refurbishing ({pages - (selectedPlan === 'The Local Refresh' ? 3 : 7)} additional pages @ $100/page)</td>
-                      <td className="py-2.5 text-right font-semibold">${(pages - (selectedPlan === 'The Local Refresh' ? 3 : 7)) * 100}</td>
+                      <td className="py-2.5">Custom Extra Page Refurbishing ({pages - (selectedPlan === 'The Lead Lander' ? 1 : 7)} additional page{pages - (selectedPlan === 'The Lead Lander' ? 1 : 7) === 1 ? '' : 's'} @ $100/page)</td>
+                      <td className="py-2.5 text-right font-semibold">${(pages - (selectedPlan === 'The Lead Lander' ? 1 : 7)) * 100}</td>
                     </tr>
                   )}
                   {bookingFeature && (

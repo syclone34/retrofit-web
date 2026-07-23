@@ -375,9 +375,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let recommendedPrice = 999;
         let planTitle = 'The Local Growth';
 
-        if (pages <= 3 && featureCount <= 1 && (!ecommerceCb || !ecommerceCb.checked)) {
-            recommendedPrice = 499;
-            planTitle = 'The Local Refresh';
+        if (pages === 1 && featureCount <= 1 && (!ecommerceCb || !ecommerceCb.checked)) {
+            recommendedPrice = 399;
+            planTitle = 'The Lead Lander';
             highlightCard(cardRefresh);
         } else {
             recommendedPrice = 999;
@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
         claimQuoteBtn.addEventListener('click', () => {
             const pages = pageSlider ? pageSlider.value : 5;
             let currentPackage = 'Local Growth';
-            if (pages <= 3) currentPackage = 'Local Refresh';
+            if (parseInt(pages) === 1) currentPackage = 'Lead Lander';
 
             const packageSelect = document.getElementById('chosenPackage');
             if (packageSelect) {
@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const messageArea = document.getElementById('clientMessage');
 
             if (packName && pageSlider) {
-                if (packName === 'Local Refresh') pageSlider.value = 3;
+                if (packName === 'Lead Lander') pageSlider.value = 1;
                 else if (packName === 'Local Growth') pageSlider.value = 5;
 
                 // Uncheck add-ons for clean package defaults
