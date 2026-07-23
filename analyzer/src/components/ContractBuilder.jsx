@@ -757,6 +757,12 @@ export default function ContractBuilder({ selectedAudits }) {
               <p>
                 <strong>Launch & Warranties:</strong> Development will be completed within 14 business days of deposit clearing. RetroFit Web Design LLC provides 30 days of complimentary technical warranty support post-launch.
               </p>
+              <p>
+                <strong>Limitation of Liability:</strong> Under no circumstances shall RetroFit Web Design LLC be liable for any indirect, special, incidental, or consequential damages, including loss of profits, revenue, or business data, resulting from website downtime, bugs, host server failures, or search engine ranking fluctuations. Total liability is strictly limited to the amount paid under this agreement.
+              </p>
+              <p>
+                <strong>Third-Party Integrations:</strong> Client assumes sole billing and policy compliance responsibility for any third-party tools (e.g. Google Maps API, Squarespace, Square, Stripe, Calendly) or domain registries utilized in the refurbishment. Uptime and services are governed by their respective platforms.
+              </p>
             </div>
 
             {/* Signatures */}
