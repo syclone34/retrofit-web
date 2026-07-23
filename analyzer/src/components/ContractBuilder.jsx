@@ -345,7 +345,7 @@ export default function ContractBuilder({ selectedAudits }) {
       </div>
 
       {/* Printable Contract Document Column */}
-      <div className="lg:col-span-7 bg-white text-zinc-950 p-8 rounded-xl border border-zinc-200 shadow-lg print:border-none print:shadow-none print-card print:p-0">
+      <div className="lg:col-span-7 bg-white text-zinc-950 p-4 sm:p-8 rounded-xl border border-zinc-200 shadow-lg print:border-none print:shadow-none print-card print:p-0">
         
         {/* Document Selector Header (no-print) */}
         <div className="flex border-b border-zinc-200 mb-6 no-print">
@@ -376,14 +376,14 @@ export default function ContractBuilder({ selectedAudits }) {
           <div className="animate-fade-in print-card font-sans text-zinc-900">
             
             {/* Top Professional Header */}
-            <div className="flex justify-between items-center border-b-2 border-zinc-950 pb-6 mb-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b-2 border-zinc-950 pb-6 mb-8">
               <div className="space-y-1">
                 <div className="text-sm font-black tracking-wider text-zinc-950">RETROFIT</div>
                 <div className="text-[9px] font-bold text-zinc-500 font-mono tracking-widest uppercase">
                   Analytical Baseline Report & Performance Strategy
                 </div>
               </div>
-              <div className="text-right text-xs">
+              <div className="text-left sm:text-right text-xs">
                 <div className="font-extrabold text-zinc-900">RetroFit Web Design LLC</div>
                 <div className="text-zinc-500 font-mono text-[9px]">www.retrofitwebdesign.com</div>
                 <div className="text-zinc-500 font-mono text-[9px] mt-0.5">cole@retrofitweb.com</div>
@@ -402,13 +402,13 @@ export default function ContractBuilder({ selectedAudits }) {
             </div>
 
             {/* Metadata Information Sheet */}
-            <div className="grid grid-cols-2 gap-4 bg-zinc-50 border border-zinc-200 rounded-lg p-4 mb-8 text-xs">
-              <div className="space-y-1 border-r border-zinc-200 pr-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-zinc-50 border border-zinc-200 rounded-lg p-4 mb-8 text-xs">
+              <div className="space-y-1 border-b sm:border-b-0 sm:border-r border-zinc-200 pb-3 sm:pb-0 pr-0 sm:pr-4">
                 <span className="text-[9px] font-bold uppercase tracking-wider text-zinc-400">Target Client Account</span>
                 <div className="font-extrabold text-zinc-950 text-sm">{businessName || '[Business Name]'}</div>
                 {url && <div className="text-blue-600 font-semibold font-mono">{url}</div>}
               </div>
-              <div className="space-y-1 pl-4 flex flex-col justify-center">
+              <div className="space-y-1 pt-3 sm:pt-0 pl-0 sm:pl-4 flex flex-col justify-center">
                 <div className="flex justify-between text-zinc-600">
                   <span>Audit Engine Status:</span>
                   <span className="font-bold text-zinc-950">Verified Lighthouse Standard</span>
@@ -427,7 +427,7 @@ export default function ContractBuilder({ selectedAudits }) {
                 1. Speed & Quality Baseline vs Target Standard
               </h3>
               
-              <div className="grid grid-cols-4 gap-3 mb-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
                 <div className="border border-rose-200 bg-rose-50/10 rounded-lg p-3 text-center">
                   <div className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider">Performance</div>
                   <div className="text-lg font-black text-rose-600 mt-1">~35%</div>
@@ -450,16 +450,17 @@ export default function ContractBuilder({ selectedAudits }) {
                 </div>
               </div>
 
-              <table className="w-full text-left border-collapse text-xs border border-zinc-200 rounded-lg overflow-hidden">
-                <thead>
-                  <tr className="bg-zinc-50 border-b border-zinc-200 text-zinc-500 font-bold uppercase tracking-wider text-[9px]">
-                    <th className="py-2.5 px-3">Critical Diagnostic Area</th>
-                    <th className="py-2.5 px-3">Legacy Status</th>
-                    <th className="py-2.5 px-3">Refurbished Standard</th>
-                    <th className="py-2.5 px-3">User Experience Benefit</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-zinc-200 text-zinc-700">
+              <div className="w-full overflow-x-auto border border-zinc-200 rounded-lg">
+                <table className="w-full text-left border-collapse text-xs min-w-[550px]">
+                  <thead>
+                    <tr className="bg-zinc-50 border-b border-zinc-200 text-zinc-500 font-bold uppercase tracking-wider text-[9px]">
+                      <th className="py-2.5 px-3">Critical Diagnostic Area</th>
+                      <th className="py-2.5 px-3">Legacy Status</th>
+                      <th className="py-2.5 px-3">Refurbished Standard</th>
+                      <th className="py-2.5 px-3">User Experience Benefit</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-zinc-200 text-zinc-700">
                   <tr className="hover:bg-zinc-50/50">
                     <td className="py-3 px-3 font-semibold text-zinc-950">Mobile Usability</td>
                     <td className="py-3 px-3">
@@ -519,6 +520,7 @@ export default function ContractBuilder({ selectedAudits }) {
                 </tbody>
               </table>
             </div>
+            </div>
 
             {/* Section 2: Business Growth Forecast */}
             <div className="space-y-4 mb-8">
@@ -530,7 +532,7 @@ export default function ContractBuilder({ selectedAudits }) {
                 Upgrading legacy assets to modern standards doesn't just improve loading times — it secures leads. Based on industry-standard conversions, modernizing website elements introduces massive gains:
               </p>
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="bg-zinc-50 border-t-4 border-blue-500 rounded-lg p-3.5 shadow-sm">
                   <div className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider">Bounce Rate Reduction</div>
                   <div className="text-xl font-black text-emerald-600 mt-1">-25% to -40%</div>
@@ -559,7 +561,7 @@ export default function ContractBuilder({ selectedAudits }) {
                 <p className="text-xs text-zinc-500 leading-relaxed">
                   This refurbishment package targets the following slow loading blocks and structures detected on the legacy domain:
                 </p>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-xs text-zinc-700 bg-zinc-50 border border-zinc-200 rounded-lg p-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs text-zinc-700 bg-zinc-50 border border-zinc-200 rounded-lg p-4">
                   {selectedAudits.map((item, idx) => (
                     <div key={idx} className="flex items-start gap-2">
                       <span className="text-amber-500 font-bold">⚠️</span>
@@ -572,14 +574,14 @@ export default function ContractBuilder({ selectedAudits }) {
 
             {/* Analyst Verification and Signature Block */}
             <div className="mt-12 pt-6 border-t border-zinc-300">
-              <div className="grid grid-cols-12 gap-6 items-center text-xs">
-                <div className="col-span-8 space-y-1.5 pr-6">
+              <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between text-xs">
+                <div className="space-y-1.5 pr-0 sm:pr-6">
                   <h4 className="font-bold text-zinc-950 uppercase text-[10px]">Analyst Diagnostics Verification</h4>
                   <p className="text-[10px] text-zinc-500 leading-relaxed">
                     This evaluation report represents a certified analysis of client domain assets utilizing Google PageSpeed diagnostic standards. Performance, SEO, and usability optimizations are guaranteed to reach target metrics upon deployment of the modernization scope of work.
                   </p>
                 </div>
-                <div className="col-span-4 pl-4 border-l border-zinc-200">
+                <div className="w-full sm:w-auto pl-0 sm:pl-4 border-l-0 sm:border-l border-zinc-200 pt-4 sm:pt-0 border-t sm:border-t-0 border-zinc-200">
                   <div className="h-8 border-b border-zinc-400 font-serif italic text-sm text-zinc-800 py-1 pl-2">
                     Cole Fuller
                   </div>
@@ -602,12 +604,12 @@ export default function ContractBuilder({ selectedAudits }) {
           <div className="animate-fade-in print-card">
             
             {/* Document Header */}
-            <div className="flex justify-between items-start border-b-2 border-zinc-900 pb-5 mb-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start gap-4 border-b-2 border-zinc-900 pb-5 mb-8">
               <div>
                 <h1 className="text-2xl font-extrabold tracking-tight uppercase text-zinc-950">Website Refurbishment</h1>
                 <div className="text-zinc-500 font-mono text-xs mt-1">PROPOSAL & DEVELOPMENT AGREEMENT</div>
               </div>
-              <div className="text-right">
+              <div className="text-left sm:text-right">
                 <div className="font-bold text-sm text-zinc-900">RetroFit Web Design LLC</div>
                 <div className="text-xs text-zinc-500">Minneapolis-St. Paul Metro Area</div>
                 <div className="text-xs text-zinc-500">cole@retrofitweb.com</div>
@@ -616,7 +618,7 @@ export default function ContractBuilder({ selectedAudits }) {
             </div>
 
             {/* Info Grid */}
-            <div className="grid grid-cols-2 gap-8 text-xs mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 text-xs mb-8">
               <div>
                 <span className="block font-bold text-zinc-500 uppercase tracking-wider mb-1.5">Prepared For:</span>
                 <div className="font-bold text-zinc-900">{clientName || '[Client Name]'}</div>
@@ -625,7 +627,7 @@ export default function ContractBuilder({ selectedAudits }) {
                 {email && <div className="text-zinc-500 mt-1">{email}</div>}
                 {phone && <div className="text-zinc-500">{phone}</div>}
               </div>
-              <div className="text-right">
+              <div className="text-left sm:text-right">
                 <span className="block font-bold text-zinc-500 uppercase tracking-wider mb-1.5">Agreement Metadata:</span>
                 <div>Date Generated: <span className="font-semibold">{getTodayDate()}</span></div>
                 <div>Offer Valid Until: <span className="font-semibold">{getExpirationDate()}</span></div>
@@ -740,7 +742,7 @@ export default function ContractBuilder({ selectedAudits }) {
             </div>
 
             {/* Signatures */}
-            <div className="grid grid-cols-2 gap-12 text-xs pt-6 mt-12 border-t border-zinc-200">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 text-xs pt-6 mt-12 border-t border-zinc-200">
               <div>
                 <div className="h-12 border-b border-zinc-300 flex items-end pb-1 mb-2">
                   <span className="font-serif italic text-base text-blue-800 tracking-wide select-none">

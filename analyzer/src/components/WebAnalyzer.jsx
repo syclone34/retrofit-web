@@ -190,7 +190,7 @@ export default function WebAnalyzer({ onAddAuditToScope, selectedAudits, prefill
           Submit a client's website URL to retrieve a full diagnostic report on speed, SEO, mobile viewport compatibility, and secure headers.
         </p>
 
-        <form onSubmit={handleAuditSubmit} className="flex gap-3">
+        <form onSubmit={handleAuditSubmit} className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-grow">
             <Search className="absolute left-3.5 top-3 h-4 w-4 text-zinc-400" />
             <input
@@ -324,7 +324,7 @@ export default function WebAnalyzer({ onAddAuditToScope, selectedAudits, prefill
                     
                     <button
                       onClick={() => onAddAuditToScope(item.title)}
-                      className={`h-9 w-9 rounded-lg border transition-all flex items-center justify-center ${
+                      className={`h-9 w-9 shrink-0 rounded-lg border transition-all flex items-center justify-center ${
                         isSelected 
                           ? 'bg-blue-600 text-white border-transparent' 
                           : 'border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'

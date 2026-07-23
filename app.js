@@ -74,21 +74,17 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('mouseup', () => { isResizing = false; });
         window.addEventListener('touchend', () => { isResizing = false; });
         
-        // Handle window resizing to keep image layers aligned
-        window.addEventListener('resize', () => {
-            const rect = slider.getBoundingClientRect();
-            const afterImageTag = afterImage.querySelector('img');
-            if (afterImageTag) {
-                afterImageTag.style.width = `${rect.width}px`;
+        // Handle window/container resizing to keep image layers aligned via ResizeObserver
+        const resizeObserver = new ResizeObserver((entries) => {
+            for (let entry of entries) {
+                const width = entry.contentRect.width;
+                const afterImageTag = afterImage.querySelector('img');
+                if (afterImageTag) {
+                    afterImageTag.style.width = `${width}px`;
+                }
             }
         });
-        
-        // Initial set
-        const rect = slider.getBoundingClientRect();
-        const afterImageTag = afterImage.querySelector('img');
-        if (afterImageTag) {
-            afterImageTag.style.width = `${rect.width}px`;
-        }
+        resizeObserver.observe(slider);
     }
 
     // ==========================================
