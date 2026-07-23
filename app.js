@@ -336,17 +336,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const cardRefresh = document.getElementById('cardLocalRefresh');
     const cardGrowth = document.getElementById('cardLocalGrowth');
-    const cardUpgrade = document.getElementById('cardFullUpgrade');
+    const cardCare = document.getElementById('cardMonthlyCare');
 
     function highlightCard(activeCard) {
-        [cardRefresh, cardGrowth, cardUpgrade].forEach(card => {
+        [cardRefresh, cardGrowth].forEach(card => {
             if (!card) return;
             card.classList.remove('featured');
             const tag = card.querySelector('.featured-tag');
             if (tag) tag.remove();
         });
 
-        if (activeCard) {
+        if (activeCard && activeCard !== cardCare) {
             activeCard.classList.add('featured');
             if (!activeCard.querySelector('.featured-tag')) {
                 const newTag = document.createElement('div');
@@ -379,20 +379,16 @@ document.addEventListener('DOMContentLoaded', () => {
             recommendedPrice = 499;
             planTitle = 'The Local Refresh';
             highlightCard(cardRefresh);
-        } else if (pages <= 7 && featureCount <= 3 && (!ecommerceCb || !ecommerceCb.checked)) {
+        } else {
             recommendedPrice = 999;
             planTitle = 'The Local Growth';
             highlightCard(cardGrowth);
-        } else {
-            recommendedPrice = 1999;
-            planTitle = 'The Full Digital Upgrade';
-            highlightCard(cardUpgrade);
         }
 
-        // Add extra page scaling beyond 15 pages if needed
+        // Add extra page scaling beyond 7 pages if needed ($100/extra page)
         let total = recommendedPrice;
-        if (pages > 15) {
-            total += (pages - 15) * 50;
+        if (pages > 7) {
+            total += (pages - 7) * 100;
         }
 
         if (estimatedPriceText) estimatedPriceText.textContent = `$${total}`;
@@ -416,7 +412,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const pages = pageSlider ? pageSlider.value : 5;
             let currentPackage = 'Local Growth';
             if (pages <= 3) currentPackage = 'Local Refresh';
-            else if (pages > 7) currentPackage = 'Full Digital Upgrade';
 
             const packageSelect = document.getElementById('chosenPackage');
             if (packageSelect) {
@@ -452,20 +447,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (packName && pageSlider) {
                 if (packName === 'Local Refresh') pageSlider.value = 3;
                 else if (packName === 'Local Growth') pageSlider.value = 5;
-                else if (packName === 'Full Digital Upgrade') pageSlider.value = 12;
 
                 // Uncheck add-ons for clean package defaults
-                [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb].forEach(cb => {
-                    if (cb) cb.checked = false;
-                });
-
-                calculateEstimate();
+                if (packName !== 'RetroFit Care Plan') {
+                    [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb].forEach(cb => {
+                        if (cb) cb.checked = false;
+                    });
+                    calculateEstimate();
+                }
             }
 
             if (packageSelect && packName) {
                 packageSelect.value = packName;
                 if (messageArea) {
-                    messageArea.value = `I'm interested in "The ${packName}" package. Please send me more details and a custom proposal for my site!`;
+                    if (packName === 'RetroFit Care Plan') {
+                        messageArea.value = `I'm interested in subscribing to the "RetroFit Care Plan" ($99/month) for my site. Please send me setup details!`;
+                    } else {
+                        messageArea.value = `I'm interested in "The ${packName}" package. Please send me more details and a custom proposal for my site!`;
+                    }
                 }
             }
         });

@@ -16,6 +16,7 @@ export default function ContractBuilder({ selectedAudits }) {
   const [cmsFeature, setCmsFeature] = useState(false);
   const [ecommerceFeature, setEcommerceFeature] = useState(false);
   const [adsFeature, setAdsFeature] = useState(false);
+  const [careFeature, setCareFeature] = useState(false);
   const [activeDoc, setActiveDoc] = useState('report');
 
   // E-Signature state
@@ -117,17 +118,15 @@ export default function ContractBuilder({ selectedAudits }) {
     if (pages <= 3 && featureCount <= 1 && !ecommerceFeature) {
       matchedPlan = 'The Local Refresh';
       matchedBase = 499;
-    } else if (pages <= 7 && featureCount <= 3 && !ecommerceFeature) {
+    } else {
       matchedPlan = 'The Local Growth';
       matchedBase = 999;
-    } else {
-      matchedPlan = 'The Full Digital Upgrade';
-      matchedBase = 1999;
     }
 
     let extraPageCost = 0;
-    if (pages > 15) {
-      extraPageCost = (pages - 15) * 50;
+    const maxIncludedPages = matchedPlan === 'The Local Refresh' ? 3 : 7;
+    if (pages > maxIncludedPages) {
+      extraPageCost = (pages - maxIncludedPages) * 100;
     }
 
     let addOnCosts = 0;
@@ -301,6 +300,16 @@ export default function ContractBuilder({ selectedAudits }) {
                   className="rounded border-zinc-300 dark:border-zinc-800 accent-blue-600 h-4 w-4"
                 />
                 <span>Google Ads Campaign Setup (+$400)</span>
+              </label>
+
+              <label className="flex items-center gap-2.5 text-xs text-zinc-700 dark:text-zinc-300 cursor-pointer pt-2.5 border-t border-zinc-100 dark:border-zinc-800/50">
+                <input
+                  type="checkbox"
+                  checked={careFeature}
+                  onChange={(e) => setCareFeature(e.target.checked)}
+                  className="rounded border-zinc-300 dark:border-zinc-800 accent-blue-600 h-4 w-4"
+                />
+                <span className="font-semibold text-blue-600 dark:text-blue-400">Add RetroFit Care Plan Hosting (+$99/mo)</span>
               </label>
             </div>
           </div>
@@ -682,14 +691,14 @@ export default function ContractBuilder({ selectedAudits }) {
                 <tbody className="divide-y divide-zinc-200">
                   <tr>
                     <td className="py-2.5">
-                      <span className="font-bold">{selectedPlan}</span> Base Package Refurbish (Up to {pages > 15 ? 15 : pages} pages included)
+                      <span className="font-bold">{selectedPlan}</span> Base Package Refurbish (Up to {selectedPlan === 'The Local Refresh' ? 3 : 7} pages included)
                     </td>
                     <td className="py-2.5 text-right font-semibold">${basePrice}</td>
                   </tr>
-                  {pages > 15 && (
+                  {pages > (selectedPlan === 'The Local Refresh' ? 3 : 7) && (
                     <tr>
-                      <td className="py-2.5">Custom Extra Page Refurbishing ({pages - 15} additional pages @ $50/page)</td>
-                      <td className="py-2.5 text-right font-semibold">${(pages - 15) * 50}</td>
+                      <td className="py-2.5">Custom Extra Page Refurbishing ({pages - (selectedPlan === 'The Local Refresh' ? 3 : 7)} additional pages @ $100/page)</td>
+                      <td className="py-2.5 text-right font-semibold">${(pages - (selectedPlan === 'The Local Refresh' ? 3 : 7)) * 100}</td>
                     </tr>
                   )}
                   {bookingFeature && (
@@ -722,9 +731,18 @@ export default function ContractBuilder({ selectedAudits }) {
                       <td className="py-2.5 text-right font-semibold">$400</td>
                     </tr>
                   )}
+                  {careFeature && (
+                    <tr className="text-blue-600 font-semibold bg-blue-50/30">
+                      <td className="py-2.5 px-2">RetroFit Care Plan Subscription (Hosting & Maintenance)</td>
+                      <td className="py-2.5 px-2 text-right font-bold">$99 / month</td>
+                    </tr>
+                  )}
                   <tr className="border-t-2 border-zinc-900 font-bold bg-zinc-50 text-zinc-950">
                     <td className="py-3 px-2 text-sm uppercase">Total Project Investment:</td>
-                    <td className="py-3 px-2 text-right text-sm">${totalPrice}</td>
+                    <td className="py-3 px-2 text-right text-sm">
+                      ${totalPrice}
+                      {careFeature && <span className="text-[10px] font-normal text-zinc-500 block">+ $99/mo recurring</span>}
+                    </td>
                   </tr>
                 </tbody>
               </table>
