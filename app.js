@@ -335,11 +335,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const claimQuoteBtn = document.getElementById('claimQuoteBtn');
 
     const cardRefresh = document.getElementById('cardLocalRefresh');
+    const cardLocalStarter = document.getElementById('cardLocalStarter');
     const cardGrowth = document.getElementById('cardLocalGrowth');
     const cardCare = document.getElementById('cardMonthlyCare');
 
     function highlightCard(activeCard) {
-        [cardRefresh, cardGrowth].forEach(card => {
+        [cardRefresh, cardLocalStarter, cardGrowth].forEach(card => {
             if (!card) return;
             card.classList.remove('featured');
             const tag = card.querySelector('.featured-tag');
@@ -379,6 +380,10 @@ document.addEventListener('DOMContentLoaded', () => {
             recommendedPrice = 399;
             planTitle = 'The Lead Lander';
             highlightCard(cardRefresh);
+        } else if (pages <= 4 && featureCount <= 2 && (!ecommerceCb || !ecommerceCb.checked)) {
+            recommendedPrice = 699;
+            planTitle = 'The Local Starter';
+            highlightCard(cardLocalStarter);
         } else {
             recommendedPrice = 999;
             planTitle = 'The Local Growth';
@@ -416,9 +421,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (claimQuoteBtn) {
         claimQuoteBtn.addEventListener('click', () => {
-            const pages = pageSlider ? pageSlider.value : 5;
+            const pages = pageSlider ? parseInt(pageSlider.value) : 5;
             let currentPackage = 'Local Growth';
-            if (parseInt(pages) === 1) currentPackage = 'Lead Lander';
+            if (pages === 1) {
+                currentPackage = 'Lead Lander';
+            } else if (pages <= 4) {
+                currentPackage = 'Local Starter';
+            }
 
             const packageSelect = document.getElementById('chosenPackage');
             if (packageSelect) {
@@ -453,6 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (packName && pageSlider) {
                 if (packName === 'Lead Lander') pageSlider.value = 1;
+                else if (packName === 'Local Starter') pageSlider.value = 3;
                 else if (packName === 'Local Growth') pageSlider.value = 5;
 
                 // Uncheck add-ons for clean package defaults
