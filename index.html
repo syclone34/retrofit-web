@@ -318,22 +318,28 @@
                     <a href="#contact" class="btn btn-primary select-package" data-package="Local Growth">Choose Package</a>
                 </div>
 
-                <div class="package-card glass" id="cardMonthlyCare">
-                    <div class="package-header">
-                        <h3 class="package-name">The RetroFit Care Plan</h3>
-                        <div class="package-price">$99<span class="price-suffix">/month</span></div>
-                        <p class="package-description">Peace of mind for busy business owners. Fast hosting, continuous backups, and regular content maintenance.</p>
+            </div>
+
+            <!-- Ongoing Care Plan Add-on Box -->
+            <div class="care-plan-box glass" id="cardMonthlyCare">
+                <div class="care-plan-content">
+                    <div class="care-plan-info">
+                        <span class="care-badge">Highly Recommended Add-on</span>
+                        <h3 class="care-title">The RetroFit Care Plan</h3>
+                        <div class="care-price">$99<span class="price-suffix">/month</span></div>
+                        <p class="care-description">Peace of mind for busy business owners. Keep your site secure, fast, and fresh with secure cloud hosting, continuous backups, and regular content updates.</p>
                     </div>
-                    <ul class="package-features">
-                        <li><strong>Fast & Secure Cloud Hosting</strong></li>
-                        <li>SSL certificate setup & renewal</li>
-                        <li>Up to 1 hour of text/image edits</li>
-                        <li>Monthly malware & security scans</li>
-                        <li>Automated database & file backups</li>
-                        <li>24-hour turnaround email support</li>
-                        <li>Cancel or pause subscription anytime</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-secondary select-package" data-package="RetroFit Care Plan">Choose Care Plan</a>
+                    <div class="care-plan-details">
+                        <ul class="care-features-list">
+                            <li><strong>Fast & Secure Cloud Hosting</strong></li>
+                            <li>SSL certificate setup & renewal</li>
+                            <li>Up to 1 hour of monthly edits</li>
+                            <li>Malware scans & safety checks</li>
+                            <li>Automated files & database backups</li>
+                            <li>24-hour turnaround support</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary select-package" data-package="RetroFit Care Plan">Add Care Plan to Quote</a>
+                    </div>
                 </div>
             </div>
 
@@ -380,6 +386,12 @@
                                 <input type="checkbox" id="adsFeature" value="400">
                                 <span class="checkmark"></span>
                                 Google Ads Campaign Setup (+$400)
+                            </label>
+
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="careFeature" value="99">
+                                <span class="checkmark"></span>
+                                <strong class="text-gradient">Add RetroFit Care Plan (+$99/mo hosting)</strong>
                             </label>
                         </div>
                     </div>
@@ -569,6 +581,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="app.js?v=1.0.3"></script>
+    <script src="app.js?v=1.0.4"></script>
 </body>
 </html>

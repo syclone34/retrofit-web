@@ -330,6 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cmsCb = document.getElementById('cmsFeature');
     const ecommerceCb = document.getElementById('ecommerceFeature');
     const adsCb = document.getElementById('adsFeature');
+    const careCb = document.getElementById('careFeature');
     const estimatedPriceText = document.getElementById('estimatedPrice');
     const recommendedPlanName = document.getElementById('recommendedPlanName');
     const claimQuoteBtn = document.getElementById('claimQuoteBtn');
@@ -403,7 +404,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ecommerceCb && ecommerceCb.checked) total += parseInt(ecommerceCb.value) || 500;
         if (adsCb && adsCb.checked) total += parseInt(adsCb.value) || 400;
 
-        if (estimatedPriceText) estimatedPriceText.textContent = `$${total}`;
+        if (estimatedPriceText) {
+            if (careCb && careCb.checked) {
+                estimatedPriceText.textContent = `$${total} + $99/mo`;
+            } else {
+                estimatedPriceText.textContent = `$${total}`;
+            }
+        }
         if (recommendedPlanName) {
             recommendedPlanName.textContent = `Matching Plan: ${planTitle} ($${recommendedPrice})`;
         }
@@ -411,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (pageSlider) {
         pageSlider.addEventListener('input', calculateEstimate);
-        [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb].forEach(cb => {
+        [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb, careCb].forEach(cb => {
             if (cb) cb.addEventListener('change', calculateEstimate);
         });
         
@@ -442,6 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (cmsCb && cmsCb.checked) features.push('Content Management (CMS)');
                 if (ecommerceCb && ecommerceCb.checked) features.push('E-Commerce Catalog');
                 if (adsCb && adsCb.checked) features.push('Google Ads Campaign Setup');
+                if (careCb && careCb.checked) features.push('RetroFit Care Plan ($99/mo)');
                 
                 messageArea.value = `I calculated my custom quote for ${pages} pages using the interactive estimator. Additional features: ${features.join(', ') || 'None'}. Please contact me to get started!`;
             }
