@@ -391,6 +391,13 @@ document.addEventListener('DOMContentLoaded', () => {
             total += (pages - 7) * 100;
         }
 
+        // Add feature costs
+        if (bookingCb && bookingCb.checked) total += parseInt(bookingCb.value) || 250;
+        if (seoCb && seoCb.checked) total += parseInt(seoCb.value) || 200;
+        if (cmsCb && cmsCb.checked) total += parseInt(cmsCb.value) || 300;
+        if (ecommerceCb && ecommerceCb.checked) total += parseInt(ecommerceCb.value) || 500;
+        if (adsCb && adsCb.checked) total += parseInt(adsCb.value) || 400;
+
         if (estimatedPriceText) estimatedPriceText.textContent = `$${total}`;
         if (recommendedPlanName) {
             recommendedPlanName.textContent = `Matching Plan: ${planTitle} ($${recommendedPrice})`;
@@ -491,19 +498,35 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = 'Analyzing Site & Packaging Quote...';
             submitBtn.disabled = true;
 
-            // Submit to forms endpoint (or gracefully display success on Cloudflare Pages)
+            // Submit to Web3Forms API
             const formData = new FormData(refurbishForm);
             Promise.all([
-                fetch('/', {
+                fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams(formData).toString()
-                }).catch(() => {}),
+                })
+                .then(async (response) => {
+                    if (!response.ok) {
+                        const err = await response.json();
+                        throw new Error(err.message || 'Form submission failed');
+                    }
+                }),
                 new Promise(resolve => setTimeout(resolve, 1500))
             ])
             .then(() => {
                 refurbishForm.classList.add('hidden');
                 formSuccess.classList.remove('hidden');
+            })
+            .catch((err) => {
+                console.error('Submission error:', err);
+                alert('There was a problem submitting the form: ' + err.message);
+                
+                // Re-enable submit button
+                if (submitBtn) {
+                    submitBtn.textContent = 'Get My Free Quote';
+                    submitBtn.disabled = false;
+                }
             });
         });
     }

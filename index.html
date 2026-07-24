@@ -473,8 +473,11 @@
                 </div>
 
                 <div class="contact-form-box glass">
-                    <form id="refurbishForm" name="contact" method="POST" data-netlify="true">
-                        <input type="hidden" name="form-name" value="contact">
+                    <form id="refurbishForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="3ac3ffde-8678-4e0e-aded-d2d3faabd6f4">
+                        <input type="hidden" name="subject" value="New Quote Request from RetroFit Web Design">
+                        <input type="hidden" name="from_name" value="RetroFit Web Design Form">
+                        <input type="hidden" name="redirect" value="https://www.retrofitwebdesign.com/">
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="clientName">Full Name</label>
@@ -489,7 +492,7 @@
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="clientEmail">Email Address</label>
-                                <input type="email" id="clientEmail" name="clientEmail" required placeholder="john@example.com">
+                                <input type="email" id="clientEmail" name="email" required placeholder="john@example.com">
                             </div>
                             <div class="form-group">
                                 <label for="clientPhone">Phone Number</label>
