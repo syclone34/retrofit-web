@@ -1519,11 +1519,6 @@ input[type=range]::-webkit-slider-thumb:hover {
     margin-top: 32px;
 }
 
-.linkedin-btn {
-    display: inline-flex;
-    align-items: center;
-}
-
 /* About Section - Two Column Photo Layout */
 .about-inner-grid {
     display: grid;
