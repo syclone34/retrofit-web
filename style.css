@@ -1660,13 +1660,17 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 .care-features-list {
-    list-style: none;
+    list-style: none !important;
+    list-style-type: none !important;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    padding: 0;
+    margin: 0;
 }
 
 .care-features-list li {
+    list-style-type: none !important;
     position: relative;
     padding-left: 2rem;
     font-size: 0.95rem;

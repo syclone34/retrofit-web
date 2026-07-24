@@ -330,7 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cmsCb = document.getElementById('cmsFeature');
     const ecommerceCb = document.getElementById('ecommerceFeature');
     const adsCb = document.getElementById('adsFeature');
-    const careCb = document.getElementById('careFeature');
     const estimatedPriceText = document.getElementById('estimatedPrice');
     const recommendedPlanName = document.getElementById('recommendedPlanName');
     const claimQuoteBtn = document.getElementById('claimQuoteBtn');
@@ -338,7 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardRefresh = document.getElementById('cardLocalRefresh');
     const cardLocalStarter = document.getElementById('cardLocalStarter');
     const cardGrowth = document.getElementById('cardLocalGrowth');
-    const cardCare = document.getElementById('cardMonthlyCare');
 
     function highlightCard(activeCard) {
         [cardRefresh, cardLocalStarter, cardGrowth].forEach(card => {
@@ -348,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (tag) tag.remove();
         });
 
-        if (activeCard && activeCard !== cardCare) {
+        if (activeCard) {
             activeCard.classList.add('featured');
             if (!activeCard.querySelector('.featured-tag')) {
                 const newTag = document.createElement('div');
@@ -404,13 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ecommerceCb && ecommerceCb.checked) total += parseInt(ecommerceCb.value) || 500;
         if (adsCb && adsCb.checked) total += parseInt(adsCb.value) || 400;
 
-        if (estimatedPriceText) {
-            if (careCb && careCb.checked) {
-                estimatedPriceText.textContent = `$${total} + $99/mo`;
-            } else {
-                estimatedPriceText.textContent = `$${total}`;
-            }
-        }
+        if (estimatedPriceText) estimatedPriceText.textContent = `$${total}`;
         if (recommendedPlanName) {
             recommendedPlanName.textContent = `Matching Plan: ${planTitle} ($${recommendedPrice})`;
         }
@@ -418,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (pageSlider) {
         pageSlider.addEventListener('input', calculateEstimate);
-        [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb, careCb].forEach(cb => {
+        [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb].forEach(cb => {
             if (cb) cb.addEventListener('change', calculateEstimate);
         });
         
@@ -449,7 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (cmsCb && cmsCb.checked) features.push('Content Management (CMS)');
                 if (ecommerceCb && ecommerceCb.checked) features.push('E-Commerce Catalog');
                 if (adsCb && adsCb.checked) features.push('Google Ads Campaign Setup');
-                if (careCb && careCb.checked) features.push('RetroFit Care Plan ($99/mo)');
                 
                 messageArea.value = `I calculated my custom quote for ${pages} pages using the interactive estimator. Additional features: ${features.join(', ') || 'None'}. Please contact me to get started!`;
             }
@@ -474,22 +465,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 else if (packName === 'Local Growth') pageSlider.value = 5;
 
                 // Uncheck add-ons for clean package defaults
-                if (packName !== 'RetroFit Care Plan') {
-                    [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb].forEach(cb => {
-                        if (cb) cb.checked = false;
-                    });
-                    calculateEstimate();
-                }
+                [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb].forEach(cb => {
+                    if (cb) cb.checked = false;
+                });
+                calculateEstimate();
             }
 
             if (packageSelect && packName) {
                 packageSelect.value = packName;
                 if (messageArea) {
-                    if (packName === 'RetroFit Care Plan') {
-                        messageArea.value = `I'm interested in subscribing to the "RetroFit Care Plan" ($99/month) for my site. Please send me setup details!`;
-                    } else {
-                        messageArea.value = `I'm interested in "The ${packName}" package. Please send me more details and a custom proposal for my site!`;
-                    }
+                    messageArea.value = `I'm interested in "The ${packName}" package. Please send me more details and a custom proposal for my site!`;
                 }
             }
         });
