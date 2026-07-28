@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (recommendationMsg) {
                     const avgScore = Math.round((perfScore + accessibilityScore + seoScore + bestPracticesScore) / 4);
                     if (avgScore >= 85) {
-                        recommendationMsg.innerHTML = `<strong>RetroFit Recommendation:</strong> Your website is in great shape overall! Our team can help you fine-tune your design to reach a perfect <strong>99+</strong> score.`;
+                        recommendationMsg.innerHTML = `<strong>RetroFit Recommendation:</strong> Your website is in great shape overall! I can help you fine-tune your design to reach a perfect <strong>99+</strong> score.`;
                     } else {
                         recommendationMsg.innerHTML = `<strong>RetroFit Recommendation:</strong> Your average audit score is <strong>${avgScore}%</strong>. A complete code rebuild will boost your performance score up to <strong>98%</strong> and maximize mobile lead conversions.`;
                     }
