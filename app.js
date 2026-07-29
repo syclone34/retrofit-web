@@ -474,7 +474,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (packageSelect && packName) {
                 packageSelect.value = packName;
                 if (messageArea) {
-                    messageArea.value = `I'm interested in "The ${packName}" package. Please send me more details and a custom proposal for my site!`;
+                    if (packName.includes('Maintenance')) {
+                        messageArea.value = `I'm interested in the "${packName}" support plan. Please contact me with details on how to get started!`;
+                    } else {
+                        messageArea.value = `I'm interested in "The ${packName}" package. Please send me more details and a custom proposal for my site!`;
+                    }
                 }
             }
         });
