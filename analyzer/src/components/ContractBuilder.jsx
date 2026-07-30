@@ -395,7 +395,7 @@ export default function ContractBuilder({ selectedAudits }) {
               <div className="text-left sm:text-right text-xs">
                 <div className="font-extrabold text-zinc-900">RetroFit Web Design LLC</div>
                 <div className="text-zinc-500 font-mono text-[9px]">www.retrofitwebdesign.com</div>
-                <div className="text-zinc-500 font-mono text-[9px] mt-0.5">cole@retrofitweb.com</div>
+                <div className="text-zinc-500 font-mono text-[9px] mt-0.5">cole@retrofitwebdesign.com</div>
                 <div className="text-zinc-500 font-mono text-[9px] mt-0.5">612-516-3145</div>
               </div>
             </div>
@@ -621,7 +621,7 @@ export default function ContractBuilder({ selectedAudits }) {
               <div className="text-left sm:text-right">
                 <div className="font-bold text-sm text-zinc-900">RetroFit Web Design LLC</div>
                 <div className="text-xs text-zinc-500">Minneapolis-St. Paul Metro Area</div>
-                <div className="text-xs text-zinc-500">cole@retrofitweb.com</div>
+                <div className="text-xs text-zinc-500">cole@retrofitwebdesign.com</div>
                 <div className="text-xs text-zinc-500">612-516-3145</div>
               </div>
             </div>
