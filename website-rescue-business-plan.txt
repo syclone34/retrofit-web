@@ -170,4 +170,24 @@ Phase 3 (Months 7–12):
 - Reach 50+ monthly care plan subscribers ($2,450+/mo passive MRR).
 - Expand add-on services (Local SEO & Google Business Profile management).
 
+================================================================================
+SECTION 10: SIDE-GIG OPERATIONAL BLUEPRINT & TIME MANAGEMENT
+================================================================================
+
+1. Time Budget & Capacity:
+   - Weekly Time Target: 5–10 hours/week (evenings & weekends).
+   - Maximum Client Volume: 2–3 Website Rescues per month ($600–$900 upfront).
+   - Core Goal: Build to 30 active $49/mo maintenance subscribers ($1,470/mo passive MRR).
+
+2. Asynchronous Sales Engine (No Live Meetings Required):
+   - Async Audits: Send 90-second screen-record video audits (via Loom/Vimeo) reviewing prospective sites scanned with RetroFit Analyzer.
+   - Text & Email Intake: Collect content, logos, and domain access via online intake forms rather than long phone calls.
+   - Automated Billing: Use Stripe subscription links for automatic $49/mo billing on day of launch.
+
+3. Standardized 5-Hour Delivery Workflow:
+   - Hour 1: Run RetroFit Analyzer audit & set up target framework template.
+   - Hour 2-3: Migrate client copy, logos, contact info, and optimize media files.
+   - Hour 4: Configure responsive layout, click-to-call buttons, and basic meta tags.
+   - Hour 5: Deploy to Cloudflare/hosting, link domain, setup SSL & backups.
+
 END OF DOCUMENT
