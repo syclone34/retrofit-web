@@ -284,6 +284,29 @@ p {
     border-color: transparent;
 }
 
+.nav-phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+}
+
+.nav-phone-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+}
+
+.nav-phone-icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex-shrink: 0;
+    stroke: var(--color-primary);
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -605,8 +628,6 @@ section {
     border-radius: 20px;
 }
 
-.comparison-slider {
-    position: relative;
 .comparison-slider {
     position: relative;
     width: 100%;
