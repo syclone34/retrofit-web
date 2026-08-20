@@ -34,6 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const beforeLabel = document.getElementById('beforeLabelText');
     const industryTabs = document.querySelectorAll('.industry-tab');
 
+    function syncImageWidths() {
+        if (slider && afterImg) {
+            const containerWidth = slider.getBoundingClientRect().width || slider.offsetWidth;
+            if (containerWidth > 0) {
+                afterImg.style.width = `${containerWidth}px`;
+            }
+        }
+    }
+
     if (industryTabs.length > 0 && beforeImg && afterImg) {
         industryTabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -52,10 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (newSrc) afterImg.src = newSrc;
                 if (titleText && beforeLabel) beforeLabel.textContent = titleText;
 
-                // Reset slider position to 50%
+                // Reset slider position to 50% & sync widths
                 if (afterImage && handle) {
                     afterImage.style.width = '50%';
                     handle.style.left = '50%';
+                    syncImageWidths();
                 }
             });
         });
@@ -66,26 +76,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function setSliderPos(xPosition) {
             const rect = slider.getBoundingClientRect();
-            let position = ((xPosition - rect.left) / rect.width) * 100;
+            if (!rect.width) return;
             
+            let position = ((xPosition - rect.left) / rect.width) * 100;
             if (position < 0) position = 0;
             if (position > 100) position = 100;
             
             afterImage.style.width = `${position}%`;
             handle.style.left = `${position}%`;
+            
+            // Sync top image width to container
+            if (afterImg) {
+                afterImg.style.width = `${rect.width}px`;
+            }
         }
 
-        // Mouse Down
-        handle.addEventListener('mousedown', (e) => {
+        // Start drag on handle OR clicking anywhere on slider container
+        slider.addEventListener('mousedown', (e) => {
             isResizing = true;
-            e.preventDefault();
+            setSliderPos(e.clientX);
         });
 
-        // Touch Start
-        handle.addEventListener('touchstart', (e) => {
-            isResizing = true;
-            e.preventDefault();
-        });
+        slider.addEventListener('touchstart', (e) => {
+            if (e.touches && e.touches[0]) {
+                isResizing = true;
+                setSliderPos(e.touches[0].clientX);
+            }
+        }, { passive: true });
 
         // Mouse Move on Window
         window.addEventListener('mousemove', (e) => {
@@ -99,23 +116,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.touches && e.touches[0]) {
                 setSliderPos(e.touches[0].clientX);
             }
-        });
+        }, { passive: true });
 
         // Mouse Up / Touch End
         window.addEventListener('mouseup', () => { isResizing = false; });
         window.addEventListener('touchend', () => { isResizing = false; });
 
-        // Handle window/container resizing to keep image layers aligned via ResizeObserver
-        const resizeObserver = new ResizeObserver((entries) => {
-            for (let entry of entries) {
-                const width = entry.contentRect.width;
-                const afterImageTag = afterImage.querySelector('img');
-                if (afterImageTag) {
-                    afterImageTag.style.width = `${width}px`;
-                }
-            }
+        // ResizeObserver to keep top image aligned with slider container width
+        const resizeObserver = new ResizeObserver(() => {
+            syncImageWidths();
         });
         resizeObserver.observe(slider);
+        syncImageWidths();
     }
 
     // ==========================================
