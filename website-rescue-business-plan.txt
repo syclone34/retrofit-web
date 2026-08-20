@@ -1,0 +1,173 @@
+WEBSITE RESCUE & MODERNIZATION – FULL BUSINESS PLAN
+Business Name: RetroFit Web Design
+Service Focus: Website Rescue, Modernization, and Maintenance for Small Service Businesses
+Document Type: Operational Blueprint
+Version: 1.0
+Author: Cole (RetroFit Web Design)
+
+================================================================================
+SECTION 1: BUSINESS POSITIONING
+================================================================================
+
+RetroFit Web Design specializes in fast, affordable, high-impact website modernization for small service businesses. The core value proposition is simple:
+
+"Your website doesn’t need a rebuild — it needs a rescue."
+
+Instead of selling full custom redesigns that cost thousands and take weeks, the business focuses on fixing outdated, broken, slow, or poorly designed websites and turning them into clean, modern, high-converting sites within 48–72 hours.
+
+This service fills a gap between DIY website builders and expensive marketing agencies. It is ideal for small business owners who need immediate improvements without the hassle or high cost of starting over from scratch.
+
+================================================================================
+SECTION 2: TARGET CLIENTS & IDEAL CUSTOMER PROFILE (ICP)
+================================================================================
+
+Primary target market (Local Service Businesses):
+- Plumbers
+- Electricians
+- Landscapers
+- Handymen & General Contractors
+- House Cleaning Companies
+- Roofing & Siding Contractors
+- Auto Detailers & Mechanics
+- Pet Grooming & Boarding Services
+- Fitness Trainers & Local Gyms
+- Local Service Shops
+
+Common issues these clients face:
+- Outdated, 2010-era visual design
+- Broken mobile layouts and non-responsive menus
+- Slow page load speeds on smartphones
+- Poor or non-existent hosting setup
+- Lack of modern trust signals (reviews, badges)
+- Missing clear call-to-action buttons (tap-to-call, quote forms)
+- No SSL security, backups, or ongoing maintenance
+
+Why this market buys:
+These business owners don't want a long $3,000+ redesign project. They want someone trustworthy who can quickly fix what is broken and make their business look professional online.
+
+================================================================================
+SECTION 3: CORE SERVICE OFFER
+================================================================================
+
+Main Product: Website Rescue Package (Flat Rate)
+
+Price: $299 Flat Rate
+
+Included Services:
+- Complete visual design refresh & modernization
+- Full mobile responsiveness overhaul
+- Speed & performance optimization
+- Updating typography, color palette, and layout structure
+- High-converting Hero section with clear Call-To-Action (CTA)
+- Click-to-call and quick lead form integration
+- Repair of broken links and formatting errors
+- Image optimization (compression & modern WebP formats)
+- Basic local SEO elements (Meta titles, descriptions, headers)
+- Basic SSL & security setup
+- Full site backup before & after rescue
+
+Turnaround Time: Guaranteed 48–72 hours
+
+================================================================================
+SECTION 4: MONTHLY RECURRING OFFER
+================================================================================
+
+Maintenance & Hosting Care Plan: $49 / month
+
+Included Services:
+- High-performance, secure cloud hosting
+- Automated daily/weekly backups
+- Uptime and security monitoring
+- Monthly software & plugin updates
+- Up to 30 minutes of minor content/text/image edits per month
+- Priority support and phone/email assistance
+
+Purpose:
+Builds predictable, scalable recurring monthly revenue (MRR) while giving clients total peace of mind.
+
+================================================================================
+SECTION 5: WORKFLOW AND OPERATIONS
+================================================================================
+
+Step 1: Rapid Site Audit
+- Run prospective site through RetroFit Analyzer tool.
+- Identify 5–10 high-impact visual, speed, and mobile flaws.
+
+Step 2: Simple Pitch & Proposal
+- Send personalized before/after screenshot teaser or short audit clip.
+- Present the $299 Website Rescue flat-rate proposal with 48–72h guarantee.
+
+Step 3: Rescue Sprint Execution
+- Backup existing website files and content.
+- Migrate text, logos, and images to modular modernization template.
+- Implement responsive layout, clean fonts, click-to-call buttons, and clean CSS.
+- Compress all media assets for lightning-fast mobile loading.
+
+Step 4: Client Delivery & Approval
+- Present live preview link to client for feedback.
+- Make final minor polish edits within 24 hours.
+
+Step 5: Onboarding to Monthly Care Plan
+- Transfer hosting/DNS settings to secure Cloudflare/hosting pipeline.
+- Enroll client into the $49/mo Maintenance & Hosting recurring billing plan.
+
+================================================================================
+SECTION 6: MARKETING & SALES MESSAGING
+================================================================================
+
+Core Headlines & Angles:
+- "Your website doesn’t need a rebuild — it needs a rescue."
+- "Give me 48 hours and I’ll turn your outdated website into something you’re proud of."
+- "I modernize outdated small business websites fast, affordably, and hassle-free."
+
+Primary Lead Generation Channels:
+1. Direct Local Outreach: Running RetroFit Analyzer scans on local trade service sites with bad mobile layouts.
+2. Direct Mail / Cold Email Audits: Sending short personalized before/after visual teasers.
+3. Local Facebook & Business Groups: Positioning as the local website rescue specialist.
+4. Referral Partnerships: Partnering with local SEOs, graphic designers, and tech consultants who don't offer low-cost site refurbishing.
+
+================================================================================
+SECTION 7: PRICING & UPSELL STRATEGY
+================================================================================
+
+Primary Offer:
+- $299 Website Rescue Package (One-time)
+
+Recurring Offer:
+- $49 / month Maintenance, Hosting & Care Plan
+
+Optional High-Margin Add-ons:
+- Google Business Profile (GBP) Optimization: +$149
+- Logo Modernization & Brand Refresh: +$99
+- Additional Custom Page (beyond core 5 pages): +$75/page
+- Professional Stock Photography Package: +$49
+
+================================================================================
+SECTION 8: RECOMMENDED TECH STACK
+================================================================================
+
+- RetroFit Analyzer: Desktop/Web tool for quick lead audit scans.
+- Host & Deployment: Cloudflare Pages / Netlify / Vercel or cPanel/WordPress hosting.
+- Asset Optimization: WebP image converters, PostCSS, Oxlint/Vite.
+- DNS & Security: Cloudflare DNS, free SSL certificates.
+- Billing & Payments: Stripe or Wave for automated $49/mo subscription billing.
+
+================================================================================
+SECTION 9: BUSINESS MILESTONES & TARGETS
+================================================================================
+
+Phase 1 (Months 1–3):
+- Build 5 Before/After Website Rescue case studies.
+- Align landing page (RetroFit Web) with Website Rescue positioning & $299 offer.
+- Close first 10 Website Rescue clients ($2,990 upfront + $490/mo MRR).
+
+Phase 2 (Months 4–6):
+- Reach 25 active hosting & maintenance clients ($1,225/mo MRR).
+- Standardize design component library for 24-48 hour turnaround.
+- Automate client intake & analyzer audit reports.
+
+Phase 3 (Months 7–12):
+- Reach 50+ monthly care plan subscribers ($2,450+/mo passive MRR).
+- Expand add-on services (Local SEO & Google Business Profile management).
+
+END OF DOCUMENT

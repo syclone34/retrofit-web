@@ -325,21 +325,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const pageSlider = document.getElementById('pageCount');
     const pageDisplay = document.getElementById('pageCountDisplay');
+    const gbpCb = document.getElementById('gbpFeature');
+    const logoCb = document.getElementById('logoFeature');
     const bookingCb = document.getElementById('bookingFeature');
-    const seoCb = document.getElementById('seoFeature');
-    const cmsCb = document.getElementById('cmsFeature');
-    const ecommerceCb = document.getElementById('ecommerceFeature');
-    const adsCb = document.getElementById('adsFeature');
+    const maintenanceCb = document.getElementById('maintenanceAddon');
     const estimatedPriceText = document.getElementById('estimatedPrice');
     const recommendedPlanName = document.getElementById('recommendedPlanName');
     const claimQuoteBtn = document.getElementById('claimQuoteBtn');
 
-    const cardRefresh = document.getElementById('cardLocalRefresh');
-    const cardLocalStarter = document.getElementById('cardLocalStarter');
-    const cardGrowth = document.getElementById('cardLocalGrowth');
+    const cardWebsiteRescue = document.getElementById('cardWebsiteRescue');
+    const cardCustomOverhaul = document.getElementById('cardCustomOverhaul');
 
     function highlightCard(activeCard) {
-        [cardRefresh, cardLocalStarter, cardGrowth].forEach(card => {
+        [cardWebsiteRescue, cardCustomOverhaul].forEach(card => {
             if (!card) return;
             card.classList.remove('featured');
             const tag = card.querySelector('.featured-tag');
@@ -363,46 +361,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const pages = parseInt(pageSlider.value);
         pageDisplay.textContent = pages;
 
-        // Count selected features
-        let featureCount = 0;
-        if (bookingCb && bookingCb.checked) featureCount++;
-        if (seoCb && seoCb.checked) featureCount++;
-        if (cmsCb && cmsCb.checked) featureCount++;
-        if (ecommerceCb && ecommerceCb.checked) featureCount++;
-        if (adsCb && adsCb.checked) featureCount++;
+        // Determine recommended baseline package based on page count
+        let recommendedPrice = 299;
+        let planTitle = 'Website Rescue Package';
 
-        // Determine recommended package based on page count & feature complexity
-        let recommendedPrice = 999;
-        let planTitle = 'The Local Growth';
-
-        if (pages === 1 && featureCount <= 1 && (!ecommerceCb || !ecommerceCb.checked)) {
-            recommendedPrice = 399;
-            planTitle = 'The Lead Lander';
-            highlightCard(cardRefresh);
-        } else if (pages <= 4 && featureCount <= 2 && (!ecommerceCb || !ecommerceCb.checked)) {
-            recommendedPrice = 699;
-            planTitle = 'The Local Starter';
-            highlightCard(cardLocalStarter);
+        if (pages <= 5) {
+            recommendedPrice = 299;
+            planTitle = 'Website Rescue Package';
+            highlightCard(cardWebsiteRescue);
         } else {
-            recommendedPrice = 999;
-            planTitle = 'The Local Growth';
-            highlightCard(cardGrowth);
+            recommendedPrice = 599;
+            planTitle = 'Custom Site Overhaul';
+            highlightCard(cardCustomOverhaul);
         }
 
-        // Add extra page scaling beyond 7 pages if needed ($100/extra page)
+        // Add extra page scaling beyond 10 pages ($75/extra page)
         let total = recommendedPrice;
-        if (pages > 7) {
-            total += (pages - 7) * 100;
+        if (pages > 10) {
+            total += (pages - 10) * 75;
         }
 
         // Add feature costs
-        if (bookingCb && bookingCb.checked) total += parseInt(bookingCb.value) || 250;
-        if (seoCb && seoCb.checked) total += parseInt(seoCb.value) || 200;
-        if (cmsCb && cmsCb.checked) total += parseInt(cmsCb.value) || 300;
-        if (ecommerceCb && ecommerceCb.checked) total += parseInt(ecommerceCb.value) || 500;
-        if (adsCb && adsCb.checked) total += parseInt(adsCb.value) || 400;
+        if (gbpCb && gbpCb.checked) total += parseInt(gbpCb.value) || 149;
+        if (logoCb && logoCb.checked) total += parseInt(logoCb.value) || 99;
+        if (bookingCb && bookingCb.checked) total += parseInt(bookingCb.value) || 150;
+        if (maintenanceCb && maintenanceCb.checked) total += parseInt(maintenanceCb.value) || 49;
 
-        if (estimatedPriceText) estimatedPriceText.textContent = `$${total}`;
+        if (estimatedPriceText) estimatedPriceText.textContent = `$${total}${maintenanceCb && maintenanceCb.checked ? ' + $49/mo' : ''}`;
         if (recommendedPlanName) {
             recommendedPlanName.textContent = `Matching Plan: ${planTitle} ($${recommendedPrice})`;
         }
@@ -410,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (pageSlider) {
         pageSlider.addEventListener('input', calculateEstimate);
-        [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb].forEach(cb => {
+        [gbpCb, logoCb, bookingCb, maintenanceCb].forEach(cb => {
             if (cb) cb.addEventListener('change', calculateEstimate);
         });
         
@@ -421,12 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (claimQuoteBtn) {
         claimQuoteBtn.addEventListener('click', () => {
             const pages = pageSlider ? parseInt(pageSlider.value) : 5;
-            let currentPackage = 'Local Growth';
-            if (pages === 1) {
-                currentPackage = 'Lead Lander';
-            } else if (pages <= 4) {
-                currentPackage = 'Local Starter';
-            }
+            let currentPackage = pages <= 5 ? 'Website Rescue Package ($299)' : 'Custom Site Overhaul ($599)';
 
             const packageSelect = document.getElementById('chosenPackage');
             if (packageSelect) {
@@ -436,13 +416,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const messageArea = document.getElementById('clientMessage');
             if (messageArea && pageSlider) {
                 const features = [];
-                if (bookingCb && bookingCb.checked) features.push('Booking/Ordering');
-                if (seoCb && seoCb.checked) features.push('Local SEO Boost');
-                if (cmsCb && cmsCb.checked) features.push('Content Management (CMS)');
-                if (ecommerceCb && ecommerceCb.checked) features.push('E-Commerce Catalog');
-                if (adsCb && adsCb.checked) features.push('Google Ads Campaign Setup');
+                if (gbpCb && gbpCb.checked) features.push('Google Business Profile Setup (+$149)');
+                if (logoCb && logoCb.checked) features.push('Logo Refresh (+$99)');
+                if (bookingCb && bookingCb.checked) features.push('Online Booking Setup (+$150)');
+                if (maintenanceCb && maintenanceCb.checked) features.push('Monthly Care Plan (+$49/mo)');
                 
-                messageArea.value = `I calculated my custom quote for ${pages} pages using the interactive estimator. Additional features: ${features.join(', ') || 'None'}. Please contact me to get started!`;
+                messageArea.value = `I calculated my custom Website Rescue quote for ${pages} pages. Additional features selected: ${features.join(', ') || 'None'}. Please contact me to get started!`;
             }
 
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
