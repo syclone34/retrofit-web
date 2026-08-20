@@ -139,21 +139,40 @@
     <section id="transformation" class="slider-section">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-badge">Interactive Comparison</span>
-                <h2 class="section-title">The Transformation: Before & After</h2>
-                <p class="section-subtitle">Slide to see how I transformed "Apex Plumbing & HVAC" from an unoptimized 2000s table layout to a modern, fast customer-generating local business website.</p>
+                <span class="section-badge">Interactive Comparisons</span>
+                <h2 class="section-title">See Real Website Rescues</h2>
+                <p class="section-subtitle">Select an industry below and drag the slider to compare outdated legacy websites with their modern RetroFit redesigns.</p>
             </div>
             
+            <div class="industry-tabs" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 2rem; flex-wrap: wrap;">
+                <button class="btn btn-primary industry-tab active" data-old="assets/old_hvac.png" data-new="assets/new_hvac.png" data-title="Apex Plumbing & HVAC (Legacy 2005)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    HVAC & Plumbing
+                </button>
+                <button class="btn btn-secondary industry-tab" data-old="assets/old_landscape.png" data-new="assets/new_landscape.png" data-title="Green Thumb Landscaping (Legacy 1998)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.4 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                    Landscaping & Lawn
+                </button>
+                <button class="btn btn-secondary industry-tab" data-old="assets/old_auto.png" data-new="assets/new_auto.png" data-title="Precision Auto Repair (Legacy 2008)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.2 1 12.1 1 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+                    Auto Repair & Detail
+                </button>
+                <button class="btn btn-secondary industry-tab" data-old="assets/old_pizza.png" data-new="assets/new_pizza.png" data-title="Tony's Pizzeria (Legacy 2003)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg>
+                    Local Restaurant
+                </button>
+            </div>
+
             <div class="slider-wrapper glass">
                 <div class="comparison-slider" id="comparisonSlider">
                     <!-- Before Image (Bottom Layer) -->
                     <div class="image-layer before-image">
-                        <img src="assets/old_hvac.png" alt="Apex Plumbing & HVAC Legacy Website Design">
-                        <span class="image-label before-label">Apex Plumbing & HVAC (Legacy 2005)</span>
+                        <img src="assets/old_hvac.png" id="beforeImgElement" alt="Legacy Website Design">
+                        <span class="image-label before-label" id="beforeLabelText">Apex Plumbing & HVAC (Legacy 2005)</span>
                     </div>
                     <!-- After Image (Top Layer, Width Resized by JavaScript) -->
                     <div class="image-layer after-image" id="afterImageLayer">
-                        <img src="assets/new_hvac.png" alt="Apex Plumbing & HVAC Modernized Website">
+                        <img src="assets/new_hvac.png" id="afterImgElement" alt="RetroFit Modernized Website">
                         <span class="image-label after-label">RetroFit Modernized Website</span>
                     </div>
                     <!-- Slider Handle -->
@@ -415,21 +434,27 @@
 
                         <div class="founder-highlights">
                             <div class="highlight-item">
-                                <span class="hl-icon">🛠️</span>
+                                <span class="hl-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                                </span>
                                 <div>
                                     <strong>Enterprise IT Foundation</strong>
                                     <p>Rock-solid SSL security, sub-second load times, and clean infrastructure.</p>
                                 </div>
                             </div>
                             <div class="highlight-item">
-                                <span class="hl-icon">⚡</span>
+                                <span class="hl-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 L3 14 L12 14 L11 22 L21 10 L12 10 Z"/></svg>
+                                </span>
                                 <div>
                                     <strong>48–72 Hour Turnaround</strong>
                                     <p>Fast, hassle-free modernization so your business never stops taking leads.</p>
                                 </div>
                             </div>
                             <div class="highlight-item">
-                                <span class="hl-icon">📞</span>
+                                <span class="hl-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                </span>
                                 <div>
                                     <strong>Direct 1-on-1 Owner Support</strong>
                                     <p>Work directly with me — no account managers, no middleman runarounds.</p>

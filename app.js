@@ -24,11 +24,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 2. Before/After Image Slider
+    // 2. Before/After Image Slider & Industry Tabs
     // ==========================================
     const slider = document.getElementById('comparisonSlider');
     const afterImage = document.getElementById('afterImageLayer');
     const handle = document.getElementById('sliderHandle');
+    const beforeImg = document.getElementById('beforeImgElement');
+    const afterImg = document.getElementById('afterImgElement');
+    const beforeLabel = document.getElementById('beforeLabelText');
+    const industryTabs = document.querySelectorAll('.industry-tab');
+
+    if (industryTabs.length > 0 && beforeImg && afterImg) {
+        industryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                industryTabs.forEach(t => {
+                    t.classList.remove('active', 'btn-primary');
+                    t.classList.add('btn-secondary');
+                });
+                tab.classList.add('active', 'btn-primary');
+                tab.classList.remove('btn-secondary');
+
+                const oldSrc = tab.getAttribute('data-old');
+                const newSrc = tab.getAttribute('data-new');
+                const titleText = tab.getAttribute('data-title');
+
+                if (oldSrc) beforeImg.src = oldSrc;
+                if (newSrc) afterImg.src = newSrc;
+                if (titleText && beforeLabel) beforeLabel.textContent = titleText;
+
+                // Reset slider position to 50%
+                if (afterImage && handle) {
+                    afterImage.style.width = '50%';
+                    handle.style.left = '50%';
+                }
+            });
+        });
+    }
 
     if (slider && afterImage && handle) {
         let isResizing = false;
@@ -73,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Mouse Up / Touch End
         window.addEventListener('mouseup', () => { isResizing = false; });
         window.addEventListener('touchend', () => { isResizing = false; });
-        
+
         // Handle window/container resizing to keep image layers aligned via ResizeObserver
         const resizeObserver = new ResizeObserver((entries) => {
             for (let entry of entries) {
