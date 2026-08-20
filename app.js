@@ -470,12 +470,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const messageArea = document.getElementById('clientMessage');
 
             if (packName && pageSlider) {
-                if (packName === 'Lead Lander') pageSlider.value = 1;
-                else if (packName === 'Local Starter') pageSlider.value = 3;
-                else if (packName === 'Local Growth') pageSlider.value = 5;
+                if (packName.includes('Website Rescue Package')) pageSlider.value = 5;
+                else if (packName.includes('Custom Site Overhaul')) pageSlider.value = 10;
 
                 // Uncheck add-ons for clean package defaults
-                [bookingCb, seoCb, cmsCb, ecommerceCb, adsCb].forEach(cb => {
+                [gbpCb, logoCb, bookingCb, maintenanceCb].forEach(cb => {
                     if (cb) cb.checked = false;
                 });
                 calculateEstimate();
@@ -485,9 +484,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 packageSelect.value = packName;
                 if (messageArea) {
                     if (packName.includes('Maintenance')) {
-                        messageArea.value = `I'm interested in the "${packName}" support plan. Please contact me with details on how to get started!`;
+                        messageArea.value = `I'm interested in the "${packName}" care plan. Please contact me with details on how to get started!`;
                     } else {
-                        messageArea.value = `I'm interested in "The ${packName}" package. Please send me more details and a custom proposal for my site!`;
+                        messageArea.value = `I'm interested in the "${packName}". Please send me more details and a custom proposal for my site!`;
                     }
                 }
             }
