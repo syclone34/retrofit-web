@@ -377,10 +377,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const claimQuoteBtn = document.getElementById('claimQuoteBtn');
 
     const cardWebsiteRescue = document.getElementById('cardWebsiteRescue');
+    const cardNewBuild = document.getElementById('cardNewBuild');
     const cardCustomOverhaul = document.getElementById('cardCustomOverhaul');
 
     function highlightCard(activeCard) {
-        [cardWebsiteRescue, cardCustomOverhaul].forEach(card => {
+        [cardWebsiteRescue, cardNewBuild, cardCustomOverhaul].forEach(card => {
             if (!card) return;
             card.classList.remove('featured');
             const tag = card.querySelector('.featured-tag');
@@ -483,13 +484,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (packName && pageSlider) {
                 if (packName.includes('Website Rescue Package')) pageSlider.value = 5;
-                else if (packName.includes('Custom Site Overhaul')) pageSlider.value = 10;
+                else if (packName.includes('Brand New Website Build')) {
+                    pageSlider.value = 5;
+                    highlightCard(cardNewBuild);
+                } else if (packName.includes('Custom Site Overhaul')) pageSlider.value = 10;
 
                 // Uncheck add-ons for clean package defaults
                 [gbpCb, logoCb, bookingCb, maintenanceCb].forEach(cb => {
                     if (cb) cb.checked = false;
                 });
-                calculateEstimate();
+                if (!packName.includes('Brand New Website Build')) {
+                    calculateEstimate();
+                }
             }
 
             if (packageSelect && packName) {
@@ -497,6 +503,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (messageArea) {
                     if (packName.includes('Maintenance')) {
                         messageArea.value = `I'm interested in the "${packName}" care plan. Please contact me with details on how to get started!`;
+                    } else if (packName.includes('Brand New Website Build')) {
+                        messageArea.value = `I'm interested in the "${packName}" from scratch. Please contact me with details on how to get started!`;
                     } else {
                         messageArea.value = `I'm interested in the "${packName}". Please send me more details and a custom proposal for my site!`;
                     }
