@@ -239,10 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Check if domain is RetroFit Web Design (flagship reference)
             const normalizedDomain = targetUrl.replace(/^(https?:\/\/)?(www\.)?/, '').toLowerCase().split('/')[0];
-            const isRetroFitDomain = normalizedDomain.includes('retrofitwebdesign') || 
-                                     normalizedDomain.includes('retrofitweb') ||
-                                     normalizedDomain === 'localhost:3377' ||
-                                     normalizedDomain.includes('retrofit-web');
+            const isRetroFitDomain = /retrofit/i.test(normalizedDomain) || 
+                                     normalizedDomain === 'localhost:3377';
 
             if (isRetroFitDomain) {
                 clearInterval(logTimer);
