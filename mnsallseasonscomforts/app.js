@@ -185,9 +185,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const smsSuccessMsg = document.getElementById('smsSuccessMsg');
     const smsTargetNumber = document.getElementById('smsTargetNumber');
 
-    if (smsTrigger && smsDrawer) {
-        smsTrigger.addEventListener('click', () => {
-            smsDrawer.classList.toggle('hidden');
+    // Phone & SMS setup
+    const smsPhoneNumber = '+17632911615';
+    const smsDefaultText = "Hi MN's All Seasons Comforts, I have a question about HVAC service.";
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    // iOS Messages uses '&body=' while Android & RFC 5724 use '?body='
+    const smsUrl = `sms:${smsPhoneNumber}${isIOS ? '&' : '?'}body=${encodeURIComponent(smsDefaultText)}`;
+
+    if (smsTrigger) {
+        // Set dynamic URL for correct OS formatting
+        smsTrigger.setAttribute('href', smsUrl);
+
+        smsTrigger.addEventListener('click', (e) => {
+            const isMobile = (window.innerWidth <= 768) || 
+                             /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                             (('ontouchstart' in window) && window.innerWidth <= 850);
+
+            if (isMobile) {
+                // On mobile devices, pull up the native messaging app
+                window.location.href = smsUrl;
+            } else {
+                // On desktop devices, open the on-page chat drawer form
+                e.preventDefault();
+                if (smsDrawer) {
+                    smsDrawer.classList.toggle('hidden');
+                }
+            }
         });
     }
 

@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
@@ -613,14 +613,14 @@
 
     <!-- Floating SMS Widget -->
     <div class="sms-widget-container" id="smsWidget">
-        <!-- Floating Trigger Button -->
-        <button class="sms-trigger-btn" id="smsTrigger" aria-label="Text us">
+        <!-- Floating Trigger Button (Opens native SMS app on mobile, web drawer on desktop) -->
+        <a href="sms:+17632911615?&body=Hi%20MN%27s%20All%20Seasons%20Comforts%2C%20I%27d%20like%20to%20ask%20about%20HVAC%20service." class="sms-trigger-btn" id="smsTrigger" aria-label="Text us">
             <span class="sms-pulse-dot"></span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="sms-icon-svg">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 10.742h.008v.008h-.008v-.008zm.37 0h.008v.008h-.008v-.008zm.37 0h.008v.008h-.008v-.008zm2.25 0h.008v.008h-.008v-.008zm.37 0h.008v.008h-.008v-.008zm.37 0h.008v.008h-.008v-.008zm1.875 0h.007v.008H14.25v-.008zm.375 0h.008v.008h-.008v-.008zm.375 0h.008v.008h-.008v-.008zM12 21a9.003 9.003 0 008.313-5.547L21 14.25v-1.875a9 9 0 10-18 0v1.875l.687 1.203A9.003 9.003 0 0012 21z" />
             </svg>
             <span class="sms-btn-text">Text Us</span>
-        </button>
+        </a>
 
         <!-- Chat Drawer Window -->
         <div class="sms-drawer-card hidden" id="smsDrawer">
@@ -635,7 +635,7 @@
             <!-- SMS Form -->
             <form id="smsWidgetForm" name="sms-widget" method="POST" data-netlify="true" class="sms-drawer-body">
                 <input type="hidden" name="form-name" value="sms-widget">
-                <p class="sms-intro">Text us your question and we'll reply directly to your phone!</p>
+                <p class="sms-intro">Text us your question and we'll reply directly to your phone! Or <a href="sms:+17632911615?&body=Hi%20MN%27s%20All%20Seasons%20Comforts%2C%20I%27d%20like%20to%20ask%20about%20HVAC%20service." style="color: var(--accent); font-weight: 600; text-decoration: underline;">open messaging app</a>.</p>
                 
                 <div class="sms-form-group">
                     <label for="smsName">Your Name</label>
@@ -664,7 +664,7 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=3"></script>
 </body>
 
 </html>
