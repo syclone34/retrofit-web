@@ -31,6 +31,9 @@ export default function WebAnalyzer({ onAddAuditToScope, selectedAudits, prefill
     setLogs(prev => [...prev, `> ${msg}`]);
   };
 
+  // Google PageSpeed Insights API Key
+  const GOOGLE_PAGESPEED_API_KEY = 'AIzaSyAvZzoWRbcdRbDzVUzmYPCAmTV6eTONRN4';
+
   const handleAuditSubmit = async (e) => {
     e.preventDefault();
     if (!url.trim()) return;
@@ -70,7 +73,8 @@ export default function WebAnalyzer({ onAddAuditToScope, selectedAudits, prefill
     }, 1800);
 
     try {
-      const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&category=PERFORMANCE&category=SEO&category=ACCESSIBILITY&category=BEST_PRACTICES&strategy=mobile`;
+      const keyParam = GOOGLE_PAGESPEED_API_KEY ? `&key=${encodeURIComponent(GOOGLE_PAGESPEED_API_KEY)}` : '';
+      const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&category=PERFORMANCE&category=SEO&category=ACCESSIBILITY&category=BEST_PRACTICES&strategy=mobile${keyParam}`;
       
       const res = await fetch(apiEndpoint);
       clearInterval(interval);
