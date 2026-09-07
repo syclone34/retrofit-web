@@ -31,8 +31,8 @@ export default function WebAnalyzer({ onAddAuditToScope, selectedAudits, prefill
     setLogs(prev => [...prev, `> ${msg}`]);
   };
 
-  // Google PageSpeed Insights API Key
-  const GOOGLE_PAGESPEED_API_KEY = 'AIzaSyAvZzoWRbcdRbDzVUzmYPCAmTV6eTONRN4';
+  // Google PageSpeed Insights API Key (hidden behind /api/analyze proxy in production)
+  const GOOGLE_PAGESPEED_API_KEY = '';
 
   const handleAuditSubmit = async (e) => {
     e.preventDefault();
@@ -73,16 +73,28 @@ export default function WebAnalyzer({ onAddAuditToScope, selectedAudits, prefill
     }, 1800);
 
     try {
-      const keyParam = GOOGLE_PAGESPEED_API_KEY ? `&key=${encodeURIComponent(GOOGLE_PAGESPEED_API_KEY)}` : '';
-      const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&category=PERFORMANCE&category=SEO&category=ACCESSIBILITY&category=BEST_PRACTICES&strategy=mobile${keyParam}`;
-      
-      const res = await fetch(apiEndpoint);
-      clearInterval(interval);
-
       let data = null;
-      if (res.ok) {
-        data = await res.json();
+      // Try secure serverless proxy first (preserves API key on Cloudflare Pages)
+      try {
+        const proxyRes = await fetch(`/api/analyze?url=${encodeURIComponent(targetUrl)}`);
+        if (proxyRes.ok) {
+          data = await proxyRes.json();
+        }
+      } catch (proxyErr) {
+        // Fallback for standalone/local dev without worker
       }
+
+      // If proxy didn't return data, fallback to direct Google API call
+      if (!data || !data.lighthouseResult) {
+        const keyParam = GOOGLE_PAGESPEED_API_KEY ? `&key=${encodeURIComponent(GOOGLE_PAGESPEED_API_KEY)}` : '';
+        const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&category=PERFORMANCE&category=SEO&category=ACCESSIBILITY&category=BEST_PRACTICES&strategy=mobile${keyParam}`;
+        const res = await fetch(apiEndpoint).catch(() => null);
+        if (res && res.ok) {
+          data = await res.json();
+        }
+      }
+
+      clearInterval(interval);
 
       let perf, acc, seo, bp;
       let fcp, lcp, tti, si;

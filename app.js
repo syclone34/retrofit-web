@@ -133,9 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 3. Real Website Audit Scanner (Google PageSpeed Insights API)
     // ==========================================
-    // Paste your Google PageSpeed API Key between the quotes below:
-    const GOOGLE_PAGESPEED_API_KEY = 'AIzaSyAvZzoWRbcdRbDzVUzmYPCAmTV6eTONRN4';
-
     const analyzeBtn = document.getElementById('analyzeBtn');
     const websiteUrlInput = document.getElementById('websiteUrl');
     const inputForm = document.getElementById('analyzerInputForm');
@@ -290,13 +287,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const keyParam = GOOGLE_PAGESPEED_API_KEY ? `&key=${encodeURIComponent(GOOGLE_PAGESPEED_API_KEY)}` : '';
-                const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&category=PERFORMANCE&category=SEO&category=ACCESSIBILITY&category=BEST_PRACTICES&strategy=mobile${keyParam}`;
+                // Call secure serverless proxy endpoint (keeps Google API key 100% private on server)
+                const proxyEndpoint = `/api/analyze?url=${encodeURIComponent(targetUrl)}`;
                 
-                const response = await fetch(apiEndpoint);
                 let data = null;
-                if (response.ok) {
-                    data = await response.json();
+                try {
+                    const response = await fetch(proxyEndpoint);
+                    if (response.ok) {
+                        data = await response.json();
+                    }
+                } catch (e) {
+                    // Fallback to direct request if local server lacks functions runtime
+                }
+
+                if (!data || !data.lighthouseResult) {
+                    const directEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&category=PERFORMANCE&category=SEO&category=ACCESSIBILITY&category=BEST_PRACTICES&strategy=mobile`;
+                    const directRes = await fetch(directEndpoint).catch(() => null);
+                    if (directRes && directRes.ok) {
+                        data = await directRes.json();
+                    }
                 }
 
                 clearInterval(logTimer);
