@@ -1,0 +1,307 @@
+{
+  "title": "Business Law - Blustin Law",
+  "images": [
+    {
+      "src": "https://img1.wsimg.com/isteam/ip/971fe26c-95b1-440c-b9c2-060b83006355/B%26A%20logo%20update-0001.jpg/:/rs=h:202,cg:true,m/qt=q:100/ll",
+      "alt": "",
+      "width": 353,
+      "height": 202,
+      "className": "x-el x-el-img c1-1 c1-2 c1-4 c1-10 c1-w c1-x c1-1c c1-1d c1-4f c1-6f c1-6g c1-1k c1-1l c1-1m c1-1n c1-6h c1-6i c1-6j c1-6k c1-2t c1-3r c1-2v c1-3s c1-6l c1-6e c1-b c1-c c1-6m c1-6n c1-6o c1-6p c1-6q c1-6r c1-6s c1-6t c1-6u c1-6v c1-6w c1-6x c1-6y c1-6z c1-70 c1-d c1-71 c1-72 c1-73 c1-e c1-f c1-g"
+    },
+    {
+      "src": "https://img1.wsimg.com/isteam/stock/9471/:/rs=w:600,h:300,cg:true,m/cr=w:600,h:300",
+      "alt": "",
+      "width": 600,
+      "height": 300,
+      "className": "x-el x-el-img c1-1 c1-2 c1-4 c1-10 c1-w c1-x c1-1c c1-1d c1-4f c1-7v c1-7w c1-7x c1-7y c1-7z c1-80 c1-81 c1-b c1-c c1-82 c1-d c1-e c1-f c1-g"
+    },
+    {
+      "src": "https://img1.wsimg.com/isteam/stock/5220/:/cr=t:2.95%25,l:3.94%25,w:92.13%25,h:69.09%25/rs=w:600,h:300,cg:true,m",
+      "alt": "",
+      "width": 600,
+      "height": 300,
+      "className": "x-el x-el-img c1-1 c1-2 c1-4 c1-10 c1-w c1-x c1-1c c1-1d c1-4f c1-7v c1-7w c1-7x c1-7y c1-7z c1-80 c1-81 c1-b c1-c c1-82 c1-d c1-e c1-f c1-g"
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
+      "alt": "",
+      "width": 1,
+      "height": 1,
+      "className": "x-el x-el-img c1-1 c1-2 c1-4 c1-10 c1-w c1-x c1-1c c1-1d c1-4f c1-9e c1-7w c1-7x c1-7y c1-7z c1-80 c1-81 c1-b c1-c c1-d c1-e c1-f c1-g"
+    }
+  ],
+  "textBlocks": [
+    {
+      "tag": "P",
+      "text": "(763) 355-9072"
+    },
+    {
+      "tag": "P",
+      "text": "(763) 355-9072"
+    },
+    {
+      "tag": "LI",
+      "text": "HOME"
+    },
+    {
+      "tag": "LI",
+      "text": "CLIENT SERVICES"
+    },
+    {
+      "tag": "LI",
+      "text": "ABOUT US"
+    },
+    {
+      "tag": "LI",
+      "text": "MoreHomeClient ServicesAbout Us"
+    },
+    {
+      "tag": "LI",
+      "text": "Home"
+    },
+    {
+      "tag": "LI",
+      "text": "Client Services"
+    },
+    {
+      "tag": "LI",
+      "text": "About Us"
+    },
+    {
+      "tag": "H2",
+      "text": "Providing Legal and Business Solutions\nfor More Than 30 Years"
+    },
+    {
+      "tag": "H1",
+      "text": "PRACTICE AREAS"
+    },
+    {
+      "tag": "LI",
+      "text": "Business Law and Transactions"
+    },
+    {
+      "tag": "LI",
+      "text": "Business start-up services"
+    },
+    {
+      "tag": "LI",
+      "text": "Intellectual Property Law - Trademarks, copyrights and licensing"
+    },
+    {
+      "tag": "LI",
+      "text": "Real Estate Transactions"
+    },
+    {
+      "tag": "LI",
+      "text": "Civil Litigation"
+    },
+    {
+      "tag": "LI",
+      "text": "Sports and Entertainment legal services for sports teams and promotions"
+    },
+    {
+      "tag": "LI",
+      "text": "Estate Planning and Probate"
+    },
+    {
+      "tag": "LI",
+      "text": "Nonprofit law"
+    },
+    {
+      "tag": "H4",
+      "text": "LEGACY OF SUCCESS"
+    },
+    {
+      "tag": "P",
+      "text": "Blustin & Associates has more than 30 years of experience providing transaction, planning and litigation-related services to its individual and business clients."
+    },
+    {
+      "tag": "P",
+      "text": "We use that experience and a sophisticated researching capability  to help clients resolve legal problems, plan for the future and operate their businesses on a day-to-day basis."
+    },
+    {
+      "tag": "H3",
+      "text": "SHOLLY A. BLUSTIN"
+    },
+    {
+      "tag": "H3",
+      "text": "ADMISSIONS"
+    },
+    {
+      "tag": "LI",
+      "text": "1987, State of Minnesota;"
+    },
+    {
+      "tag": "LI",
+      "text": "1990, U.S. District Court, District of Minnesota."
+    },
+    {
+      "tag": "H3",
+      "text": "EDUCATION"
+    },
+    {
+      "tag": "LI",
+      "text": "University of Minnesota Law School, Juris Doctor, Honors: Civil Rights Moot Court;"
+    },
+    {
+      "tag": "LI",
+      "text": "University of Minnesota, Minneapolis, MN, 1984-87 –School of Journalism and Mass Communications, Bachelor of Arts, Honors: Magna Cum Laude;"
+    },
+    {
+      "tag": "LI",
+      "text": "Kappa Tau Alpha Golden Key Honor Society 1980-84."
+    },
+    {
+      "tag": "H3",
+      "text": "AREAS OF PRACTICE"
+    },
+    {
+      "tag": "LI",
+      "text": "Business and Corporate Law"
+    },
+    {
+      "tag": "LI",
+      "text": "Intellectual Property (Trademarks, Copyrights, Licensing);"
+    },
+    {
+      "tag": "LI",
+      "text": "Auto Dealership Law;"
+    },
+    {
+      "tag": "LI",
+      "text": "Sports and Entertainment Law;"
+    },
+    {
+      "tag": "LI",
+      "text": "Nonprofit Law;"
+    },
+    {
+      "tag": "LI",
+      "text": "Estate Planning - Wills, Trusts, Succession Plans;"
+    },
+    {
+      "tag": "LI",
+      "text": "Real Estate Law; and"
+    },
+    {
+      "tag": "LI",
+      "text": "Strategic Business Planning."
+    },
+    {
+      "tag": "H3",
+      "text": "LEGAL EXPERIENCE"
+    },
+    {
+      "tag": "LI",
+      "text": "Of Counsel, Black Law (Black, Johnson, Kaufman & Blustin)  2012-2019;"
+    },
+    {
+      "tag": "LI",
+      "text": "Corporate Counsel, Inver Grove Dealership Group, LLC 2010 - Present;"
+    },
+    {
+      "tag": "LI",
+      "text": "Of Counsel, Morrison, Fenske & Sund, P. A., May – October, 2001;"
+    },
+    {
+      "tag": "LI",
+      "text": "Founding Partner, Blustin & Associates, PLLC , January 1999 - Present;"
+    },
+    {
+      "tag": "LI",
+      "text": "General Counsel, Tremendous Productions, Inc., August – December, 1998;"
+    },
+    {
+      "tag": "LI",
+      "text": "Shareholder, Mansfield, Tanick & Cohen, P.A., Minneapolis, Minnesota, 1992-1998;"
+    },
+    {
+      "tag": "LI",
+      "text": "Associate, Reinhardt & Anderson, P.A., St. Paul, Minnesota, 1989-1992;"
+    },
+    {
+      "tag": "LI",
+      "text": "Editor, Butterworth Publishing, 1989-1990;"
+    },
+    {
+      "tag": "LI",
+      "text": "Law Clerk, Hennepin County District Court, December 1987- 1989;"
+    },
+    {
+      "tag": "LI",
+      "text": "Law Clerk, Minneapolis Star Tribune, 1985-87."
+    },
+    {
+      "tag": "H3",
+      "text": "CLIENTS AND TRANSACTIONS"
+    },
+    {
+      "tag": "P",
+      "text": "Client representation has spanned a variety of industries and disciplines, including, automotive, sports  entertainment (Pro Wrestling and MMA) engineering, media, transportation and logistics, manufacturing, product development, software protection, construction, real estate development, retail stores and professional services. The types of services provided to these clients include (1) intellectual property protection, copyright and trademark prosecution, rights clearance, licensing and royalty negotiations; and university research contracts; (2) advertising law compliance; (3) general business advice and strategic planning; (4) litigation; (5) mergers and acquisitions; (6) nonprofit formation and compliance; (7) real estate; (8) government contracting (defense, SBIR, demilitarization, and intellectual property development); (9) employment issues; (9) estate planning; (11) real estate; and (12) environmental, chemical and biotechnology engineering."
+    },
+    {
+      "tag": "H3",
+      "text": "PUBLICATIONS"
+    },
+    {
+      "tag": "LI",
+      "text": "Author, “Secondary Liability Survey,” ABA Litigation Section, subcommittee on Secondary Liability, 1991 and 1992."
+    },
+    {
+      "tag": "LI",
+      "text": "Editor and Co-Author, “Litigation Update: A Framework for Understanding the Most Common Concerns Leading to Litigation in Mergers and Acquisition of Closely Held Business,” Minnesota Institute of Legal Education, 1995."
+    },
+    {
+      "tag": "LI",
+      "text": "Author, Strategic and Financial Planning: Treating Your Law Firm as a Start-up, Hamline University School of Law, 2005."
+    },
+    {
+      "tag": "H3",
+      "text": "MEMBERSHIPS/VOLUNTEER OPPORTUNITIES"
+    },
+    {
+      "tag": "P",
+      "text": "Member, National Association of Dealer Counsel"
+    },
+    {
+      "tag": "LI",
+      "text": "Minnesota State and American Bar Associations"
+    },
+    {
+      "tag": "LI",
+      "text": "Minneapolis Jewish Community Center Board Member and Vice President, 1994-2003"
+    },
+    {
+      "tag": "LI",
+      "text": "Sabes Jewish Community Center, Minneapolis, MN – President, 2003-2004"
+    },
+    {
+      "tag": "LI",
+      "text": "Twin West Chamber of Commerce – Small Business Awards Committee, 2007 – 2009"
+    },
+    {
+      "tag": "LI",
+      "text": "The Mauer Foundation’s Mauer Cup Baseball Tournament– Steering Committee 2010, 2011, 2012"
+    },
+    {
+      "tag": "LI",
+      "text": "Commissioner, Plymouth New Hope Junior Travel Baseball League, 2012"
+    },
+    {
+      "tag": "LI",
+      "text": "Co-producer of mixed martial arts radio show, KFAN Radio, 2009-10s"
+    },
+    {
+      "tag": "P",
+      "text": "This website is for informational purposes only. Using this site or communicating with Blustin Law through this site does not form an attorney/client relationship.  This site is legal advertising."
+    },
+    {
+      "tag": "P",
+      "text": "Copyright © 2021 Blustin & Associates, PLLC.  All Rights Reserved."
+    },
+    {
+      "tag": "P",
+      "text": "Powered by"
+    }
+  ]
+}
