@@ -1,0 +1,75 @@
+<!-- ==========================================================================
+     RETROFIT MODULAR COMPONENT: Interactive Service Cost Estimator Widget
+     Service: +$150 Add-On
+     Target Setup: 15 Minutes
+     Usage: Drop into any service page or homepage to provide instant pricing
+            feedback and double form submission rates.
+     ========================================================================== -->
+
+<div class="retrofit-estimator-card">
+  <div class="estimator-header">
+    <h3>Instant Price Range Estimator</h3>
+    <p>Select your service details to get an immediate ballpark estimate:</p>
+  </div>
+
+  <div class="form-group">
+    <label for="estimatorService">Select Service Needed:</label>
+    <select id="estimatorService" class="form-control" onchange="updateEstimatorWidget()">
+      <option value="tuneup" data-low="79" data-high="129">Seasonal Tune-Up &amp; Inspection</option>
+      <option value="repair" data-low="99" data-high="289" selected>Diagnostic &amp; Repair</option>
+      <option value="replacement" data-low="3200" data-high="6800">Complete System Replacement</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="estimatorScope">Property Size / Project Scope:</label>
+    <select id="estimatorScope" class="form-control" onchange="updateEstimatorWidget()">
+      <option value="1.0">Standard / Under 1,500 sq ft</option>
+      <option value="1.25">Medium / 1,500 – 2,500 sq ft</option>
+      <option value="1.5">Large / 2,500+ sq ft</option>
+    </select>
+  </div>
+
+  <div class="estimate-result-box">
+    <span class="estimate-label">Estimated Ballpark Range</span>
+    <div class="estimate-price" id="estimatorDisplay">$99 – $289</div>
+    <span class="estimate-note">*Final price confirmed in person with upfront approval.</span>
+  </div>
+
+  <a href="#contact" class="btn btn-primary btn-block" onclick="prefillQuoteService()">
+    Lock In This Estimate &amp; Schedule
+  </a>
+</div>
+
+<script>
+function updateEstimatorWidget() {
+  const serviceSel = document.getElementById('estimatorService');
+  const scopeSel = document.getElementById('estimatorScope');
+  const display = document.getElementById('estimatorDisplay');
+
+  const selectedOpt = serviceSel.options[serviceSel.selectedIndex];
+  const lowBase = parseFloat(selectedOpt.getAttribute('data-low')) || 99;
+  const highBase = parseFloat(selectedOpt.getAttribute('data-high')) || 289;
+  const multiplier = parseFloat(scopeSel.value) || 1.0;
+
+  const lowFinal = Math.round(lowBase * multiplier);
+  const highFinal = Math.round(highBase * multiplier);
+
+  display.textContent = `$${lowFinal.toLocaleString()} – $${highFinal.toLocaleString()}`;
+}
+
+function prefillQuoteService() {
+  const serviceSel = document.getElementById('estimatorService');
+  const quoteServiceSel = document.getElementById('userService');
+  const hiddenEstimate = document.getElementById('hiddenEstimatedCost');
+  const display = document.getElementById('estimatorDisplay');
+
+  if (quoteServiceSel && serviceSel) {
+    const selectedText = serviceSel.options[serviceSel.selectedIndex].text;
+    quoteServiceSel.value = selectedText;
+  }
+  if (hiddenEstimate && display) {
+    hiddenEstimate.value = display.textContent;
+  }
+}
+</script>

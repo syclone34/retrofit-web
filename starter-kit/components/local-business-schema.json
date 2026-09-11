@@ -1,0 +1,119 @@
+{
+  "service_6_local_seo_schema_templates": {
+    "hvac_contractor": {
+      "@context": "https://schema.org",
+      "@type": "HVACBusiness",
+      "name": "[Client Company Name]",
+      "image": "https://www.clientdomain.com/assets/logo.webp",
+      "telephone": "+1-612-555-0199",
+      "url": "https://www.clientdomain.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Main St",
+        "addressLocality": "Maple Grove",
+        "addressRegion": "MN",
+        "postalCode": "55369",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.0725,
+        "longitude": -93.4558
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "18:00"
+        }
+      ]
+    },
+    "roofing_contractor": {
+      "@context": "https://schema.org",
+      "@type": "RoofingContractor",
+      "name": "[Client Roofing Co]",
+      "image": "https://www.clientdomain.com/assets/logo.webp",
+      "telephone": "+1-612-555-0199",
+      "url": "https://www.clientdomain.com",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Main St",
+        "addressLocality": "Plymouth",
+        "addressRegion": "MN",
+        "postalCode": "55447",
+        "addressCountry": "US"
+      }
+    },
+    "plumbing_contractor": {
+      "@context": "https://schema.org",
+      "@type": "Plumber",
+      "name": "[Client Plumbing Co]",
+      "image": "https://www.clientdomain.com/assets/logo.webp",
+      "telephone": "+1-612-555-0199",
+      "url": "https://www.clientdomain.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Main St",
+        "addressLocality": "Minnetonka",
+        "addressRegion": "MN",
+        "postalCode": "55345",
+        "addressCountry": "US"
+      }
+    },
+    "landscaping_contractor": {
+      "@context": "https://schema.org",
+      "@type": "LandscapeService",
+      "name": "[Client Landscaping Co]",
+      "image": "https://www.clientdomain.com/assets/logo.webp",
+      "telephone": "+1-612-555-0199",
+      "url": "https://www.clientdomain.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Main St",
+        "addressLocality": "Maple Grove",
+        "addressRegion": "MN",
+        "postalCode": "55369",
+        "addressCountry": "US"
+      }
+    },
+    "auto_repair_shop": {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": "[Client Auto Repair]",
+      "image": "https://www.clientdomain.com/assets/logo.webp",
+      "telephone": "+1-612-555-0199",
+      "url": "https://www.clientdomain.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Main St",
+        "addressLocality": "Elk River",
+        "addressRegion": "MN",
+        "postalCode": "55330",
+        "addressCountry": "US"
+      }
+    },
+    "general_contractor": {
+      "@context": "https://schema.org",
+      "@type": "GeneralContractor",
+      "name": "[Client Construction]",
+      "image": "https://www.clientdomain.com/assets/logo.webp",
+      "telephone": "+1-612-555-0199",
+      "url": "https://www.clientdomain.com",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Main St",
+        "addressLocality": "Dayton",
+        "addressRegion": "MN",
+        "postalCode": "55327",
+        "addressCountry": "US"
+      }
+    }
+  }
+}

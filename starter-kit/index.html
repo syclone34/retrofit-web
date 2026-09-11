@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Business Name] | Fast, Reliable [Service] in [City, State]</title>
+  <meta name="description" content="Trusted local [service] experts serving [City] and surrounding areas. Fast response, upfront pricing, and guaranteed craftsmanship. Call [Phone] for a free estimate.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- LocalBusiness Schema (Local SEO Service #6) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "[Business Name]",
+    "image": "https://www.yourdomain.com/assets/logo.webp",
+    "telephone": "+1-612-555-0199",
+    "url": "https://www.yourdomain.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Main Street",
+      "addressLocality": "[City]",
+      "addressRegion": "[State]",
+      "postalCode": "55369",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.0725,
+      "longitude": -93.4558
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "07:00",
+        "closes": "18:00"
+      }
+    ],
+    "priceRange": "$$"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-logo">[Business Name]</a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#estimator">Estimator</a></li>
+        <li><a href="#about">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="tel:+16125550199" class="header-phone-btn">
+        📞 (612) 555-0199
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="container hero-content">
+      <span class="badge">⭐ 5.0 Rated Local Specialists • Licensed &amp; Insured</span>
+      <h1 class="hero-title">Trusted <span class="text-gradient">[Service] Experts</span> in [City, State]</h1>
+      <p class="hero-subtitle">Fast response times, transparent upfront pricing, and guaranteed craftsmanship for homeowners across [City] and surrounding communities.</p>
+      
+      <div class="hero-ctas">
+        <a href="tel:+16125550199" class="btn btn-primary">
+          📞 Call (612) 555-0199
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          Request Free Quote
+        </a>
+      </div>
+    </div>
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+      <div class="container">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <h4>✓ Upfront Pricing</h4>
+            <p>No hidden fees or surprises</p>
+          </div>
+          <div class="trust-item">
+            <h4>✓ Same-Day Service</h4>
+            <p>Fast emergency dispatch</p>
+          </div>
+          <div class="trust-item">
+            <h4>✓ 100% Guaranteed</h4>
+            <p>Craftsmanship warranty on every job</p>
+          </div>
+          <div class="trust-item">
+            <h4>✓ Locally Owned</h4>
+            <p>Proudly serving [City] neighbors</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE SERVICES SECTION -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Core Services</h2>
+        <p>Comprehensive solutions done right the first time with premium materials and skilled tradesmen.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3>[Service 1: e.g. Emergency Repairs]</h3>
+          <p>Rapid diagnosis and repair for urgent issues. We arrive fully equipped to solve problems on the spot.</p>
+          <a href="#contact" class="btn btn-secondary btn-block">Schedule Service</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3>[Service 2: e.g. Full System Installation]</h3>
+          <p>Modern, energy-efficient replacements installed with precision and backed by extended warranties.</p>
+          <a href="#contact" class="btn btn-secondary btn-block">Get Installation Quote</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🛡️</div>
+          <h3>[Service 3: e.g. Preventative Maintenance]</h3>
+          <p>Comprehensive seasonal inspections and cleanings to maximize system lifespan and prevent costly breakdowns.</p>
+          <a href="#contact" class="btn btn-secondary btn-block">Book Maintenance</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE ESTIMATOR SECTION (Service #7 Add-on) -->
+  <section class="section" id="estimator" style="background: rgba(20, 28, 46, 0.5);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Instant Cost Range Estimator</h2>
+        <p>Select your job details below to view an immediate ballpark estimate.</p>
+      </div>
+
+      <div class="estimator-wrapper">
+        <div class="form-group">
+          <label for="serviceType">Service Type Needed:</label>
+          <select id="serviceType" class="form-control">
+            <option value="tuneup">Seasonal Tune-Up &amp; Inspection ($79 – $129)</option>
+            <option value="repair" selected>Diagnostic &amp; Repair ($99 – $289)</option>
+            <option value="replacement">Full System Replacement ($3,200 – $6,800)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="homeSize">Property Size / Scope:</label>
+          <select id="homeSize" class="form-control">
+            <option value="1.0">Under 1,500 sq ft (Standard)</option>
+            <option value="1.25">1,500 – 2,500 sq ft (Medium)</option>
+            <option value="1.5">2,500+ sq ft (Large)</option>
+          </select>
+        </div>
+
+        <div class="estimate-result-box">
+          <span>Estimated Ballpark Range</span>
+          <div class="estimate-price" id="estimateOutput">$99 – $289</div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary btn-block">
+          Lock In This Estimate &amp; Schedule
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & QUOTE SECTION -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="quote-layout">
+        <div class="quote-info">
+          <span class="badge">Get In Touch</span>
+          <h3>Ready To Get Started?</h3>
+          <p>Fill out the quick quote form or call us directly. We respond to all online inquiries within 30 minutes during business hours.</p>
+
+          <ul class="contact-direct-items">
+            <li>
+              <span>📞</span>
+              <strong>Direct Phone:</strong> 
+              <a href="tel:+16125550199">(612) 555-0199</a>
+            </li>
+            <li>
+              <span>✉️</span>
+              <strong>Email:</strong> 
+              <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+            </li>
+            <li>
+              <span>📍</span>
+              <strong>Service Area:</strong> 
+              <span>[City, State] &amp; Surrounding 25-Mile Radius</span>
+            </li>
+            <li>
+              <span>⏰</span>
+              <strong>Hours:</strong> 
+              <span>Mon–Fri: 7am – 6pm | Sat: 8am – 2pm</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- LEAD FORM (Integrated with Web3Forms & Carrier SMS) -->
+        <form class="contact-form" id="quoteForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms Access Key (Replace with client key) -->
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New Website Lead from [Business Name]">
+          <input type="hidden" id="hiddenEstimatedCost" name="estimated_cost" value="">
+
+          <div class="form-group">
+            <label for="userName">Your Full Name:</label>
+            <input type="text" id="userName" name="name" class="form-control" placeholder="John Doe" required>
+          </div>
+
+          <div class="form-group">
+            <label for="userPhone">Phone Number (For Fast Callback):</label>
+            <input type="tel" id="userPhone" name="phone" class="form-control" placeholder="(612) 555-0123" required>
+          </div>
+
+          <div class="form-group">
+            <label for="userService">Service Interested In:</label>
+            <select id="userService" name="service" class="form-control">
+              <option value="Emergency Repair">Emergency Repair</option>
+              <option value="New Installation">New Installation</option>
+              <option value="Maintenance Inspection">Maintenance Inspection</option>
+              <option value="General Question">General Question</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="userMessage">Details or Address (Optional):</label>
+            <textarea id="userMessage" name="message" class="form-control" rows="3" placeholder="Briefly describe what you need help with..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            Submit Request &amp; Get Callback
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 [Business Name]. All Rights Reserved. Fully Licensed, Bonded &amp; Insured.</p>
+      <p style="margin-top: 8px; font-size: 0.8rem; color: #64748b;">
+        Website built and maintained by <a href="https://retrofitwebdesign.com" style="color: inherit; text-decoration: underline;">RetroFit Web Design</a>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY BOTTOM CALL BAR (Crucial for high conversion) -->
+  <div class="retrofit-sticky-call-bar" id="mobileCallBar">
+    <a href="tel:+16125550199" class="call-bar-link" id="stickyCallBtn">
+      <span>📞 Tap to Call: (612) 555-0199</span>
+    </a>
+  </div>
+
+  <!-- APPLICATION SCRIPTS -->
+  <script src="js/app.js"></script>
+
+  <!-- RETROFIT TRACKER (Captures phone taps, quote form submissions, UTMs) -->
+  <script src="js/retrofit-tracker.js" 
+          data-client-id="client-slug" 
+          data-endpoint="https://api.web3forms.com/submit"></script>
+</body>
+</html>

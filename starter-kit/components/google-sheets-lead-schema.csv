@@ -1,0 +1,6 @@
+timestamp,client_id,event_type,customer_name,phone_number,service_requested,estimated_value,referrer,device_type,utm_source,utm_medium
+2026-09-01T14:22:10Z,client-slug,phone_call_click,N/A,(612) 555-0199,Tap to Call Link,250,google_maps,Mobile,google,organic
+2026-09-02T09:15:33Z,client-slug,quote_form_submit,John Miller,(612) 555-4821,Emergency Repair,189,https://google.com,Mobile,google,organic
+2026-09-03T16:45:12Z,client-slug,quote_form_submit,Sarah Jenkins,(612) 555-9014,Full System Replacement,4800,https://facebook.com,Desktop,facebook,referral
+2026-09-05T11:08:44Z,client-slug,phone_call_click,N/A,(612) 555-0199,Sticky Bottom Bar,250,direct,Mobile,none,direct
+2026-09-07T13:30:21Z,client-slug,quote_form_submit,Dave Peterson,(612) 555-3390,Seasonal Maintenance,129,https://google.com,Mobile,google,organic

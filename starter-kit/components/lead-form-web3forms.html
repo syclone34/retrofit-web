@@ -1,0 +1,59 @@
+<!-- ==========================================================================
+     RETROFIT MODULAR COMPONENT: Rapid Lead Form with Instant Phone Alert
+     Target Setup: 5 Minutes
+     Usage: Zero-backend quote form powered by Web3Forms ($0 tier).
+            Sends instant email to client AND instant SMS to contractor's cell.
+     ========================================================================== -->
+
+<form class="contact-form" id="leadCaptureForm" action="https://api.web3forms.com/submit" method="POST">
+  <!-- 1. Web3Forms Public Access Key (Create free at web3forms.com) -->
+  <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+  
+  <!-- 2. Email Subject Line -->
+  <input type="hidden" name="subject" value="⚡ New Website Lead - [Business Name]">
+
+  <!-- 3. Carrier Email-to-SMS Gateway (Routes lead as text directly to phone)
+       Verizon: 6125550199@vtext.com
+       AT&T:    6125550199@txt.att.net
+       T-Mobile:6125550199@tmomail.net -->
+  <input type="hidden" name="cc" value="6125550199@vtext.com">
+
+  <!-- 4. Estimated Cost (Auto-filled if using interactive estimator) -->
+  <input type="hidden" id="hiddenEstimatedCost" name="estimated_cost" value="">
+
+  <!-- 5. Honeypot Spam Filter -->
+  <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+  <div class="form-group">
+    <label for="leadName">Full Name *</label>
+    <input type="text" id="leadName" name="name" class="form-control" placeholder="John Smith" required>
+  </div>
+
+  <div class="form-group">
+    <label for="leadPhone">Phone Number (For Fast Callback) *</label>
+    <input type="tel" id="leadPhone" name="phone" class="form-control" placeholder="(612) 555-0123" required>
+  </div>
+
+  <div class="form-group">
+    <label for="leadService">Service Needed *</label>
+    <select id="leadService" name="service" class="form-control" required>
+      <option value="Emergency Repair">Emergency Repair</option>
+      <option value="System Replacement">New Installation / Replacement</option>
+      <option value="Seasonal Maintenance">Seasonal Maintenance / Inspection</option>
+      <option value="Other">Other / Question</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="leadNotes">Project Notes or Address (Optional)</label>
+    <textarea id="leadNotes" name="notes" class="form-control" rows="3" placeholder="Tell us briefly about the problem..."></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block" id="leadSubmitBtn">
+    Send Request &amp; Get Callback
+  </button>
+  
+  <p class="form-privacy-note" style="font-size: 0.8rem; color: #94a3b8; text-align: center; margin-top: 10px;">
+    🔒 We respect your privacy. Your information is never sold or shared.
+  </p>
+</form>

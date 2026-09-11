@@ -1,0 +1,43 @@
+<!-- ==========================================================================
+     RETROFIT MODULAR COMPONENT: Mobile Sticky Bottom Call Bar
+     Target Setup: 5 Minutes
+     Usage: Paste right before </body> on mobile-optimized client builds.
+     ========================================================================== -->
+
+<div class="retrofit-sticky-call-bar" id="mobileCallBar">
+  <a href="tel:+16125550199" class="call-bar-link" id="stickyCallBtn" title="Call Us Directly">
+    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+    </svg>
+    <span>Tap to Call: (612) 555-0199</span>
+  </a>
+</div>
+
+<!-- REQUIRED CSS (Place in style.css or inline in <style>):
+.retrofit-sticky-call-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #00f2fe, #0070f3);
+  padding: 12px 16px;
+  z-index: 9999;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+.call-bar-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #0b0f19;
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  .retrofit-sticky-call-bar { display: block; }
+  body { padding-bottom: 64px; }
+}
+-->
