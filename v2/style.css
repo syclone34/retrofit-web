@@ -639,7 +639,7 @@ p {
     linear-gradient(to right, rgba(168, 85, 247, 0.38) 1.5px, transparent 1.5px),
     linear-gradient(to bottom, rgba(236, 72, 153, 0.32) 1.5px, transparent 1.5px);
   box-shadow: inset 0 0 120px rgba(121, 40, 202, 0.45);
-  animation: synthwaveGridMove 22s linear infinite;
+  /* animation: synthwaveGridMove 22s linear infinite; */
 }
 
 @keyframes synthwaveGridMove {
