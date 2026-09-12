@@ -2434,8 +2434,26 @@ p {
     gap: 1rem;
   }
 
+  .industry-tabs-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .industry-tabs-nav::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .lab-tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
   .lab-metrics-strip {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .scanner-scores-grid {
@@ -2450,11 +2468,25 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .pricing-card-badge {
+    white-space: nowrap;
+    right: 1rem;
+  }
+  
+  .pack-tier-desc {
+    word-wrap: break-word;
+    font-size: 0.85rem;
+  }
+
   .mobile-action-bar {
     display: block;
   }
 
   body {
     padding-bottom: 75px;
+  }
+  
+  footer.site-footer {
+    padding-bottom: 110px;
   }
 }
