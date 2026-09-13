@@ -10,9 +10,9 @@
   <!-- OpenGraph Meta Tags -->
   <meta property="og:title" content="RetroFit Web Design | Your Website Doesn't Need a Rebuild — It Needs a Rescue">
   <meta property="og:description" content="Modernize your outdated service website in 48–72 hours for a flat $299. Built-in instant SMS lead alerts and sub-second speed.">
-  <meta property="og:image" content="../assets/retrofit_logo_new.png">
+  <meta property="og:image" content="../assets/retrofit_logo_no_bg.png">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/png" href="../assets/retrofit_logo_new.png">
+  <link rel="icon" type="image/png" href="../assets/retrofit_logo_no_bg.png">
 
   <!-- Google Fonts: Outfit, Plus Jakarta Sans, Space Grotesk, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,20 +20,19 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet with cache buster -->
-  <link rel="stylesheet" href="style.css?v=2.7.0">
+  <link rel="stylesheet" href="style.css?v=3.9.6">
 </head>
 <body>
 
   <!-- Floating Pill Navigation Island -->
   <header class="site-header">
-    <a href="#" class="brand-link" aria-label="RetroFit Web Design Home">
-      <img src="../assets/retrofit_logo_new.png" alt="RetroFit Web Design Logo" class="brand-logo-badge">
-    </a>
-
     <nav class="nav-island" aria-label="Main Navigation">
+      <a href="#" class="brand-link" aria-label="RetroFit Web Design Home">
+        <img src="../assets/retrofit_logo_no_bg.png" alt="RetroFit Web Design Logo" class="brand-logo-badge">
+      </a>
+
 
       <ul class="nav-menu" id="navMenu">
-        <li><a href="#lab" class="nav-item-link">Before & After</a></li>
         <li><a href="#simulator" class="nav-item-link">Lead Tracker</a></li>
         <li><a href="#scanner" class="nav-item-link">Speed Scanner</a></li>
         <li><a href="#comparison" class="nav-item-link">Why RetroFit</a></li>
@@ -63,7 +62,7 @@
       </div>
     </div>
 
-    <div class="container hero-grid">
+        <div class="container hero-grid">
       <div class="hero-content">
         <div class="badge">
           <span class="badge-pulse"></span>
@@ -83,9 +82,21 @@
             <i class="ph-duotone ph-lightning btn-icon"></i>
             Scan Your Website Free
           </a>
-          <a href="#lab" class="btn btn-secondary">
-            Explore Before & After Lab
+          <a href="#simulator" class="btn btn-secondary">
+            <i class="ph-bold ph-play-circle btn-icon"></i>
+            See Lead Machine
           </a>
+        </div>
+
+        <div class="hero-trust-proof">
+          <div class="trust-stars">
+            <i class="ph-fill ph-star"></i>
+            <i class="ph-fill ph-star"></i>
+            <i class="ph-fill ph-star"></i>
+            <i class="ph-fill ph-star"></i>
+            <i class="ph-fill ph-star"></i>
+          </div>
+          <span>Built for MN Trade Contractors &bull; No Agency Lock-ins</span>
         </div>
 
         <div class="hero-stats-row">
@@ -104,11 +115,9 @@
         </div>
       </div>
 
-      <!-- Hero Visual: Dual Viewport Laser Transformation Deck -->
+      <!-- Hero Visual: RetroFit High-Speed Architecture Showcase Deck -->
       <div class="hero-visual-wrapper">
-        <div class="ambient-glow-orb glow-orb-cyan"></div>
-        <div class="ambient-glow-orb glow-orb-violet"></div>
-
+        <div class="hero-ambient-glow"></div>
         <div class="hero-interactive-deck">
           <div class="deck-chrome-bar">
             <div class="deck-dots">
@@ -116,68 +125,92 @@
               <span class="deck-dot yellow"></span>
               <span class="deck-dot green"></span>
             </div>
-            <div class="deck-url-chip">retrofitwebdesign.com/audit-engine</div>
+            <div class="deck-url-chip">
+              <i class="ph-bold ph-lock-simple" style="font-size: 0.7rem; color: #4ade80; margin-right: 4px;"></i>
+              retrofitwebdesign.com/engine
+            </div>
             <div class="deck-status-live">
               <span class="badge-pulse"></span>
-              <span>LIVE AUDIT</span>
+              <span>LIVE ENGINE</span>
             </div>
           </div>
 
-          <!-- Split Preview Comparison Simulation inside Hero Deck -->
-          <div class="hero-split-preview">
-            <!-- Legacy Site Card -->
-            <div class="split-card legacy">
-              <span class="split-tag">Legacy Website</span>
-              <div class="split-metric-row">
-                <span>Speed Score:</span>
-                <span class="val-bad">22 / 100</span>
-              </div>
-              <div class="split-metric-row">
-                <span>Load Time:</span>
-                <span class="val-bad">4.8s (Zoom)</span>
-              </div>
-              <div class="split-metric-row">
-                <span>Mobile UX:</span>
-                <span class="val-bad">Unresponsive</span>
-              </div>
-              <div class="split-metric-row">
-                <span>Lead Alerts:</span>
-                <span class="val-bad">None (Lost)</span>
-              </div>
+          <!-- Hero Speed Score Banner -->
+          <div class="hero-speed-meter-card">
+            <div class="meter-score-ring">
+              <svg viewBox="0 0 36 36" class="circular-chart green">
+                <path class="circle-bg"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <path class="circle"
+                  stroke-dasharray="99, 100"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+              </svg>
+              <div class="score-number">99</div>
             </div>
-
-            <!-- Modern RetroFit Card -->
-            <div class="split-card modern">
-              <span class="split-tag">RetroFit Modernized</span>
-              <div class="split-metric-row">
-                <span>Speed Score:</span>
-                <span class="val-good">99 / 100</span>
+            <div class="meter-details">
+              <div class="meter-top">
+                <span class="meter-badge">Google Lighthouse</span>
+                <span class="meter-speed"><i class="ph-bold ph-lightning"></i> 0.38s Load</span>
               </div>
-              <div class="split-metric-row">
-                <span>Load Time:</span>
-                <span class="val-good">0.4s (Instant)</span>
-              </div>
-              <div class="split-metric-row">
-                <span>Mobile UX:</span>
-                <span class="val-good">100% Fluid</span>
-              </div>
-              <div class="split-metric-row">
-                <span>Lead Alerts:</span>
-                <span class="val-good">Instant SMS</span>
+              <div class="meter-title">Sub-Second Mobile Architecture</div>
+              <div class="meter-tags">
+                <span class="meter-tag"><i class="ph-bold ph-check"></i> SEO 100</span>
+                <span class="meter-tag"><i class="ph-bold ph-check"></i> Best Practices 100</span>
+                <span class="meter-tag"><i class="ph-bold ph-check"></i> Accessibility 100</span>
               </div>
             </div>
           </div>
 
-          <!-- Floating Live Lead Notification Simulation -->
-          <div class="hero-floating-lead-pill">
-            <div class="lead-pill-icon">
-              <i class="ph-fill ph-lightning" style="font-size: 1.1rem; color: #000;"></i>
+          <!-- Hero Live Lead Dispatch Alert -->
+          <div class="hero-dispatch-radar-card">
+            <div class="radar-header">
+              <div class="radar-left">
+                <span class="radar-ping"></span>
+                <span class="radar-title">REAL-TIME LEAD DISPATCH</span>
+              </div>
+              <span class="radar-speed-badge">&lt; 15s to SMS</span>
             </div>
-            <div class="lead-pill-text">
-              <strong>Dave M.</strong> just requested an <strong>AC Replacement Quote</strong> &bull; Plymouth, MN
+
+            <div class="radar-lead-body" id="heroRadarLeadBody">
+              <div class="radar-lead-top">
+                <div class="radar-lead-caller">
+                  <span class="radar-avatar"><i class="ph-bold ph-user"></i></span>
+                  <div>
+                    <div class="radar-lead-name">Dave M. <span class="radar-loc">&bull; Plymouth, MN</span></div>
+                    <div class="radar-lead-service">Furnace Out &bull; Emergency Replacement</div>
+                  </div>
+                </div>
+                <div class="radar-lead-val">$5,800 Est.</div>
+              </div>
+              <div class="radar-status-bar">
+                <i class="ph-bold ph-check-circle" style="color: #4ade80;"></i>
+                <span>Instant SMS routed to contractor phone &bull; <strong>11.4s total elapsed</strong></span>
+              </div>
             </div>
-            <span class="lead-pill-time">Just Now</span>
           </div>
+
+          <!-- 3 Quick Architecture Highlights -->
+          <div class="hero-deck-features">
+            <div class="deck-feat-pill">
+              <i class="ph-bold ph-feather" style="color: var(--teal-400);"></i>
+              <span>Zero WP Bloat</span>
+            </div>
+            <div class="deck-feat-pill">
+              <i class="ph-bold ph-device-mobile" style="color: var(--gold-400);"></i>
+              <span>100% Fluid Mobile</span>
+            </div>
+            <div class="deck-feat-pill">
+              <i class="ph-bold ph-tag" style="color: var(--orange-400);"></i>
+              <span>$299 Flat Rate</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -185,124 +218,110 @@
 
   <!-- Contractor Industry Marquee -->
   <section class="marquee-section">
-    <div class="marquee-track">
-      <div class="trade-pill"><i class="ph-duotone ph-wrench"></i> HVAC & Plumbing Contractors</div>
-      <div class="trade-pill"><i class="ph-duotone ph-house"></i> Roofing, Siding & Gutters</div>
-      <div class="trade-pill"><i class="ph-duotone ph-leaf"></i> Landscaping & Lawn Care</div>
-      <div class="trade-pill"><i class="ph-duotone ph-car-profile"></i> Auto Detailing & Mechanics</div>
-      <div class="trade-pill"><i class="ph-duotone ph-lightning"></i> Master Electricians</div>
-      <div class="trade-pill"><i class="ph-duotone ph-hammer"></i> Handyman & General Contracting</div>
-      <div class="trade-pill"><i class="ph-duotone ph-sparkle"></i> Residential Cleaning Services</div>
-      <div class="trade-pill"><i class="ph-duotone ph-paw-print"></i> Pet Grooming & Boarding</div>
-      <div class="trade-pill"><i class="ph-duotone ph-pizza"></i> Local Restaurants & Catering</div>
-      <!-- Duplicate for seamless infinite loop -->
-      <div class="trade-pill"><i class="ph-duotone ph-wrench"></i> HVAC & Plumbing Contractors</div>
-      <div class="trade-pill"><i class="ph-duotone ph-house"></i> Roofing, Siding & Gutters</div>
-      <div class="trade-pill"><i class="ph-duotone ph-leaf"></i> Landscaping & Lawn Care</div>
-      <div class="trade-pill"><i class="ph-duotone ph-car-profile"></i> Auto Detailing & Mechanics</div>
-      <div class="trade-pill"><i class="ph-duotone ph-lightning"></i> Master Electricians</div>
-      <div class="trade-pill"><i class="ph-duotone ph-hammer"></i> Handyman & General Contracting</div>
-      <div class="trade-pill"><i class="ph-duotone ph-sparkle"></i> Residential Cleaning Services</div>
-      <div class="trade-pill"><i class="ph-duotone ph-paw-print"></i> Pet Grooming & Boarding</div>
-      <div class="trade-pill"><i class="ph-duotone ph-pizza"></i> Local Restaurants & Catering</div>
+    <div class="marquee-header">
+      <span class="marquee-label">
+        <i class="ph-fill ph-seal-check" style="color: var(--orange-500);"></i>
+        High-Converting Websites Engineered For Local Service Contractors
+      </span>
     </div>
-  </section>
-
-  <!-- Interactive Before/After Transformation Lab -->
-  <section id="lab" class="lab-section">
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="badge">Transformation Laboratory</span>
-        <h2 class="section-title">See The <span class="gradient-text">Before & After</span> Difference</h2>
-        <p class="section-subtitle">Select any contractor trade below and drag the interactive divider. Watch cluttered, dated 2012 websites transform into clean, sub-second conversion machines.</p>
-      </div>
-
-      <!-- Industry Tabs -->
-      <div class="industry-tabs-nav" id="labIndustryTabs">
-        <button class="lab-tab-btn active" data-old="../assets/old_hvac.png" data-new="../assets/new_hvac.png" data-trade="HVAC & Plumbing" data-old-speed="26" data-new-speed="99" data-old-load="4.6s" data-new-load="0.5s">
-          <i class="ph-duotone ph-wrench"></i> HVAC & Plumbing
-        </button>
-        <button class="lab-tab-btn" data-old="../assets/old_roof.png" data-new="../assets/new_roof.png" data-trade="Roofing & Siding" data-old-speed="19" data-new-speed="98" data-old-load="5.2s" data-new-load="0.6s">
-          <i class="ph-duotone ph-house"></i> Roofing & Siding
-        </button>
-        <button class="lab-tab-btn" data-old="../assets/old_landscape.png" data-new="../assets/new_landscape.png" data-trade="Landscaping & Lawn" data-old-speed="32" data-new-speed="100" data-old-load="4.1s" data-new-load="0.4s">
-          <i class="ph-duotone ph-leaf"></i> Landscaping & Lawn
-        </button>
-        <button class="lab-tab-btn" data-old="../assets/old_auto.png" data-new="../assets/new_auto.png" data-trade="Auto Care & Detailing" data-old-speed="28" data-new-speed="99" data-old-load="4.4s" data-new-load="0.5s">
-          <i class="ph-duotone ph-car-profile"></i> Auto Care & Detailing
-        </button>
-        <button class="lab-tab-btn" data-old="../assets/old_pizza.png" data-new="../assets/new_pizza.png" data-trade="Pizzeria & Dining" data-old-speed="35" data-new-speed="98" data-old-load="3.9s" data-new-load="0.4s">
-          <i class="ph-duotone ph-pizza"></i> Pizzeria & Dining
-        </button>
-      </div>
-
-      <!-- Slider Stage -->
-      <div class="slider-stage">
-        <div class="comparison-slider-viewport" id="labSliderViewport">
-          <!-- Before Layer (Bottom) -->
-          <div class="slider-layer before-layer">
-            <img src="../assets/old_hvac.png" id="labImgBefore" alt="Legacy Outdated Website" style="position:absolute;top:0;left:0;width:100% !important;height:100% !important;object-fit:cover !important;object-position:top left !important;display:block;">
-            <span class="slider-pill-badge badge-outdated" id="labBadgeBefore">Outdated Legacy Site</span>
-          </div>
-
-          <!-- After Layer (Top Clamped Layer) -->
-          <div class="slider-layer after-layer" id="labAfterLayer">
-            <img src="../assets/new_hvac.png" id="labImgAfter" alt="Modernized RetroFit Website" style="position:absolute;top:0;left:0;height:100% !important;object-fit:cover !important;object-position:top left !important;display:block;max-width:none !important;">
-            <span class="slider-pill-badge badge-modernized">Modern RetroFit Design</span>
-          </div>
-
-          <!-- Draggable Divider Handle -->
-          <div class="slider-handle-bar" id="labHandleBar">
-            <div class="slider-handle-knob">
-              <i class="ph-duotone ph-arrows-left-right" style="width:18px; height:18px;"></i>
-            </div>
-          </div>
+    <div class="marquee-wrapper">
+      <div class="marquee-track">
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-wrench"></i></span>
+          <span>HVAC & Plumbing Contractors</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-house"></i></span>
+          <span>Roofing, Siding & Gutters</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-lightning"></i></span>
+          <span>Master Electricians</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-leaf"></i></span>
+          <span>Landscaping & Lawn Care</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-hammer"></i></span>
+          <span>Handyman & Home Remodeling</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-paint-brush"></i></span>
+          <span>Painting & Drywall Finishing</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-car-profile"></i></span>
+          <span>Auto Detailing & Mechanics</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-tree"></i></span>
+          <span>Tree Care & Land Clearing</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-shield-check"></i></span>
+          <span>Concrete, Paving & Masonry</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-sparkle"></i></span>
+          <span>Residential Cleaning Services</span>
         </div>
 
-        <!-- Metric Difference Strip -->
-        <div class="lab-metrics-strip">
-          <div class="lab-metric-cell">
-            <div class="lab-metric-title">Page Load Time</div>
-            <div class="lab-metric-diff">
-              <span class="diff-old" id="metricOldLoad">4.6s</span>
-              <span class="diff-arrow">&rarr;</span>
-              <span class="diff-new" id="metricNewLoad">0.5s</span>
-            </div>
-          </div>
-          <div class="lab-metric-cell">
-            <div class="lab-metric-title">Google Speed Score</div>
-            <div class="lab-metric-diff">
-              <span class="diff-old" id="metricOldSpeed">26%</span>
-              <span class="diff-arrow">&rarr;</span>
-              <span class="diff-new" id="metricNewSpeed">99%</span>
-            </div>
-          </div>
-          <div class="lab-metric-cell">
-            <div class="lab-metric-title">Mobile Friendliness</div>
-            <div class="lab-metric-diff">
-              <span class="diff-old">Failed</span>
-              <span class="diff-arrow">&rarr;</span>
-              <span class="diff-new">100% Fluid</span>
-            </div>
-          </div>
-          <div class="lab-metric-cell">
-            <div class="lab-metric-title">Lead Conversions</div>
-            <div class="lab-metric-diff">
-              <span class="diff-old">Low</span>
-              <span class="diff-arrow">&rarr;</span>
-              <span class="diff-new">+280% Calls</span>
-            </div>
-          </div>
+        <!-- Seamless Infinite Loop Duplicate -->
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-wrench"></i></span>
+          <span>HVAC & Plumbing Contractors</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-house"></i></span>
+          <span>Roofing, Siding & Gutters</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-lightning"></i></span>
+          <span>Master Electricians</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-leaf"></i></span>
+          <span>Landscaping & Lawn Care</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-hammer"></i></span>
+          <span>Handyman & Home Remodeling</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-paint-brush"></i></span>
+          <span>Painting & Drywall Finishing</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-car-profile"></i></span>
+          <span>Auto Detailing & Mechanics</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-tree"></i></span>
+          <span>Tree Care & Land Clearing</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-shield-check"></i></span>
+          <span>Concrete, Paving & Masonry</span>
+        </div>
+        <div class="trade-pill">
+          <span class="trade-icon-chip"><i class="ph-duotone ph-sparkle"></i></span>
+          <span>Residential Cleaning Services</span>
         </div>
       </div>
     </div>
   </section>
+
+
 
   <!-- Interactive Live SMS Lead Machine Simulator -->
   <section id="simulator" class="simulator-section">
     <div class="container simulator-grid">
       <div class="simulator-content">
-        <div class="badge">Built-In Revenue Intelligence</div>
+        <span class="badge">
+          <i class="ph-bold ph-lightning" style="color: var(--orange-500);"></i>
+          Built-In Revenue Intelligence
+        </span>
         <h2 class="section-title">The <span class="gradient-text">Lead Machine</span> Built For Contractors</h2>
         <p class="section-subtitle" style="margin: 0; text-align: left;">
           Most web designers hand you a site and disappear. RetroFit websites come standard with real-time lead routing: the instant a homeowner taps "Call Now" or requests a quote, you receive a direct notification on your smartphone.
@@ -313,9 +332,19 @@
             <div class="sim-feature-icon">
               <i class="ph-duotone ph-device-mobile"></i>
             </div>
-            <div>
-              <h4 style="color:#fff; margin-bottom: 4px;">Instant SMS Alerts to Your Pocket</h4>
-              <p style="font-size: 0.88rem;">Respond to high-ticket quote inquiries within seconds while the client is still hot and searching.</p>
+            <div class="sim-feature-text">
+              <h4>Instant SMS Alerts to Your Pocket</h4>
+              <p>Respond to high-ticket quote inquiries within seconds while the homeowner is still on your site and ready to book.</p>
+            </div>
+          </div>
+
+          <div class="sim-feature-item">
+            <div class="sim-feature-icon">
+              <i class="ph-duotone ph-shield-check"></i>
+            </div>
+            <div class="sim-feature-text">
+              <h4>Zero Complex Tech or Apps Required</h4>
+              <p>We wire instant text notifications directly to your existing cell phone before launch. No passwords, apps, or tricky software to learn.</p>
             </div>
           </div>
 
@@ -323,55 +352,93 @@
             <div class="sim-feature-icon">
               <i class="ph-duotone ph-file-text"></i>
             </div>
-            <div>
-              <h4 style="color:#fff; margin-bottom: 4px;">1-Page Monthly Digest on the 1st</h4>
-              <p style="font-size: 0.88rem;">No complicated dashboards or forgotten passwords. A clean PDF summary of total calls and forms sent directly to your inbox.</p>
+            <div class="sim-feature-text">
+              <h4>1-Page Monthly Digest on the 1st</h4>
+              <p>No confusing analytics dashboards. A clean 1-page summary of total calls, quotes, and web visits sent directly to your inbox.</p>
             </div>
+          </div>
+        </div>
+
+        <div class="sim-interactive-prompt">
+          <div class="prompt-icon-badge"><i class="ph-fill ph-hand-pointing"></i></div>
+          <div class="prompt-text">
+            <strong>Interactive Live Demo:</strong> Tap <span class="highlight-action">"Simulate Next Incoming Lead"</span> to test how instant SMS alerts land on your cell phone.
           </div>
         </div>
       </div>
 
-      <!-- Interactive Smartphone Frame Demo -->
-      <div class="phone-mockup-wrapper">
-        <div class="phone-device">
-          <div class="phone-speaker-notch"></div>
-          <div class="phone-screen" id="phoneScreen">
-            <div class="phone-clock">
-              <div class="phone-clock-time" id="phoneTime">09:41</div>
-              <div class="phone-clock-date">Thursday, September 10</div>
+      <!-- Interactive Real-Time Lead Dispatch Console -->
+      <div class="dispatch-console-wrapper">
+        <div class="dispatch-console-card" id="phoneScreen">
+          <!-- Top Console Status Bar -->
+          <div class="dispatch-console-header">
+            <div class="dispatch-live-indicator">
+              <span class="dispatch-pulse-dot"></span>
+              <span class="dispatch-system-title">Live SMS Lead Routing Engine</span>
+            </div>
+            <div class="dispatch-clock-tag">
+              <i class="ph-bold ph-clock"></i>
+              <span id="phoneTime">09:41</span> CST
+            </div>
+          </div>
+
+          <!-- Active Lead Alert Card -->
+          <div class="dispatch-lead-card" id="simBanner">
+            <div class="dispatch-lead-badge-row">
+              <div class="dispatch-lead-tag">
+                <span class="ios-msg-icon"><i class="ph-fill ph-chat-circle"></i></span>
+                <span>INSTANT SMS DISPATCH</span>
+              </div>
+              <span class="dispatch-lead-timestamp"><i class="ph-fill ph-check-circle" style="color: var(--teal-500);"></i> Delivered &bull; Just Now</span>
             </div>
 
-            <!-- Simulated Incoming SMS Banner -->
-            <div class="sim-notification-banner" id="simBanner">
-              <div class="sim-notif-header">
-                <div class="sim-notif-app">
-                  <i class="ph-duotone ph-chat-circle" style="width:14px; height:14px;"></i>
-                  <span>MESSAGES &bull; RETROFIT ALERTS</span>
-                </div>
-                <span class="sim-notif-time">Just Now</span>
+            <div class="dispatch-lead-headline">
+              <div class="dispatch-lead-icon-chip">
+                <i class="ph-fill ph-fire"></i>
               </div>
-              <div class="sim-notif-title"><i class="ph-duotone ph-fire" style="color: var(--cyan-500); margin-right: 4px;"></i> New High-Intent Lead Captured!</div>
-              <div class="sim-notif-body">
-                <strong>Tom Henderson</strong> requested an emergency <strong>"Water Heater Replacement"</strong>.<br>
-                <div style="display:flex; align-items:center; gap: 4px; margin-top: 6px;">
-                  <i class="ph-duotone ph-map-pin" style="color: var(--cyan-500);"></i> <strong>Location:</strong> Maple Grove, MN
-                </div>
-                <div style="display:flex; align-items:center; gap: 4px; margin-top: 2px;">
-                  <i class="ph-duotone ph-phone-call" style="color: var(--cyan-500);"></i> <strong>Phone:</strong> (612) 555-0182
-                </div>
+              <div>
+                <span class="dispatch-lead-category">High-Intent Quote Request</span>
+                <h3 class="dispatch-lead-service">"Emergency Water Heater Replacement"</h3>
               </div>
-              <a href="#" class="sim-notif-action" onclick="return false;">
-                <i class="ph-duotone ph-phone-call" style="width:12px; height:12px;"></i>
-                Tap to Call Lead Immediately
+            </div>
+
+            <div class="dispatch-meta-grid">
+              <div class="dispatch-meta-item">
+                <span class="meta-label">Customer</span>
+                <span class="meta-value">Tom Henderson</span>
+              </div>
+              <div class="dispatch-meta-item">
+                <span class="meta-label">Location</span>
+                <span class="meta-value"><i class="ph-bold ph-map-pin" style="color: var(--teal-500);"></i> Maple Grove, MN</span>
+              </div>
+              <div class="dispatch-meta-item">
+                <span class="meta-label">Phone</span>
+                <span class="meta-value"><i class="ph-bold ph-phone" style="color: var(--teal-500);"></i> (612) 555-0182</span>
+              </div>
+              <div class="dispatch-meta-item">
+                <span class="meta-label">Est. Value</span>
+                <span class="meta-value meta-gold">$1,800 &ndash; $2,600</span>
+              </div>
+            </div>
+
+            <div class="dispatch-action-row">
+              <a href="tel:6125550182" class="dispatch-call-btn" onclick="return false;">
+                <i class="ph-fill ph-phone-call"></i>
+                <span>One-Tap Call Customer Now</span>
               </a>
             </div>
+          </div>
 
-            <!-- Test-Drive Simulator Button -->
-            <div class="phone-trigger-bar">
-              <button class="phone-test-btn" id="phoneTriggerBtn">
-                <i class="ph-duotone ph-lightning"></i> Test-Drive Instant Lead Alert
-              </button>
-            </div>
+          <!-- Interactive Test Dispatch Controller -->
+          <div class="dispatch-controller-footer">
+            <button class="dispatch-simulate-btn" id="phoneTriggerBtn">
+              <i class="ph-bold ph-lightning"></i>
+              <span>Simulate Next Incoming Lead</span>
+            </button>
+            <p class="dispatch-helper-note">
+              <i class="ph-fill ph-shield-check" style="color: var(--teal-400);"></i>
+              Delivered via Twilio direct to your phone lockscreen in &lt; 15 seconds.
+            </p>
           </div>
         </div>
       </div>
@@ -387,24 +454,47 @@
         <p class="section-subtitle">Enter your existing business domain below to run a real-time diagnostic audit measuring Core Web Vitals, mobile viewport compliance, local SEO, and security.</p>
       </div>
 
-      <div class="scanner-box">
-        <!-- Input Form -->
+            <div class="scanner-box">
+        <!-- Input Form with Icon & Fast Sample Chips -->
         <form class="scanner-input-form" id="scannerForm">
-          <input type="text" class="scanner-input-field" id="scanUrlInput" placeholder="Enter your business URL (e.g. twin-cities-plumbing.com)" required>
+          <div class="scanner-input-wrapper">
+            <i class="ph-bold ph-globe-hemisphere-west scanner-input-icon"></i>
+            <input type="text" class="scanner-input-field" id="scanUrlInput" placeholder="Enter your contractor domain (e.g. twin-cities-plumbing.com)" required>
+          </div>
           <button type="submit" class="btn btn-primary" id="scanSubmitBtn">
             <i class="ph-duotone ph-scan btn-icon"></i>
-            Analyze Website
+            <span>Analyze Website</span>
           </button>
         </form>
 
-        <!-- Live Terminal Stream -->
-        <div class="scanner-terminal" id="scannerTerminal"></div>
+        <!-- Quick Sample Chips -->
+        <div class="scanner-sample-chips">
+          <span class="sample-chip-label">Try Example:</span>
+          <button type="button" class="sample-chip-btn" data-url="retrofitwebdesign.com">retrofitwebdesign.com (Flagship)</button>
+          <button type="button" class="sample-chip-btn" data-url="outdated-hvac-contractor.com">Legacy WordPress HVAC</button>
+          <button type="button" class="sample-chip-btn" data-url="diy-builder-roofing.com">DIY Wix Roofing</button>
+        </div>
+
+        <!-- Live Terminal Stream with Chrome Window Header -->
+        <div class="scanner-terminal" id="scannerTerminal">
+          <div class="terminal-chrome">
+            <div class="terminal-dots">
+              <span class="t-dot red"></span>
+              <span class="t-dot yellow"></span>
+              <span class="t-dot green"></span>
+            </div>
+            <span class="terminal-title">GOOGLE LIGHTHOUSE AUDIT ENGINE &bull; LIVE STREAM</span>
+            <span class="terminal-live-ping"><span class="badge-pulse"></span> RUNNING</span>
+          </div>
+          <div class="terminal-body" id="scannerTerminalBody"></div>
+        </div>
 
         <!-- Scanner Scores Display -->
         <div class="scanner-results-container" id="scannerResults">
           <div class="scanner-scores-grid">
             <!-- Performance -->
             <div class="score-card">
+              <span class="score-card-badge badge-speed"><i class="ph-bold ph-lightning"></i> Core Vitals</span>
               <div class="score-circle-wrap">
                 <svg class="score-svg" viewBox="0 0 36 36">
                   <path class="score-bg-circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -418,6 +508,7 @@
 
             <!-- Mobile UX -->
             <div class="score-card">
+              <span class="score-card-badge badge-mobile"><i class="ph-bold ph-device-mobile"></i> Viewport</span>
               <div class="score-circle-wrap">
                 <svg class="score-svg" viewBox="0 0 36 36">
                   <path class="score-bg-circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -431,6 +522,7 @@
 
             <!-- Local SEO -->
             <div class="score-card">
+              <span class="score-card-badge badge-seo"><i class="ph-bold ph-map-pin"></i> Local SEO</span>
               <div class="score-circle-wrap">
                 <svg class="score-svg" viewBox="0 0 36 36">
                   <path class="score-bg-circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -444,6 +536,7 @@
 
             <!-- Best Practices -->
             <div class="score-card">
+              <span class="score-card-badge badge-sec"><i class="ph-bold ph-shield-check"></i> Security</span>
               <div class="score-circle-wrap">
                 <svg class="score-svg" viewBox="0 0 36 36">
                   <path class="score-bg-circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
@@ -458,13 +551,20 @@
 
           <!-- Recommendation Banner -->
           <div class="scanner-recommendation-box">
-            <div>
-              <h4 style="color:#fff; font-size:1.1rem; margin-bottom:4px;">RetroFit Rescue Recommendation</h4>
-              <p style="font-size:0.9rem;" id="recommendationCopy">
-                A 48-hour RetroFit code rescue will elevate your performance to <strong>98%+</strong> and make your site 100% mobile-first.
+            <div class="rec-left-content">
+              <div class="rec-badge-pill">
+                <i class="ph-bold ph-seal-check"></i>
+                <span>RetroFit Diagnostic Breakdown</span>
+              </div>
+              <h4 style="color:#fff; font-size:1.25rem; margin-bottom:6px;">RetroFit Rescue Recommendation</h4>
+              <p style="font-size:0.95rem; color:#cbd5e1; line-height: 1.55;" id="recommendationCopy">
+                A 48-hour RetroFit code rescue will elevate your performance to <strong style="color:#ffffff;">98%+</strong> and make your site 100% mobile-first.
               </p>
             </div>
-            <a href="#pricing" class="btn btn-primary" id="scannerQuoteAction">Lock In $299 Rescue Quote</a>
+            <a href="#pricing" class="btn btn-primary" id="scannerQuoteAction">
+              <i class="ph-bold ph-lock-key"></i>
+              <span>Lock In $299 Rescue Quote</span>
+            </a>
           </div>
         </div>
       </div>
@@ -509,7 +609,7 @@
         <!-- RetroFit (Winner) -->
         <div class="bento-card highlight-winner">
           <div class="bento-winner-badge">⭐ Recommended Choice</div>
-          <div class="bento-provider-name" style="color:var(--cyan-500);">RetroFit Web Design</div>
+          <div class="bento-provider-name" style="color:var(--teal-400);">RetroFit Web Design</div>
           <div class="bento-price-tag">$299 <span>flat rate</span></div>
           <p style="font-size:0.88rem; margin-bottom: 1.5rem; color:#fff;">Fast, surgical code rescue built specifically for local service businesses.</p>
           <ul class="bento-checklist">
@@ -573,161 +673,224 @@
         <p class="section-subtitle">No hourly billing surprises. No $3,000 invoices. Just fast, surgical site modernizations and clean new builds.</p>
       </div>
 
-      <!-- 3 Core Packages -->
+            <!-- 3 Core Packages -->
       <div class="pricing-cards-grid">
-        <!-- Package 1: Rescue -->
+        <!-- Package 1: Rescue (Featured) -->
         <div class="pricing-card featured" id="packRescue">
-          <div class="pricing-card-badge">Most Popular</div>
-          <div class="pack-tier-title">Website Rescue Package</div>
-          <div class="pack-tier-desc">Fast visual modernization and performance overhaul for existing service websites.</div>
-          <div class="pack-price-block">
-            <span class="pack-price-amt">$299</span>
-            <span class="pack-price-cadence">flat rate</span>
+          <div class="pricing-card-badge">
+            <i class="ph-fill ph-fire"></i>
+            <span>Most Popular &bull; 48-72h Delivery</span>
           </div>
+
+          <div class="pack-header-meta">
+            <span class="pack-category-chip chip-orange">Existing Sites</span>
+            <span class="pack-speed-chip"><i class="ph-bold ph-lightning"></i> 48–72h Turnaround</span>
+          </div>
+
+          <div class="pack-tier-title">Website Rescue Package</div>
+          <div class="pack-tier-desc">Fast visual modernization, mobile redesign, and sub-second speed overhaul for your current service site.</div>
+
+          <div class="pack-price-block">
+            <div class="price-main-line">
+              <span class="pack-price-amt">$299</span>
+              <span class="pack-price-cadence">flat rate</span>
+            </div>
+            <div class="pack-retainer-badge"><i class="ph-bold ph-check"></i> Zero Monthly Retainer &bull; 100% Yours</div>
+          </div>
+
           <ul class="pack-features-list">
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
               <span><strong>Up to 5 Pages Modernized</strong></span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
-              <span><strong>Fast 48-72 Hour Delivery</strong></span>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
+              <span><strong>Fast 48–72 Hour Delivery</strong></span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
-              <span>100% Mobile Responsive Overhaul</span>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
+              <span>100% Fluid Mobile Ergonomics</span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
-              <span>Sub-Second Performance Optimization</span>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
+              <span>Sub-Second Google Speed Optimization</span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
-              <span>Click-to-Call & Quote Lead Form Setup</span>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
+              <span>Click-to-Call & Quote Lead Routing</span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
-              <span>Local SEO Meta Structure & SSL</span>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
+              <span>Local SEO Meta Structure & Free SSL</span>
             </li>
           </ul>
-          <a href="#contact" class="btn btn-primary pack-cta-btn" data-plan="Website Rescue Package ($299)">Claim $299 Rescue</a>
+
+          <a href="#contact" class="btn btn-primary pack-cta-btn" data-plan="Website Rescue Package ($299)">
+            <i class="ph-duotone ph-lightning btn-icon"></i>
+            Claim $299 Rescue
+          </a>
         </div>
 
         <!-- Package 2: New Build -->
         <div class="pricing-card" id="packNewBuild">
-          <div class="pack-tier-title">Brand New Website Build</div>
-          <div class="pack-tier-desc">Starting fresh? Complete custom high-converting website built from scratch.</div>
-          <div class="pack-price-block">
-            <span class="pack-price-amt">$499</span>
-            <span class="pack-price-cadence">flat rate</span>
+          <div class="pack-header-meta">
+            <span class="pack-category-chip chip-teal">Brand New Site</span>
+            <span class="pack-speed-chip"><i class="ph-bold ph-clock"></i> 3–5 Days</span>
           </div>
+
+          <div class="pack-tier-title">Brand New Website Build</div>
+          <div class="pack-tier-desc">Starting fresh? Complete custom high-converting website engineered from scratch for your trade.</div>
+
+          <div class="pack-price-block">
+            <div class="price-main-line">
+              <span class="pack-price-amt">$499</span>
+              <span class="pack-price-cadence">flat rate</span>
+            </div>
+            <div class="pack-retainer-badge"><i class="ph-bold ph-check"></i> Turnkey Delivery &bull; Zero Lock-in</div>
+          </div>
+
           <ul class="pack-features-list">
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
               <span><strong>Up to 5 Pages Built From Scratch</strong></span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
               <span><strong>3–5 Day Delivery Turnaround</strong></span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
               <span>100% Mobile-First Ergonomic Layout</span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
               <span>Google Business Profile & Map Embed</span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
               <span>High-Speed Cloud Hosting & SSL Setup</span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
-              <span>100% Ownership & Zero Lock-in</span>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
+              <span>100% Ownership & Full Source Code</span>
             </li>
           </ul>
-          <a href="#contact" class="btn btn-secondary pack-cta-btn" data-plan="Brand New Website Build ($499)">Select $499 New Build</a>
+
+          <a href="#contact" class="btn btn-navy pack-cta-btn" data-plan="Brand New Website Build ($499)">
+            <span>Select $499 New Build</span>
+            <i class="ph-bold ph-arrow-right btn-icon"></i>
+          </a>
         </div>
 
         <!-- Package 3: Overhaul -->
         <div class="pricing-card" id="packOverhaul">
-          <div class="pack-tier-title">Custom Site Overhaul</div>
-          <div class="pack-tier-desc">Multi-service expansion for established businesses dominating local markets.</div>
-          <div class="pack-price-block">
-            <span class="pack-price-amt">$599</span>
-            <span class="pack-price-cadence">flat rate</span>
+          <div class="pack-header-meta">
+            <span class="pack-category-chip chip-gold">Full Expansion</span>
+            <span class="pack-speed-chip"><i class="ph-bold ph-clock"></i> 3–5 Days</span>
           </div>
+
+          <div class="pack-tier-title">Custom Site Overhaul</div>
+          <div class="pack-tier-desc">Multi-service expansion for established trade businesses dominating multiple local Minnesota cities.</div>
+
+          <div class="pack-price-block">
+            <div class="price-main-line">
+              <span class="pack-price-amt">$599</span>
+              <span class="pack-price-cadence">flat rate</span>
+            </div>
+            <div class="pack-retainer-badge"><i class="ph-bold ph-check"></i> Multi-Location &bull; Maximum Reach</div>
+          </div>
+
           <ul class="pack-features-list">
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
               <span><strong>Up to 10 Pages Included</strong></span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
               <span><strong>3–5 Day Delivery Turnaround</strong></span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
               <span>Multi-Location & City Target Pages</span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
-              <span>Google Business Profile Review Embed</span>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
+              <span>Google Reviews & Reputation Showcase</span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
-              <span>Sub-Second CDN Speed & Schema</span>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
+              <span>Sub-Second CDN Speed & Schema Setup</span>
             </li>
             <li class="pack-feature-row">
-              <i class="ph-duotone ph-check"></i>
+              <span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>
               <span>2 Weeks Post-Launch Priority Support</span>
             </li>
           </ul>
-          <a href="#contact" class="btn btn-secondary pack-cta-btn" data-plan="Custom Site Overhaul ($599)">Select $599 Overhaul</a>
+
+          <a href="#contact" class="btn btn-navy pack-cta-btn" data-plan="Custom Site Overhaul ($599)">
+            <span>Select $599 Overhaul</span>
+            <i class="ph-bold ph-arrow-right btn-icon"></i>
+          </a>
         </div>
       </div>
 
-      <!-- Monthly Care & Growth Plans -->
-      <div class="section-header text-center" style="margin-top: 5rem; margin-bottom: 2rem;">
+            <!-- Monthly Care & Growth Plans -->
+      <div class="section-header text-center" style="margin-top: 5rem; margin-bottom: 1.5rem;">
         <span class="badge">Hands-Off Monthly Growth</span>
         <h3 class="section-title" style="font-size:2rem;">Ongoing Care & Lead Tracking Plans</h3>
         <p class="section-subtitle">Keep your site secure, blazing fast, and actively bringing in local jobs month after month.</p>
       </div>
 
+      <!-- Monthly / Annual Billing Toggle Switch -->
+      <div class="care-billing-toggle-container">
+        <span class="care-toggle-label active" id="billingMonthlyLabel">Pay Monthly</span>
+        <label class="care-toggle-switch" for="careBillingSwitch">
+          <input type="checkbox" id="careBillingSwitch" aria-label="Toggle Annual or Monthly Billing">
+          <span class="care-toggle-slider"></span>
+        </label>
+        <span class="care-toggle-label" id="billingAnnualLabel">
+          Pay Yearly
+          <span class="care-discount-tag">Save 2 Months Free</span>
+        </span>
+      </div>
+
       <div class="care-plans-row">
         <!-- Basic Care -->
-        <div class="glass-panel" style="padding: 2.25rem 2rem;">
+        <div class="glass-panel care-card" id="careCardBasic" style="padding: 2.25rem 2rem;">
           <div class="pack-tier-title">Basic Care & Cloud Hosting</div>
           <div class="pack-price-block">
-            <span class="pack-price-amt" style="font-size:2.4rem;">$49</span>
-            <span class="pack-price-cadence">/month</span>
-            <div style="font-size:0.85rem; color: #8f9bb3; margin-top:0.25rem;">or $490/year (Save $98)</div>
+            <div class="care-price-line">
+              <span class="pack-price-amt" id="basicCareAmt">$49</span>
+              <span class="pack-price-cadence" id="basicCareCadence">/month</span>
+            </div>
+            <div class="care-sub-note" id="basicCareNote">Billed monthly &bull; Cancel anytime</div>
           </div>
           <ul class="pack-features-list" style="margin-bottom: 1.5rem;">
-            <li class="pack-feature-row"><i class="ph-duotone ph-check"></i>High-Speed Cloud Hosting & SSL Certificate</li>
-            <li class="pack-feature-row"><i class="ph-duotone ph-check"></i>Automated Daily Off-Site Backups</li>
-            <li class="pack-feature-row"><i class="ph-duotone ph-check"></i>Up to 30 Min of Content & Photo Edits / Mo</li>
+            <li class="pack-feature-row"><span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>High-Speed Cloud Hosting & SSL Certificate</li>
+            <li class="pack-feature-row"><span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>Automated Daily Off-Site Backups</li>
+            <li class="pack-feature-row"><span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>Up to 30 Min of Content & Photo Edits / Mo</li>
           </ul>
-          <a href="#contact" class="btn btn-secondary pack-cta-btn" data-plan="Basic Care & Cloud Hosting ($49/mo)" style="width:100%;">Select $49/mo Care</a>
+          <a href="#contact" class="btn btn-navy pack-cta-btn" id="basicCareBtn" data-plan="Basic Care & Cloud Hosting ($49/mo)" style="width:100%;">Select $49/mo Care</a>
         </div>
 
         <!-- Lead Tracker & Growth (Recommended) -->
-        <div class="glass-panel" style="padding: 2.25rem 2rem; border-color: rgba(0,242,254,0.4); background: rgba(16,24,44,0.9);">
+        <div class="glass-panel care-card featured" id="careCardTracker" style="padding: 2.25rem 2rem; border-color: rgba(48,136,130,0.5); background: rgba(16,24,44,0.95); position: relative;">
           <div class="badge" style="margin-bottom: 0.75rem;">Top Contractor Choice</div>
-          <div class="pack-tier-title" style="color:var(--cyan-500);">Lead Tracker & Growth Plan</div>
+          <div class="pack-tier-title" style="color:var(--teal-400);">Lead Tracker & Growth Plan</div>
           <div class="pack-price-block">
-            <span class="pack-price-amt" style="font-size:2.4rem;">$99</span>
-            <span class="pack-price-cadence">/month</span>
-            <div style="font-size:0.85rem; color: #8f9bb3; margin-top:0.25rem;">or $990/year (Save $198)</div>
+            <div class="care-price-line">
+              <span class="pack-price-amt" id="trackerCareAmt">$99</span>
+              <span class="pack-price-cadence" id="trackerCareCadence">/month</span>
+            </div>
+            <div class="care-sub-note" id="trackerCareNote">Billed monthly &bull; Cancel anytime</div>
           </div>
           <ul class="pack-features-list" style="margin-bottom: 1.5rem;">
-            <li class="pack-feature-row"><i class="ph-duotone ph-check"></i><strong>Everything in Basic Care & Cloud Hosting</strong></li>
-            <li class="pack-feature-row"><i class="ph-duotone ph-check"></i><strong>Instant SMS Lead Alerts</strong> to your cell phone</li>
-            <li class="pack-feature-row"><i class="ph-duotone ph-check"></i><strong>1-Page Monthly Performance Digest</strong> on the 1st</li>
-            <li class="pack-feature-row"><i class="ph-duotone ph-check"></i>Same-Day Priority Support & Content Updates</li>
+            <li class="pack-feature-row"><span class="feat-check-circle"><i class="ph-bold ph-check"></i></span><strong>Everything in Basic Care & Cloud Hosting</strong></li>
+            <li class="pack-feature-row"><span class="feat-check-circle"><i class="ph-bold ph-check"></i></span><strong>Instant SMS Lead Alerts</strong> to your cell phone</li>
+            <li class="pack-feature-row"><span class="feat-check-circle"><i class="ph-bold ph-check"></i></span><strong>1-Page Monthly Performance Digest</strong> on the 1st</li>
+            <li class="pack-feature-row"><span class="feat-check-circle"><i class="ph-bold ph-check"></i></span>Same-Day Priority Support & Content Updates</li>
           </ul>
-          <a href="#contact" class="btn btn-primary pack-cta-btn" data-plan="Lead Tracker & Growth Plan ($99/mo)" style="width:100%;">Enroll in $99/mo Lead Tracker</a>
+          <a href="#contact" class="btn btn-primary pack-cta-btn" id="trackerCareBtn" data-plan="Lead Tracker & Growth Plan ($99/mo)" style="width:100%;">Enroll in $99/mo Lead Tracker</a>
         </div>
       </div>
 
@@ -741,7 +904,7 @@
             <div class="estimator-slider-group">
               <div class="slider-label-row">
                 <span>Number of Pages:</span>
-                <span style="font-family:var(--font-heading); font-size:1.3rem; color:var(--cyan-500);" id="estPageDisplay">5 Pages</span>
+                <span style="font-family:var(--font-heading); font-size:1.3rem; color:var(--teal-400);" id="estPageDisplay">5 Pages</span>
               </div>
               <input type="range" class="range-slider-input" id="estPageSlider" min="1" max="25" value="5">
             </div>
@@ -791,33 +954,96 @@
   <!-- Founder Section / Meet Cole -->
   <section id="about" class="founder-section">
     <div class="container">
+      <div class="section-header text-center" style="margin-bottom: 3.5rem;">
+        <span class="badge">Local Web Specialist</span>
+        <h2 class="section-title">Built By A Local Developer, <span class="gradient-text">Not An Agency.</span></h2>
+        <p class="section-subtitle">Based in Otsego, MN. Serving Minnesota trade and home service business owners with direct, high-speed website rescues.</p>
+      </div>
+
       <div class="founder-card">
         <div class="founder-grid">
-          <div class="founder-avatar-wrap">
-            <img src="../assets/me.jfif" alt="Cole - RetroFit Web Design Founder" class="founder-avatar-img">
+          <div class="founder-col-left">
+            <div class="founder-avatar-wrap">
+              <img src="../assets/me.jfif" alt="Cole - RetroFit Web Design Founder" class="founder-avatar-img">
+            </div>
+
+            <span class="founder-status-badge">
+              <span class="badge-pulse"></span>
+              Based in Otsego, MN
+            </span>
+
+            <div class="founder-quick-creds">
+              <div class="founder-cred-item">
+                <i class="ph-duotone ph-map-pin"></i>
+                <span>Otsego, Minnesota</span>
+              </div>
+              <div class="founder-cred-item">
+                <i class="ph-duotone ph-phone-call"></i>
+                <span>Direct Cell Access</span>
+              </div>
+              <div class="founder-cred-item">
+                <i class="ph-duotone ph-clock"></i>
+                <span>48–72h Turnaround</span>
+              </div>
+              <div class="founder-cred-item">
+                <i class="ph-duotone ph-wrench"></i>
+                <span>Contractor Focused</span>
+              </div>
+            </div>
           </div>
 
-          <div class="founder-bio">
-            <div class="badge">Meet Your Specialist</div>
-            <h2 class="founder-name">Hi, I'm Cole.</h2>
-            <div class="founder-tagline">Website Rescue & High-Speed Build Specialist</div>
+          <div class="founder-col-right">
+            <div class="founder-name-row">
+              <h3 class="founder-name">Hi, I'm Cole.</h3>
+              <div class="founder-tagline">Founder of RetroFit Web Design &bull; Otsego, MN</div>
+            </div>
 
-            <p>
-              I respect hardworking trades and service business owners. You build, repair, and keep homes running — you shouldn't have to deal with fast-talking marketing agencies charging $3,500 for a slow WordPress site that breaks in six months.
+            <p class="founder-lead-p">
+              I live in Otsego and work directly with hardworking service business owners across the Twin Cities and beyond. You build, repair, and keep homes running — you shouldn't have to deal with fast-talking sales reps, $3,500 retainer agencies, or sluggish WordPress templates that break every few months.
             </p>
             <p>
-              When you hire RetroFit, you work directly with me. No junior interns, no phone tag. I rescue your site within 48 to 72 hours, set up clean SMS lead tracking so your phone rings, and ensure everything is built to perfection before you pay.
+              When you hire RetroFit, you don't talk to junior interns or account managers — you talk directly with me. I personally overhaul your site, optimize your speed to sub-second load times, and wire up instant SMS lead routing so you capture high-ticket customer inquiries the second they land.
             </p>
 
-            <div class="founder-pills-row">
-              <div class="founder-trust-pill">
-                <i class="ph-duotone ph-check" style="width:18px; height:18px;"></i>
-                <span>Direct Cell: (612) 516-3145</span>
+            <div class="founder-trust-grid">
+              <div class="founder-trust-point">
+                <i class="ph-duotone ph-shield-check"></i>
+                <div class="founder-trust-text">
+                  <strong>Zero Middlemen</strong>
+                  <span>Work 1-on-1 directly with your developer.</span>
+                </div>
               </div>
-              <div class="founder-trust-pill">
-                <i class="ph-duotone ph-check" style="width:18px; height:18px;"></i>
-                <span>Minnesota Based</span>
+              <div class="founder-trust-point">
+                <i class="ph-duotone ph-phone-call"></i>
+                <div class="founder-trust-text">
+                  <strong>Direct Cell Phone</strong>
+                  <span>Call or text me directly anytime at (612) 516-3145.</span>
+                </div>
               </div>
+              <div class="founder-trust-point">
+                <i class="ph-duotone ph-lightning"></i>
+                <div class="founder-trust-text">
+                  <strong>Sub-Second Speed</strong>
+                  <span>Custom code engineered for instant 0.4s load times.</span>
+                </div>
+              </div>
+              <div class="founder-trust-point">
+                <i class="ph-duotone ph-handshake"></i>
+                <div class="founder-trust-text">
+                  <strong>Risk-Free Preview</strong>
+                  <span>Review your homepage preview before you pay a dime.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="founder-action-row">
+              <a href="tel:+16125163145" class="btn btn-primary">
+                <i class="ph-bold ph-phone-call"></i>
+                Call or Text Cole: (612) 516-3145
+              </a>
+              <a href="#contact" class="btn btn-secondary" style="background:var(--gray-100); color:var(--gray-900); border-color:var(--gray-300);">
+                Claim Free Audit
+              </a>
             </div>
           </div>
         </div>
@@ -831,7 +1057,7 @@
       <div class="section-header text-center">
         <span class="badge">Start Your Project</span>
         <h2 class="section-title">Claim Your <span class="gradient-text">Quote & Free Audit</span></h2>
-        <p class="section-subtitle">Zero commitment. Fill out your details below and I will send you a personalized diagnostic video breakdown and custom proposal within 24 hours.</p>
+        <p class="section-subtitle">Zero commitment. Fill out your details below and I will send you a personalized diagnostic audit breakdown and custom proposal within 24 hours.</p>
       </div>
 
       <div class="contact-grid">
@@ -908,14 +1134,20 @@
               <input type="text" class="form-input" id="currentUrl" name="currentUrl" placeholder="e.g. millerhvac.com or 'New Business'">
             </div>
 
-            <div class="form-group">
+                        <div class="form-group">
               <label class="form-label" for="requestedPlan">Selected Package / Service</label>
               <select class="form-select" id="requestedPlan" name="chosenPackage">
                 <option value="Website Rescue Package ($299)">Website Rescue Package ($299 flat rate)</option>
                 <option value="Brand New Website Build ($499)">Brand New Website Build ($499 flat rate)</option>
                 <option value="Custom Site Overhaul ($599)">Custom Site Overhaul ($599 flat rate)</option>
-                <option value="Lead Tracker & Growth Plan ($99/mo)">Lead Tracker & Growth Plan ($99/mo)</option>
-                <option value="Basic Care & Cloud Hosting ($49/mo)">Basic Care & Cloud Hosting ($49/mo)</option>
+                <optgroup label="Annual Care Plans (Save 2 Months Free)">
+                  <option value="Lead Tracker & Growth Plan ($990/year - 2 Months Free)">Lead Tracker & Growth Plan ($990/year — Save $198)</option>
+                  <option value="Basic Care & Cloud Hosting ($490/year - 2 Months Free)">Basic Care & Cloud Hosting ($490/year — Save $98)</option>
+                </optgroup>
+                <optgroup label="Monthly Care Plans">
+                  <option value="Lead Tracker & Growth Plan ($99/mo)">Lead Tracker & Growth Plan ($99/mo)</option>
+                  <option value="Basic Care & Cloud Hosting ($49/mo)">Basic Care & Cloud Hosting ($49/mo)</option>
+                </optgroup>
                 <option value="Free Website Diagnostic Consultation">Free Website Diagnostic Consultation</option>
               </select>
             </div>
@@ -936,7 +1168,7 @@
             <i class="ph-duotone ph-check-circle form-success-icon"></i>
             <h3 style="font-size:1.5rem; margin-bottom:8px;">Proposal Request Received!</h3>
             <p style="color:var(--text-muted);">
-              Thank you! I am personally reviewing your details and running diagnostic scans. You will receive your custom proposal and video breakdown via email and SMS within 24 hours.
+              Thank you! I am personally reviewing your details and running diagnostic scans. You will receive your custom proposal and audit breakdown via email and SMS within 24 hours.
             </p>
           </div>
         </div>
@@ -961,14 +1193,13 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <a href="#" class="brand-link footer-brand-link" aria-label="RetroFit Web Design Home">
-        <img src="../assets/retrofit_logo_new.png" alt="RetroFit Web Design" class="footer-logo-stacked">
+        <img src="../assets/retrofit_logo_no_bg.png" alt="RetroFit Web Design" class="footer-logo-stacked">
       </a>
       <p style="font-size:0.95rem; max-width:560px;">
         High-impact website rescues & custom builds for trades and local contractors. Designed for sub-second speed, 100% mobile perfection, and real-time customer calls.
       </p>
 
       <div class="footer-links-row">
-        <a href="#lab">Before/After Lab</a>
         <a href="#simulator">Lead Machine</a>
         <a href="#scanner">Speed Scanner</a>
         <a href="#pricing">Packages & Pricing</a>
@@ -977,14 +1208,14 @@
       </div>
 
       <div class="footer-legal">
-        &copy; 2026 RetroFit Web Design LLC &bull; All Rights Reserved &bull; Minneapolis, MN
+        &copy; 2026 RetroFit Web Design LLC &bull; All Rights Reserved &bull; Otsego, MN
       </div>
     </div>
   </footer>
 
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <!-- Main JavaScript Application -->
-  <script src="app.js"></script>
+  <script src="app.js?v=3.9.7"></script>
 
 </body>
 </html>

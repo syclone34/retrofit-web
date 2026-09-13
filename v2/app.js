@@ -22,11 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.style.top = '100%';
         navMenu.style.left = '0';
         navMenu.style.width = '100%';
-        navMenu.style.background = 'rgba(10, 14, 23, 0.85)';
-        navMenu.style.backdropFilter = 'blur(16px)';
+        navMenu.style.background = 'rgba(21, 28, 40, 0.98)';
         navMenu.style.padding = '1.5rem';
-        navMenu.style.borderRadius = '20px';
-        navMenu.style.border = '1px solid rgba(0, 242, 254, 0.2)';
+        navMenu.style.borderRadius = '16px'; navMenu.style.boxShadow = '0 16px 36px rgba(0,0,0,0.5)';
+        navMenu.style.border = '1px solid rgba(251, 245, 232, 0.15)';
         navMenu.style.marginTop = '0.5rem';
       }
     });
@@ -148,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
           labImgAfter.src = newSrc;
           labImgAfter.onload = syncImageDimensions;
         }
-        if (labBadgeBefore && tradeTitle) labBadgeBefore.textContent = `Legacy ${tradeTitle} Site`;
+        if (labBadgeBefore && tradeTitle) labBadgeBefore.textContent = `Typical ${tradeTitle} Competitor`;
 
         // Update metrics
         if (metricOldLoad) metricOldLoad.textContent = oldLoad;
@@ -191,38 +190,42 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Tom Henderson",
       service: "Emergency Water Heater Replacement",
       location: "Maple Grove, MN",
-      phone: "(612) 555-0182"
+      phone: "(612) 555-0182",
+      value: "$1,800 – $2,600"
     },
     {
       name: "Sarah Jenkins",
       service: "Full Roof Replacement Quote (Storm Damage)",
       location: "Eden Prairie, MN",
-      phone: "(612) 555-0144"
+      phone: "(612) 555-0144",
+      value: "$9,500 – $14,000"
     },
     {
       name: "Brian Kowalski",
       service: "Furnace No-Heat Emergency Call",
       location: "Plymouth, MN",
-      phone: "(612) 555-0199"
+      phone: "(612) 555-0199",
+      value: "$2,200 – $3,800"
     },
     {
       name: "Jessica Miller",
       service: "Commercial Lawn Maintenance Contract",
       location: "Minnetonka, MN",
-      phone: "(612) 555-0131"
+      phone: "(612) 555-0131",
+      value: "$3,400 / season"
     }
   ];
   let leadIndex = 0;
 
   if (phoneTriggerBtn && simBanner) {
     phoneTriggerBtn.addEventListener('click', () => {
-      phoneTriggerBtn.innerHTML = '<i class="ph-duotone ph-hourglass-high" style="margin-right: 4px;"></i> Dispatching Instant SMS...';
-      phoneTriggerBtn.style.opacity = '0.7';
+      phoneTriggerBtn.innerHTML = '<i class="ph-bold ph-hourglass-high" style="margin-right: 4px;"></i> Dispatching Instant Lead...';
+      phoneTriggerBtn.style.opacity = '0.75';
 
-      // Subtle phone vibration shake animation
+      // Subtle console vibration animation
       if (phoneScreen) {
-        phoneScreen.style.animation = 'phoneShake 0.4s ease-in-out';
-        setTimeout(() => { phoneScreen.style.animation = ''; }, 400);
+        phoneScreen.style.animation = 'phoneShake 0.35s ease-in-out';
+        setTimeout(() => { phoneScreen.style.animation = ''; }, 350);
       }
 
       setTimeout(() => {
@@ -230,31 +233,53 @@ document.addEventListener('DOMContentLoaded', () => {
         leadIndex++;
 
         simBanner.innerHTML = `
-          <div class="sim-notif-header">
-            <div class="sim-notif-app">
-              <i class="ph-duotone ph-chat-circle" style="width:14px; height:14px; font-size: 14px;"></i>
-              <span>MESSAGES &bull; RETROFIT ALERTS</span>
+          <div class="dispatch-lead-badge-row">
+            <div class="dispatch-lead-tag">
+              <span class="ios-msg-icon"><i class="ph-fill ph-chat-circle"></i></span>
+              <span>INSTANT SMS DISPATCH</span>
             </div>
-            <span class="sim-notif-time">Just Now</span>
+            <span class="dispatch-lead-timestamp"><i class="ph-fill ph-check-circle" style="color: var(--teal-500);"></i> Delivered &bull; Just Now</span>
           </div>
-          <div class="sim-notif-title"><i class="ph-duotone ph-fire" style="color: var(--cyan-500); margin-right: 4px;"></i> New High-Intent Lead Captured!</div>
-          <div class="sim-notif-body">
-            <strong>${lead.name}</strong> requested <strong>"${lead.service}"</strong>.<br>
-            <div style="display:flex; align-items:center; gap: 4px; margin-top: 6px;">
-              <i class="ph-duotone ph-map-pin" style="color: var(--cyan-500);"></i> <strong>Location:</strong> ${lead.location}
+
+          <div class="dispatch-lead-headline">
+            <div class="dispatch-lead-icon-chip">
+              <i class="ph-fill ph-fire"></i>
             </div>
-            <div style="display:flex; align-items:center; gap: 4px; margin-top: 2px;">
-              <i class="ph-duotone ph-phone-call" style="color: var(--cyan-500);"></i> <strong>Phone:</strong> ${lead.phone}
+            <div>
+              <span class="dispatch-lead-category">High-Intent Quote Request</span>
+              <h3 class="dispatch-lead-service">"${lead.service}"</h3>
             </div>
           </div>
-          <a href="tel:${lead.phone}" class="sim-notif-action" onclick="return false;">
-            <i class="ph-duotone ph-phone-call" style="width:14px; height:14px; font-size: 14px;"></i>
-            Tap to Call Lead Immediately
-          </a>
+
+          <div class="dispatch-meta-grid">
+            <div class="dispatch-meta-item">
+              <span class="meta-label">Customer</span>
+              <span class="meta-value">${lead.name}</span>
+            </div>
+            <div class="dispatch-meta-item">
+              <span class="meta-label">Location</span>
+              <span class="meta-value"><i class="ph-bold ph-map-pin" style="color: var(--teal-500);"></i> ${lead.location}</span>
+            </div>
+            <div class="dispatch-meta-item">
+              <span class="meta-label">Phone</span>
+              <span class="meta-value"><i class="ph-bold ph-phone" style="color: var(--teal-500);"></i> ${lead.phone}</span>
+            </div>
+            <div class="dispatch-meta-item">
+              <span class="meta-label">Est. Value</span>
+              <span class="meta-value meta-gold">${lead.value}</span>
+            </div>
+          </div>
+
+          <div class="dispatch-action-row">
+            <a href="tel:${lead.phone}" class="dispatch-call-btn" onclick="return false;">
+              <i class="ph-fill ph-phone-call"></i>
+              <span>One-Tap Call Customer Now</span>
+            </a>
+          </div>
         `;
 
         simBanner.classList.add('active');
-        phoneTriggerBtn.innerHTML = '<i class="ph-duotone ph-lightning" style="color: var(--cyan-500); margin-right: 4px;"></i> Test Another Simulated Lead';
+        phoneTriggerBtn.innerHTML = '<i class="ph-bold ph-lightning" style="margin-right: 4px;"></i> Dispatch Next Sample Lead';
         phoneTriggerBtn.style.opacity = '1';
 
         // Auto-dismiss after 9 seconds if not clicked
@@ -263,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
             simBanner.classList.remove('active');
           }
         }, 9000);
-      }, 500);
+      }, 450);
     });
   }
 
@@ -316,11 +341,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function appendTerminal(msg) {
-    if (!scannerTerminal) return;
+    const terminalBody = document.getElementById('scannerTerminalBody') || scannerTerminal;
+    if (!terminalBody) return;
     const line = document.createElement('div');
-    line.textContent = `> ${msg}`;
-    scannerTerminal.appendChild(line);
-    scannerTerminal.scrollTop = scannerTerminal.scrollHeight;
+    line.className = 'terminal-line';
+    line.innerHTML = `<span class="terminal-prompt">&gt;</span> <span>${msg}</span>`;
+    terminalBody.appendChild(line);
+    terminalBody.scrollTop = terminalBody.scrollHeight;
   }
 
   if (scannerForm && scanUrlInput) {
@@ -335,7 +362,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // UI States
-      scannerTerminal.innerHTML = '';
+      const terminalBody = document.getElementById('scannerTerminalBody');
+      if (terminalBody) terminalBody.innerHTML = ''; else scannerTerminal.innerHTML = '';
       scannerTerminal.classList.add('active');
       scannerResults.classList.remove('active');
       if (scanSubmitBtn) {
@@ -385,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (descSec) descSec.textContent = "Hardened SSL/TLS encryption with modern web security headers.";
 
           if (recommendationCopy) {
-            recommendationCopy.innerHTML = `<strong>🏆 Flagship RetroFit Standard:</strong> This site runs on RetroFit's modern high-speed architecture (<strong>99%</strong> health). This is the exact benchmark we deliver to your business!`;
+            recommendationCopy.innerHTML = `<strong style="color:#ffffff;"><i class="ph-bold ph-seal-check" style="color:#4ade80; margin-right:4px;"></i> Flagship RetroFit Standard:</strong> This site runs on RetroFit's modern high-speed architecture (<strong style="color:#4ade80;">99%</strong> health). This is the exact benchmark we deliver to your business!`;
           }
 
           scannerResults.classList.add('active');
@@ -587,9 +615,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (requestedPlanSelect && plan) {
         requestedPlanSelect.value = plan;
+        requestedPlanSelect.style.borderColor = 'var(--orange-500)';
+        requestedPlanSelect.style.boxShadow = '0 0 16px rgba(222, 87, 60, 0.45)';
+        setTimeout(() => {
+          requestedPlanSelect.style.borderColor = '';
+          requestedPlanSelect.style.boxShadow = '';
+        }, 2200);
       }
       if (clientNotes && plan) {
         clientNotes.value = `I am interested in the ${plan}. Please send me more details and a custom proposal for my business!`;
+      }
+    });
+  });
+
+  
+  // Scanner Sample Chips Auto-Filler
+  const sampleChipBtns = document.querySelectorAll('.sample-chip-btn');
+  sampleChipBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const url = btn.getAttribute('data-url');
+      if (scanUrlInput && url) {
+        scanUrlInput.value = url;
+        if (scannerForm) {
+          scannerForm.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
       }
     });
   });
@@ -637,12 +686,165 @@ document.addEventListener('DOMContentLoaded', () => {
 
         contactForm.style.display = 'none';
         formSuccess.classList.add('active');
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } catch (err) {
         console.error('Submission failed:', err);
         // Fallback display anyway for seamless client UX
         contactForm.style.display = 'none';
         formSuccess.classList.add('active');
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
   }
+
+  // ========================================================================
+  // 7. Hero Real-Time Lead Dispatch Ticker Rotation
+  // ========================================================================
+  const heroRadarLeadBody = document.getElementById('heroRadarLeadBody');
+  if (heroRadarLeadBody) {
+    const heroLeads = [
+      {
+        name: 'Dave M.',
+        loc: 'Plymouth, MN',
+        service: 'Furnace Out • Emergency Replacement',
+        val: '$5,800 Est.',
+        elapsed: '11.4s total elapsed'
+      },
+      {
+        name: 'Brad S.',
+        loc: 'Maple Grove, MN',
+        service: 'Main Water Line Leak Repair',
+        val: '$3,400 Est.',
+        elapsed: '8.9s total elapsed'
+      },
+      {
+        name: 'Tyler K.',
+        loc: 'Otsego, MN',
+        service: 'Full Roof Replacement (Hail Claim)',
+        val: '$14,200 Est.',
+        elapsed: '13.2s total elapsed'
+      },
+      {
+        name: 'Ryan P.',
+        loc: 'Elk River, MN',
+        service: 'Panel Upgrade & EV Charger Install',
+        val: '$4,100 Est.',
+        elapsed: '9.5s total elapsed'
+      }
+    ];
+
+    let currentHeroLeadIdx = 0;
+    setInterval(() => {
+      currentHeroLeadIdx = (currentHeroLeadIdx + 1) % heroLeads.length;
+      const lead = heroLeads[currentHeroLeadIdx];
+
+      heroRadarLeadBody.style.opacity = '0';
+      heroRadarLeadBody.style.transform = 'translateY(4px)';
+
+      setTimeout(() => {
+        heroRadarLeadBody.innerHTML = `
+          <div class="radar-lead-top">
+            <div class="radar-lead-caller">
+              <span class="radar-avatar"><i class="ph-bold ph-user"></i></span>
+              <div>
+                <div class="radar-lead-name">${lead.name} <span class="radar-loc">&bull; ${lead.loc}</span></div>
+                <div class="radar-lead-service">${lead.service}</div>
+              </div>
+            </div>
+            <div class="radar-lead-val">${lead.val}</div>
+          </div>
+          <div class="radar-status-bar">
+            <i class="ph-bold ph-check-circle" style="color: #4ade80;"></i>
+            <span>Instant SMS routed to contractor phone &bull; <strong>${lead.elapsed}</strong></span>
+          </div>
+        `;
+        heroRadarLeadBody.style.opacity = '1';
+        heroRadarLeadBody.style.transform = 'translateY(0)';
+      }, 300);
+    }, 5500);
+  }
+
+  // ========================================================================
+  // 8. Care Plans Monthly vs. Annual Billing Toggle
+  // ========================================================================
+  const careBillingSwitch = document.getElementById('careBillingSwitch');
+  const billingMonthlyLabel = document.getElementById('billingMonthlyLabel');
+  const billingAnnualLabel = document.getElementById('billingAnnualLabel');
+
+  const basicCareAmt = document.getElementById('basicCareAmt');
+  const basicCareCadence = document.getElementById('basicCareCadence');
+  const basicCareNote = document.getElementById('basicCareNote');
+  const basicCareBtn = document.getElementById('basicCareBtn');
+
+  const trackerCareAmt = document.getElementById('trackerCareAmt');
+  const trackerCareCadence = document.getElementById('trackerCareCadence');
+  const trackerCareNote = document.getElementById('trackerCareNote');
+  const trackerCareBtn = document.getElementById('trackerCareBtn');
+
+  function updateCareBilling(isAnnual) {
+    if (isAnnual) {
+      if (billingMonthlyLabel) billingMonthlyLabel.classList.remove('active');
+      if (billingAnnualLabel) billingAnnualLabel.classList.add('active');
+
+      if (basicCareAmt) basicCareAmt.textContent = '$490';
+      if (basicCareCadence) basicCareCadence.textContent = '/year';
+      if (basicCareNote) basicCareNote.innerHTML = '<strong style="color:var(--teal-400);">Save $98/year</strong> &bull; 2 Months Free Included';
+      if (basicCareBtn) {
+        basicCareBtn.textContent = 'Select $490/yr Annual Care';
+        basicCareBtn.setAttribute('data-plan', 'Basic Care & Cloud Hosting ($490/year - 2 Months Free)');
+      }
+
+      if (trackerCareAmt) trackerCareAmt.textContent = '$990';
+      if (trackerCareCadence) trackerCareCadence.textContent = '/year';
+      if (trackerCareNote) trackerCareNote.innerHTML = '<strong style="color:var(--teal-400);">Save $198/year</strong> &bull; 2 Months Free Included';
+      if (trackerCareBtn) {
+        trackerCareBtn.textContent = 'Enroll in $990/yr Annual Lead Tracker';
+        trackerCareBtn.setAttribute('data-plan', 'Lead Tracker & Growth Plan ($990/year - 2 Months Free)');
+      }
+    } else {
+      if (billingMonthlyLabel) billingMonthlyLabel.classList.add('active');
+      if (billingAnnualLabel) billingAnnualLabel.classList.remove('active');
+
+      if (basicCareAmt) basicCareAmt.textContent = '$49';
+      if (basicCareCadence) basicCareCadence.textContent = '/month';
+      if (basicCareNote) basicCareNote.textContent = 'Billed monthly • Cancel anytime';
+      if (basicCareBtn) {
+        basicCareBtn.textContent = 'Select $49/mo Care';
+        basicCareBtn.setAttribute('data-plan', 'Basic Care & Cloud Hosting ($49/mo)');
+      }
+
+      if (trackerCareAmt) trackerCareAmt.textContent = '$99';
+      if (trackerCareCadence) trackerCareCadence.textContent = '/month';
+      if (trackerCareNote) trackerCareNote.textContent = 'Billed monthly • Cancel anytime';
+      if (trackerCareBtn) {
+        trackerCareBtn.textContent = 'Enroll in $99/mo Lead Tracker';
+        trackerCareBtn.setAttribute('data-plan', 'Lead Tracker & Growth Plan ($99/mo)');
+      }
+    }
+  }
+
+  if (careBillingSwitch) {
+    careBillingSwitch.addEventListener('change', (e) => {
+      updateCareBilling(e.target.checked);
+    });
+  }
+
+  if (billingMonthlyLabel) {
+    billingMonthlyLabel.addEventListener('click', () => {
+      if (careBillingSwitch) {
+        careBillingSwitch.checked = false;
+        updateCareBilling(false);
+      }
+    });
+  }
+
+  if (billingAnnualLabel) {
+    billingAnnualLabel.addEventListener('click', () => {
+      if (careBillingSwitch) {
+        careBillingSwitch.checked = true;
+        updateCareBilling(true);
+      }
+    });
+  }
+
 });
