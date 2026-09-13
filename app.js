@@ -13,30 +13,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const navMenu = document.getElementById('navMenu');
 
   if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = navMenu.style.display === 'flex';
-      navMenu.style.display = isOpen ? 'none' : 'flex';
-      if (!isOpen) {
-        navMenu.style.flexDirection = 'column';
-        navMenu.style.position = 'absolute';
-        navMenu.style.top = '100%';
-        navMenu.style.left = '0';
-        navMenu.style.width = '100%';
-        navMenu.style.background = 'rgba(21, 28, 40, 0.98)';
-        navMenu.style.padding = '1.5rem';
-        navMenu.style.borderRadius = '16px'; navMenu.style.boxShadow = '0 16px 36px rgba(0,0,0,0.5)';
-        navMenu.style.border = '1px solid rgba(251, 245, 232, 0.15)';
-        navMenu.style.marginTop = '0.5rem';
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navMenu.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      const icon = navToggle.querySelector('i');
+      if (icon) {
+        icon.className = isOpen ? 'ph-bold ph-x' : 'ph-duotone ph-list';
       }
     });
 
     const menuLinks = navMenu.querySelectorAll('a');
     menuLinks.forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          navMenu.style.display = 'none';
-        }
+        navMenu.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        const icon = navToggle.querySelector('i');
+        if (icon) icon.className = 'ph-duotone ph-list';
       });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        if (navMenu.classList.contains('is-open')) {
+          navMenu.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          const icon = navToggle.querySelector('i');
+          if (icon) icon.className = 'ph-duotone ph-list';
+        }
+      }
     });
   }
 

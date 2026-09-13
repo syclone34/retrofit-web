@@ -3107,10 +3107,29 @@ img {
   font-size: 0.88rem;
 }
 
+/* Hide mobile nav action item on desktop */
+.nav-mobile-action-item {
+  display: none !important;
+}
+
+.contact-direct-call-box {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  border-radius: var(--radius-lg);
+}
+
 @media (max-width: 1024px) {
   .hero-grid, .simulator-grid, .founder-grid, .estimator-layout, .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 3rem;
+  }
+  .hero-content, .hero-visual-wrapper {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   .comparison-bento-grid {
     grid-template-columns: 1fr;
@@ -3122,6 +3141,7 @@ img {
 
 @media (max-width: 860px) {
   .nav-island {
+    position: relative;
     padding: 0.65rem 1.15rem;
   }
   .brand-logo-badge {
@@ -3130,6 +3150,64 @@ img {
   }
   .nav-menu {
     display: none;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
+    background: rgba(16, 22, 33, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(251, 245, 232, 0.16);
+    border-radius: 18px;
+    padding: 1.25rem;
+    gap: 0.35rem;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    z-index: 1001;
+  }
+  .nav-menu.is-open {
+    display: flex !important;
+    animation: mobileNavSlideIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .nav-menu li {
+    width: 100%;
+    list-style: none;
+  }
+  .nav-item-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    border-radius: 10px;
+    transition: all var(--trans-fast);
+  }
+  .nav-item-link:hover,
+  .nav-item-link:active {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--gold-400);
+  }
+  .nav-item-link::after {
+    display: none !important;
+  }
+  .nav-mobile-action-item {
+    display: block !important;
+    margin-top: 0.75rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .nav-menu-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+  }
+  .nav-menu-actions .btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
   }
   .nav-actions .btn-phone,
   .nav-actions .btn-primary {
@@ -3143,17 +3221,48 @@ img {
     height: 44px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     color: #ffffff;
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0;
+    transition: background var(--trans-fast);
   }
-  .nav-mobile-toggle:hover {
-    background: rgba(255, 255, 255, 0.15);
+  .nav-mobile-toggle:hover,
+  .nav-mobile-toggle:active {
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .hero-section {
+    padding: 3rem 0 5rem 0;
+  }
+  .hero-title {
+    font-size: clamp(2rem, 6.5vw, 2.75rem);
+    line-height: 1.12;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+  }
+  .hero-stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    text-align: center;
+    width: 100%;
+  }
+  .hero-stat-card {
+    align-items: center;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .hero-trust-proof {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
   }
   .care-plans-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
   }
   .lab-metrics-strip {
     grid-template-columns: repeat(2, 1fr);
@@ -3164,44 +3273,141 @@ img {
   .scanner-input-form {
     flex-direction: column;
   }
+  .scanner-input-form input {
+    font-size: 16px; /* Prevents auto-zoom on iOS Safari */
+  }
   .founder-card {
-    padding: 2.25rem 1.5rem;
+    padding: 2rem 1.25rem;
   }
   .founder-trust-grid {
     grid-template-columns: 1fr;
   }
+  .founder-action-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .founder-action-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .contact-direct-call-box {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 1rem;
+  }
+  .contact-direct-call-box .btn-phone {
+    width: 100%;
+    justify-content: center;
+  }
   .mobile-action-bar {
     display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(14, 20, 30, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(251, 245, 232, 0.14);
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.5);
+    z-index: 999;
   }
   body {
-    padding-bottom: 70px;
-  }
-  .hero-title {
-    font-size: clamp(2rem, 6vw, 2.5rem);
-  }
-  .hero-stats-row {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    text-align: center;
-  }
-  .hero-stat-card {
-    align-items: center;
+    padding-bottom: calc(85px + env(safe-area-inset-bottom, 0px));
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .hero-deck-features {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
-  .hero-speed-meter-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.85rem;
-    padding: 1rem;
+  .scanner-example-pills {
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  .meter-details {
+  .scanner-example-pills .pill-btn {
+    white-space: normal;
+    text-align: center;
+  }
+  .form-row-dual {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.15rem;
+  }
+  .hero-content .badge {
+    white-space: normal;
+    max-width: 100%;
+    font-size: 0.74rem;
+    padding: 0.4rem 0.85rem;
+    line-height: 1.35;
+  }
+  .hero-title {
+    font-size: clamp(1.85rem, 8vw, 2.35rem);
+    letter-spacing: -0.025em;
+  }
+  .hero-desc {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+  .hero-cta-group {
+    flex-direction: column;
     width: 100%;
+    gap: 0.75rem;
+  }
+  .hero-cta-group .btn {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+    justify-content: center;
+  }
+  .hero-interactive-deck {
+    padding: 1.15rem 0.95rem;
+    border-radius: 18px;
+  }
+  .deck-chrome-bar {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .deck-url-chip {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.55rem;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .hero-speed-meter-card {
+    padding: 0.95rem;
+    gap: 0.85rem;
+  }
+  .meter-score-ring {
+    width: 58px;
+    height: 58px;
+  }
+  .score-number {
+    font-size: 1.25rem;
+  }
+  .meter-title {
+    font-size: 0.92rem;
+  }
+  .meter-tags {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .hero-dispatch-radar-card {
+    padding: 1rem 0.85rem;
+  }
+  .radar-header {
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
   .radar-lead-top {
     flex-direction: column;
@@ -3211,26 +3417,64 @@ img {
   .radar-lead-val {
     align-self: flex-start;
   }
+  .radar-status-bar {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.6rem;
+  }
   .lab-metrics-strip {
     grid-template-columns: 1fr;
   }
   .scanner-scores-grid {
     grid-template-columns: 1fr;
   }
-  .pricing-card, .contact-form-card {
-    padding: 1.5rem;
-  }
-  .form-row-dual {
-    grid-template-columns: 1fr;
+  .pricing-card, .contact-form-card, .care-card, .glass-panel.care-card {
+    padding: 1.25rem 1rem !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
   .section-title {
-    font-size: 1.75rem;
+    font-size: 1.65rem;
+  }
+  .billing-toggle-wrap {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
   }
   .btn {
     width: 100%;
+    justify-content: center;
   }
-  .hero-cta-group {
-    flex-direction: column;
+  .mobile-action-bar-inner {
+    gap: 0.5rem;
+  }
+  .mobile-action-bar .btn {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.82rem;
+  }
+  .care-billing-toggle-container {
+    max-width: 100%;
+    padding: 0.5rem 0.85rem;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+  }
+  .care-card {
+    padding: 1.5rem 1.15rem;
+    max-width: 100%;
+  }
+  .hero-ambient-glow {
     width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes mobileNavSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
