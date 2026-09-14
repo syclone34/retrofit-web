@@ -1755,11 +1755,13 @@ img {
   transition: all var(--trans-fast);
 }
 
-.sample-chip-btn:hover {
-  background: rgba(48, 136, 130, 0.25);
+.sample-chip-btn:hover,
+.sample-chip-btn.active {
+  background: rgba(48, 136, 130, 0.35);
   border-color: var(--teal-400);
   color: #ffffff;
   transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(48, 136, 130, 0.4);
 }
 
 /* Scanner Terminal Window */
