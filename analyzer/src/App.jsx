@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  Shield, Sparkles, Moon, Sun, Search, FileText, ClipboardList, 
+  Shield, Sparkles, Moon, Sun, FileText, ClipboardList, 
   History, Mail, Database, Save, Layers, Camera, CheckSquare, Globe2
 } from 'lucide-react';
-import WebAnalyzer from './components/WebAnalyzer';
 import ProposalEstimator from './components/ProposalEstimator';
 import LegalContract from './components/LegalContract';
 import OutreachEmail from './components/OutreachEmail';
@@ -16,7 +15,7 @@ import SeoStudio from './components/SeoStudio';
 import './App.css';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('analyzer');
+  const [activeTab, setActiveTab] = useState('extractor');
   const [darkMode, setDarkMode] = useState(true);
   const [selectedAudits, setSelectedAudits] = useState([]);
   const [prefilledDomain, setPrefilledDomain] = useState('');
@@ -95,7 +94,7 @@ export default function App() {
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
     setBusinessName(guess);
-    setActiveTab('analyzer');
+    setActiveTab('extractor');
   };
 
   const handleAuditCompleted = (normalizedUrl, resultData = {}) => {
@@ -362,17 +361,6 @@ export default function App() {
         {/* Navigation Tabs bar - Clean segmented pill bar with no ugly scrollbars */}
         <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-zinc-100/90 dark:bg-zinc-900/90 border border-zinc-200/80 dark:border-zinc-800/80 rounded-xl mb-8 no-print no-scrollbar">
           <button
-            onClick={() => setActiveTab('analyzer')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-xs sm:text-sm transition-all whitespace-nowrap ${
-              activeTab === 'analyzer'
-                ? 'bg-white dark:bg-zinc-800 text-blue-600 dark:text-blue-400 shadow-sm border border-zinc-200/80 dark:border-zinc-700/60'
-                : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-200/60 dark:hover:bg-zinc-800/50'
-            }`}
-          >
-            <Search className="h-3.5 w-3.5" /> Site Audit
-          </button>
-
-          <button
             onClick={() => setActiveTab('extractor')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-xs sm:text-sm transition-all whitespace-nowrap ${
               activeTab === 'extractor'
@@ -479,16 +467,6 @@ export default function App() {
 
         {/* Tab View Switcher */}
         <div className="animate-fade-in">
-          {activeTab === 'analyzer' && (
-            <WebAnalyzer
-              onAddAuditToScope={handleAddAuditToScope}
-              selectedAudits={selectedAudits}
-              prefilledUrl={prefilledDomain}
-              clearPrefilled={() => setPrefilledDomain('')}
-              onAuditCompleted={handleAuditCompleted}
-            />
-          )}
-
           {activeTab === 'extractor' && (
             <AssetExtractor
               currentDomain={url}
