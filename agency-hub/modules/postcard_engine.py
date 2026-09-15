@@ -13,6 +13,7 @@ import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 import qrcode
 from dotenv import load_dotenv
+import textwrap
 
 from .pipeline_store import update_lead_status
 
@@ -47,12 +48,16 @@ def parse_usps_address(address_str: str) -> dict:
         return {"street": "Local Service Contractor", "city": "Minneapolis", "state": "MN", "zip": "55401"}
     
     parts = [p.strip() for p in address_str.split(",") if p.strip()]
+    
+    if parts and parts[-1].upper() == "USA":
+        parts.pop()
+        
     if len(parts) >= 3:
-        street = parts[0]
-        city = parts[1]
-        state_zip = parts[2].split()
+        state_zip = parts[-1].split()
         state = state_zip[0] if len(state_zip) > 0 else "MN"
         zip_code = state_zip[1] if len(state_zip) > 1 else ""
+        city = parts[-2]
+        street = ", ".join(parts[:-2])
         return {"street": street, "city": city, "state": state, "zip": zip_code}
     elif len(parts) == 2:
         return {"street": parts[0], "city": parts[1], "state": "MN", "zip": ""}
@@ -167,13 +172,17 @@ def generate_postcard_back(lead: dict, card_type: str = "RESCUE_48H", custom_cop
         y_text += 8
 
     if copy_data.get("greeting"):
-        draw.text((50, y_text), copy_data["greeting"], fill="#334155", font=font_bold)
-        y_text += 32
+        wrapped_greeting = textwrap.wrap(copy_data["greeting"], width=55)
+        for line in wrapped_greeting:
+            draw.text((50, y_text), line, fill="#334155", font=font_bold)
+            y_text += 32
 
     for p_key in ["p1", "p2", "p3"]:
         if copy_data.get(p_key):
-            draw.text((50, y_text), copy_data[p_key], fill="#334155", font=font_body)
-            y_text += 26
+            wrapped_body = textwrap.wrap(copy_data[p_key], width=75)
+            for line in wrapped_body:
+                draw.text((50, y_text), line, fill="#334155", font=font_body)
+                y_text += 26
     y_text += 10
 
     if copy_data.get("offer_title"):
@@ -300,7 +309,7 @@ def export_mailing_csv(leads: list[dict]) -> str:
     df = pd.DataFrame(rows)
     return df.to_csv(index=False)
 
-def dispatch_postcard_api(lead: dict, card_type: str = "RESCUE_48H", live_mode: bool = False) -> dict:
+def dispatch_postcard_api(lead: dict, card_type: str = "RESCUE_48H", custom_copy: dict = None, live_mode: bool = False) -> dict:
     """
     Dispatches a postcard order via Direct Mail API (Lob or PostGrid).
     If in Test Mode or LOB_API_KEY is not configured, provides simulated real-time fulfillment
@@ -309,12 +318,12 @@ def dispatch_postcard_api(lead: dict, card_type: str = "RESCUE_48H", live_mode: 
     postgrid_api_key = os.getenv("POSTGRID_API_KEY", "")
     lob_api_key = os.getenv("LOB_API_KEY", "")
     addr = parse_usps_address(lead.get("Address", ""))
-    biz_name = lead.get("Business Name", "Contractor")
+    biz_name = lead.get("Business Name", "") or "Contractor"
     lead_id = lead.get("ID")
 
     if postgrid_api_key and live_mode:
         try:
-            pdf_bytes = generate_single_postcard_pdf(lead, card_type=card_type)
+            pdf_bytes = generate_single_postcard_pdf(lead, card_type=card_type, custom_copy=custom_copy)
             payload = {
                 "to[companyName]": biz_name,
                 "to[addressLine1]": addr.get("street"),

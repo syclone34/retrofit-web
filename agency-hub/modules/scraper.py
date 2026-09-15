@@ -149,7 +149,7 @@ def run_no_website_scraper(keyword: str, places_api_key: str = None, target_stat
                         "Status": "New",
                         "Full URL": "",
                         "Date Found": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                        "Notes": "Contractor has no website listed on Google Maps. Prime candidate for a $599 new build!",
+                        "Notes": "Contractor has no website listed on Google Maps. Prime candidate for a $499 new build!",
                     }
                     save_lead(lead_data)
                     leads_found.append(lead_data)

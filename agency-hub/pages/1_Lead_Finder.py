@@ -46,7 +46,7 @@ tab_no_web, tab_slow_web, tab_web_dir, tab_paste, tab_csv = st.tabs([
 # 1. No-Website Leads Scraper (from python-tools/no_website_leads.py)
 with tab_no_web:
     render_icon_heading("map-pin-line", "Find Businesses With No Website", "Scrapes Google Places for contractors without websites — perfect for new site builds", badge_color="orange")
-    st.caption("Scrapes Google Places for local contractors with active phone numbers and reviews, but zero website presence. Perfect for $599 New Website Builds!")
+    st.caption("Scrapes Google Places for local contractors with active phone numbers and reviews, but zero website presence. Perfect for $499 New Website Builds!")
     
     col_nw1, col_nw2, col_nw3 = st.columns([2, 1, 1])
     with col_nw1:

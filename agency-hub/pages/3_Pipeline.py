@@ -136,8 +136,8 @@ else:
                     "Pitched SMS",
                     "Followed Up",
                     "Won ($299 Rescue)",
-                    "Won ($599 New Build)",
-                    "Not Interested"
+                    "Won ($499 New Build)",
+                    "Lost / Not Interested"
                 ]
                 curr_status = matching.get("Status", "New")
                 curr_idx = status_options.index(curr_status) if curr_status in status_options else 0

@@ -52,6 +52,7 @@ with m4:
     st.metric("Postage Rate (Lob / USPS)", "$0.72 / unit", "USPS First-Class")
 
 st.write("")
+is_live = st.toggle("🚨 **Enable Live Production Mode (Real API Dispatch)**", value=st.session_state.get("postcard_live_mode", False), key="postcard_live_mode")
 
 tab_single, tab_batch, tab_settings = st.tabs([
     "Single Prospect Mailer",
@@ -98,10 +99,10 @@ with tab_single:
         default_idx = 1 if "No Website" in selected_lead.get("Lead Type", "") else 0
         card_type_label = st.selectbox(
             "Campaign Offer:",
-            ["$299 Website Rescue (Slow/Outdated Sites)", "$599 New Website Build (No Website Sites)"],
+            ["$299 Website Rescue (Slow/Outdated Sites)", "$499 New Website Build (No Website Sites)"],
             index=default_idx
         )
-        card_type = "NEW_BUILD" if "599" in card_type_label else "RESCUE_48H"
+        card_type = "NEW_BUILD" if "499" in card_type_label else "RESCUE_48H"
     with col_bname:
         b_name = st.text_input("Business Name:", value=selected_lead.get("Business Name", ""))
         selected_lead["Business Name"] = b_name
@@ -191,7 +192,7 @@ with tab_single:
         api_btn_label = f"Dispatch via {provider} API ($0.72)" if is_live else f"Dispatch {provider} Test Mailer"
         if st.button(api_btn_label, type="primary", use_container_width=True):
             with st.spinner("Submitting postcard order to direct mail service..."):
-                res = dispatch_postcard_api(selected_lead, card_type=card_type, live_mode=is_live)
+                res = dispatch_postcard_api(selected_lead, card_type=card_type, custom_copy=custom_copy, live_mode=is_live)
                 if res["success"]:
                     st.success(f"{res['message']}")
                     st.info(f"Tracking ID: `{res['tracking_id']}` • Est Delivery: **{res['expected_delivery']}** • Cost: **{res['cost']}**")
@@ -226,9 +227,9 @@ with tab_batch:
         with b_filter_col2:
             batch_offer = st.selectbox(
                 "Campaign Card Type:",
-                ["$299 Website Rescue (Slow/Outdated Sites)", "$599 New Website Build (No Website)"]
+                ["$299 Website Rescue (Slow/Outdated Sites)", "$499 New Website Build (No Website)"]
             )
-            batch_card_type = "NEW_BUILD" if "599" in batch_offer else "RESCUE_48H"
+            batch_card_type = "NEW_BUILD" if "499" in batch_offer else "RESCUE_48H"
         with b_filter_col3:
             st.write("")
             only_with_addr = st.checkbox("Physical address only", value=True)
@@ -292,7 +293,7 @@ with tab_batch:
                 for idx, l in enumerate(batch_leads_list):
                     progress_box.progress((idx + 1) / len(batch_leads_list))
                     status_box.markdown(f"Queueing: `{l.get('Business Name')}`...")
-                    dispatch_postcard_api(l, card_type=batch_card_type, live_mode=st.session_state.get("postcard_live_mode", False))
+                    dispatch_postcard_api(l, card_type=batch_card_type, live_mode=is_live)
                     success_count += 1
 
                 progress_box.empty()
@@ -332,9 +333,7 @@ with tab_settings:
         st.caption("Get your API key at [lob.com](https://lob.com). (Fallback provider)")
     
     with col_k2:
-        live_toggle = st.toggle("Enable Live Production Mode", value=False)
-        st.session_state["postcard_live_mode"] = live_toggle
-        if live_toggle:
+        if is_live:
             st.warning("LIVE MODE ACTIVE: Real credit card charges and real physical mail printing enabled.")
         else:
             st.info("TEST / SANDBOX MODE: Safe sandbox simulations with zero credit card charges.")
