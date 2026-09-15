@@ -1,0 +1,41 @@
+[
+  {
+    "Business Name": "Twin Cities Heating & Cooling",
+    "Domain": "twincitieshvacexample.com",
+    "Rescue Score": 85,
+    "Status": "New Lead",
+    "Trade": "HVAC",
+    "City": "Minneapolis, MN",
+    "Phone": "(612) 555-0182",
+    "Email": "info@twincitieshvacexample.com",
+    "Last Contacted": "2026-09-14 10:00",
+    "Notes": "Outdated WordPress site. Missing mobile tap-to-call. Sluggish 4.8s mobile load.",
+    "Full URL": "https://twincitieshvacexample.com"
+  },
+  {
+    "Business Name": "North Star Roofing Pros",
+    "Domain": "northstarroofingmn.com",
+    "Rescue Score": 70,
+    "Status": "Pitched Email",
+    "Trade": "Roofing",
+    "City": "St. Paul, MN",
+    "Phone": "(651) 555-0144",
+    "Email": "contact@northstarroofingmn.com",
+    "Last Contacted": "2026-09-14 09:30",
+    "Notes": "Pitched Cold Email re: missing tap-to-call on mobile. Awaiting response.",
+    "Full URL": "https://northstarroofingmn.com"
+  },
+  {
+    "Business Name": "Apex Master Plumbers",
+    "Domain": "apexplumbingcrew.com",
+    "Rescue Score": 45,
+    "Status": "Won ($299 Rescue)",
+    "Trade": "Plumbing",
+    "City": "Bloomington, MN",
+    "Phone": "(952) 555-0199",
+    "Email": "service@apexplumbingcrew.com",
+    "Last Contacted": "2026-09-12 14:15",
+    "Notes": "Rescued in 48 hours! Added instant SMS lead routing. Client loves it.",
+    "Full URL": "https://apexplumbingcrew.com"
+  }
+]

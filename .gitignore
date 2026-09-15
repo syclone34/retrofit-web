@@ -3,3 +3,5 @@ analyzer/dist/
 analyzer/dist-desktop/
 *.log
 .DS_Store
+
+agency-hub/data/*.json
