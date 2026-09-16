@@ -5,3 +5,4 @@ analyzer/dist-desktop/
 .DS_Store
 
 agency-hub/data/*.json
+.env*
