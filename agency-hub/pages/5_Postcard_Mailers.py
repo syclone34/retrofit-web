@@ -163,12 +163,12 @@ with tab_single:
     with col_front:
         st.caption("FRONT (Commercial Artwork)")
         front_img = get_postcard_front(card_type)
-        st.image(front_img, caption=f"Front: {card_type_label}", use_container_width=True)
+        st.image(front_img, caption=f"Front: {card_type_label}", width='stretch')
 
     with col_back:
         st.caption("BACK (Personalized Letter, QR Code & USPS Address Block)")
         back_img = generate_postcard_back(selected_lead, card_type=card_type, custom_copy=custom_copy)
-        st.image(back_img, caption=f"Back: Personalized for {b_name}", use_container_width=True)
+        st.image(back_img, caption=f"Back: Personalized for {b_name}", width='stretch')
 
     # Action Toolbar
     st.divider()
@@ -182,7 +182,7 @@ with tab_single:
             data=pdf_bytes,
             file_name=f"retrofit_postcard_{safe_biz or 'lead'}.pdf",
             mime="application/pdf",
-            use_container_width=True
+            width='stretch'
         )
 
     with act_col2:
@@ -190,7 +190,7 @@ with tab_single:
         has_postgrid = bool(os.getenv("POSTGRID_API_KEY", ""))
         provider = "PostGrid" if has_postgrid else "Lob"
         api_btn_label = f"Dispatch via {provider} API ($0.72)" if is_live else f"Dispatch {provider} Test Mailer"
-        if st.button(api_btn_label, type="primary", use_container_width=True):
+        if st.button(api_btn_label, type="primary", width='stretch'):
             with st.spinner("Submitting postcard order to direct mail service..."):
                 res = dispatch_postcard_api(selected_lead, card_type=card_type, custom_copy=custom_copy, live_mode=is_live)
                 if res["success"]:
@@ -201,7 +201,7 @@ with tab_single:
                     st.error(f"Failed to dispatch: {res['message']}")
 
     with act_col3:
-        if st.button("Mark as Sent in CRM Pipeline", use_container_width=True):
+        if st.button("Mark as Sent in CRM Pipeline", width='stretch'):
             lead_id = selected_lead.get("ID")
             if lead_id:
                 update_lead_status(lead_id, "Postcard Sent", f"Postcard mailer ({card_type_label}) dispatched to {b_addr}")
@@ -244,7 +244,7 @@ with tab_batch:
 
         st.dataframe(
             batch_df[["ID", "Business Name", "Address", "Lead Type", "Phone", "Status", "Rescue Score"]],
-            use_container_width=True,
+            width='stretch',
             hide_index=True
         )
 
@@ -265,7 +265,7 @@ with tab_batch:
                     data=batch_pdf,
                     file_name=f"retrofit_batch_postcards_{batch_card_type.lower()}.pdf",
                     mime="application/pdf",
-                    use_container_width=True
+                    width='stretch'
                 )
 
         with batch_col2:
@@ -278,14 +278,14 @@ with tab_batch:
                     data=csv_labels.encode("utf-8"),
                     file_name="retrofit_mailing_labels.csv",
                     mime="text/csv",
-                    use_container_width=True
+                    width='stretch'
                 )
 
         with batch_col3:
             st.markdown("##### 3. Batch API Send")
             est_cost = len(batch_leads_list) * 0.72
             st.caption(f"Estimated USPS First-Class postage: **${est_cost:.2f}** ({len(batch_leads_list)} @ $0.72)")
-            if st.button("Queue All via Direct Mail API", type="primary", use_container_width=True):
+            if st.button("Queue All via Direct Mail API", type="primary", width='stretch'):
                 success_count = 0
                 progress_box = st.progress(0.0)
                 status_box = st.empty()
@@ -349,6 +349,6 @@ with tab_settings:
     else:
         st.dataframe(
             sent_df[["ID", "Business Name", "Address", "Phone", "Status", "Notes"]],
-            use_container_width=True,
+            width='stretch',
             hide_index=True
         )

@@ -43,7 +43,7 @@ with col_conf2:
 
     creds_path = st.text_input("Service Account JSON Path", value=default_creds)
 
-run_ga4_btn = st.button("Fetch GA4 Engagement Report", type="primary", use_container_width=True)
+run_ga4_btn = st.button("Fetch GA4 Engagement Report", type="primary", width='stretch')
 
 if run_ga4_btn:
     if not property_id:
@@ -111,7 +111,7 @@ if "ga4_df" in st.session_state:
     formatted_df["Engagement Rate"] = formatted_df["Engagement Rate"].map(lambda x: f"{x*100:.1f}%")
     formatted_df["Avg Session Duration"] = formatted_df["Avg Session Duration"].map(lambda x: f"{x:.1f}s")
 
-    st.dataframe(formatted_df, use_container_width=True, hide_index=True)
+    st.dataframe(formatted_df, width='stretch', hide_index=True)
 
     st.divider()
 

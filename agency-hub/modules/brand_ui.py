@@ -234,7 +234,7 @@ def render_brand_header(title: str, subtitle: str, badge_text: str = "RetroFit A
     col_logo, col_text = st.columns([1, 6])
     with col_logo:
         if os.path.exists(LOGO_PATH):
-            st.image(LOGO_PATH, use_container_width=True)
+            st.image(LOGO_PATH, width='stretch')
     with col_text:
         st.markdown(f'<span class="pill-teal">{badge_text}</span>', unsafe_allow_html=True)
         st.markdown(f'<h1 class="brand-title-gradient" style="margin-top:4px; margin-bottom:4px;">{title}</h1>', unsafe_allow_html=True)

@@ -118,7 +118,7 @@ with tab_web_dir:
     with search_col3:
         lead_limit = st.slider("Max Results", min_value=5, max_value=25, value=10, step=5)
 
-    search_btn = st.button("Search & Scrape Directory", type="primary", use_container_width=True)
+    search_btn = st.button("Search & Scrape Directory", type="primary", width='stretch')
     if search_btn:
         with st.spinner(f"Searching web directories for {selected_trade} in {target_city}..."):
             raw_candidates = search_contractors_web(selected_trade, target_city, limit=lead_limit)
@@ -216,7 +216,7 @@ if not pipe_df.empty:
     # Store selection in session state or derive from table event
     table_event = st.dataframe(
         filtered_df[[c for c in display_cols if c in filtered_df.columns]],
-        use_container_width=True,
+        width='stretch',
         hide_index=True,
         selection_mode="single-row",
         on_select="rerun",
@@ -276,7 +276,7 @@ if not pipe_df.empty:
             data=csv_data,
             file_name="retrofit_contractor_leads.csv",
             mime="text/csv",
-            use_container_width=True
+            width='stretch'
         )
 
     if lead_options and selected_lead_str:
@@ -328,19 +328,19 @@ if not pipe_df.empty:
             # Actions Bar
             act_col1, act_col2, act_col3 = st.columns(3)
             with act_col1:
-                if st.button("Draft Cold Outreach Pitch ➔", type="primary", use_container_width=True, key=f"btn_pitch_{current_idx}"):
+                if st.button("Draft Cold Outreach Pitch ➔", type="primary", width='stretch', key=f"btn_pitch_{current_idx}"):
                     st.session_state["selected_lead_data"] = current_row
                     st.session_state["selected_url"] = current_row.get("Website") or ""
                     st.switch_page("pages/2_Pitch_Drafter.py")
             with act_col2:
-                if st.button("Create Postcard Mailer ➔", use_container_width=True, key=f"btn_card_{current_idx}"):
+                if st.button("Create Postcard Mailer ➔", width='stretch', key=f"btn_card_{current_idx}"):
                     st.session_state["selected_lead_data"] = current_row
                     st.switch_page("pages/5_Postcard_Mailers.py")
             with act_col3:
                 web_url = current_row.get("Website")
                 if web_url and web_url.startswith("http"):
-                    st.link_button("Visit Contractor Site ↗", url=web_url, use_container_width=True)
+                    st.link_button("Visit Contractor Site ↗", url=web_url, width='stretch')
                 else:
                     gmap_query = f"https://www.google.com/maps/search/{current_row.get('Business Name', '')}+{current_row.get('Address', '')}".replace(" ", "+")
-                    st.link_button("Search on Google Maps ↗", url=gmap_query, use_container_width=True)
+                    st.link_button("Search on Google Maps ↗", url=gmap_query, width='stretch')
 

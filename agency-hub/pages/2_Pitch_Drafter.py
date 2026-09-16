@@ -48,7 +48,7 @@ with col_meta:
         city_val = preloaded_data.get("City") or preloaded_data.get("Address", "") if preloaded_data else ""
         city = st.text_input("City / Market", value=city_val, placeholder="e.g. Minneapolis, MN")
 
-audit_btn = st.button("Inspect & Generate Pitches", type="primary", use_container_width=True)
+audit_btn = st.button("Inspect & Generate Pitches", type="primary", width='stretch')
 
 # Determine if we should audit or use preloaded no-website data
 if audit_btn or "current_audit" not in st.session_state or st.session_state.get("last_audited_url") != target_url:
@@ -148,7 +148,7 @@ if "current_audit" in st.session_state:
         
         send_col1, send_col2 = st.columns([1, 2])
         with send_col1:
-            if st.button("Send Email via SMTP Now", type="primary", use_container_width=True):
+            if st.button("Send Email via SMTP Now", type="primary", width='stretch'):
                 if not send_to_email or "@" not in send_to_email:
                     st.error("Please enter a valid recipient email address above.")
                 else:
@@ -192,7 +192,7 @@ if "current_audit" in st.session_state:
     # Pipeline Action Bar
     pipe_col1, pipe_col2 = st.columns(2)
     with pipe_col1:
-        if st.button("Save / Update Lead in Database", use_container_width=True):
+        if st.button("Save / Update Lead in Database", width='stretch'):
             save_lead({
                 "Business Name": audit["business_name"],
                 "Domain": audit["domain"],
@@ -208,7 +208,7 @@ if "current_audit" in st.session_state:
             st.success(f"Saved {audit['business_name']} to leads.db!")
 
     with pipe_col2:
-        if st.button("Mark as Contacted (SMS Sent)", use_container_width=True):
+        if st.button("Mark as Contacted (SMS Sent)", width='stretch'):
             save_lead({
                 "Business Name": audit["business_name"],
                 "Domain": audit["domain"],

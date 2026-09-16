@@ -77,7 +77,7 @@ else:
 
     st.dataframe(
         view_df[available_cols],
-        use_container_width=True,
+        width='stretch',
         hide_index=True,
         column_config={
             "ID": st.column_config.NumberColumn("ID", width="small"),
@@ -148,17 +148,17 @@ else:
 
             act_col1, act_col2, act_col3 = st.columns(3)
             with act_col1:
-                if st.button("Save Lead Updates", type="primary", use_container_width=True):
+                if st.button("Save Lead Updates", type="primary", width='stretch'):
                     update_lead_status(lead_id, new_status, new_notes, new_email)
                     st.success(f"Updated lead #{lead_id}!")
                     st.rerun()
             with act_col2:
-                if st.button("Delete Lead", use_container_width=True):
+                if st.button("Delete Lead", width='stretch'):
                     delete_lead_by_id(lead_id)
                     st.warning(f"Deleted lead #{lead_id}!")
                     st.rerun()
             with act_col3:
-                if st.button("Open in Pitch Drafter", use_container_width=True):
+                if st.button("Open in Pitch Drafter", width='stretch'):
                     st.session_state["selected_url"] = matching.get("Website", "")
                     st.session_state["selected_lead_data"] = matching.to_dict()
                     st.switch_page("pages/2_Pitch_Drafter.py")

@@ -119,7 +119,7 @@ test_col1, test_col2 = st.columns([3, 1])
 with test_col1:
     quick_url = st.text_input("Enter contractor website URL", placeholder="e.g. acmeheatingmn.com", label_visibility="collapsed")
 with test_col2:
-    run_quick = st.button("Run Instant Audit", type="primary", use_container_width=True)
+    run_quick = st.button("Run Instant Audit", type="primary", width='stretch')
 
 if run_quick and quick_url:
     with st.spinner("Auditing site for mobile UX, CMS, and tap-to-call..."):
