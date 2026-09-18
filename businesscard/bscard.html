@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroFit Business Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Extracted colors from your RetroFit logo */
+            --navy: #151f2a;
+            --cream: #ebd8b7;
+            --orange: #df5331;
+            --yellow: #fab936;
+            --teal: #218380;
+        }
+
+        body {
+            background-color: #2a3b4c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Business Card Container (Standard US Size 3.5" x 2") */
+        .card {
+            width: 3.5in;
+            height: 2in;
+            background-color: var(--navy);
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            color: var(--cream);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+        }
+
+        /* Front of Card */
+        .card-front {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid var(--cream);
+            box-sizing: border-box;
+            background-image: linear-gradient(135deg, var(--navy) 0%, #1c2a38 100%);
+        }
+
+        .card-front img {
+            width: 60%;
+            max-width: 180px;
+            filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.3));
+        }
+
+        /* Back of Card */
+        .card-back {
+            background-color: var(--cream);
+            color: var(--navy);
+            border: 4px solid var(--navy);
+            box-sizing: border-box;
+            display: flex;
+        }
+
+        .back-left {
+            width: 40%;
+            background-color: var(--navy);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            position: relative;
+        }
+        
+        .back-left .logo {
+            width: 90%;
+            margin-bottom: 12px;
+        }
+
+        /* QR Code Styling */
+        .back-left .qr-code {
+            width: 55px;
+            height: 55px;
+            border: 2px solid var(--cream);
+            border-radius: 4px;
+            padding: 2px;
+            background-color: white;
+        }
+
+        .back-right {
+            width: 60%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .name {
+            font-family: 'Lobster', cursive;
+            font-size: 26px;
+            color: var(--orange);
+            margin: 0 0 4px 0;
+            line-height: 1;
+        }
+
+        .title {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin: 0 0 15px 0;
+            border-bottom: 2px solid var(--navy);
+            padding-bottom: 6px;
+        }
+
+        .contact-info {
+            font-size: 10px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        /* Bullet points colored like the logo */
+        .icon {
+            width: 12px;
+            height: 12px;
+            background-color: var(--yellow);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .icon.orange { background-color: var(--orange); }
+        .icon.teal { background-color: var(--teal); }
+
+        .label-container {
+            text-align: center;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            letter-spacing: 3px;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <div class="label-container">FRONT</div>
+        <div class="card card-front">
+            <!-- Your uploaded logo -->
+            <img src="C:/Users/syclo/.gemini/antigravity/brain/1b861227-e1ac-446d-85ff-32018b8b1bd3/.user_uploaded/media_1789516079727.png" alt="RetroFit Logo">
+        </div>
+    </div>
+
+    <div>
+        <div class="label-container">BACK</div>
+        <div class="card card-back">
+            <div class="back-left">
+                <!-- Logo -->
+                <img class="logo" src="C:/Users/syclo/.gemini/antigravity/brain/1b861227-e1ac-446d-85ff-32018b8b1bd3/.user_uploaded/media_1789516079727.png" alt="RetroFit Logo">
+                
+                <!-- QR Code (Currently dynamically generating a link to https://retrofitwebdesign.com) -->
+                <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://retrofitwebdesign.com" alt="QR Code">
+            </div>
+            <div class="back-right">
+                <h1 class="name">Cole Fuller</h1>
+                <p class="title">Lead Web Designer</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="icon orange"></span>
+                        612-516-3145
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon teal"></span>
+                        cole@retrofitwebdesign.com
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon yellow"></span>
+                        retrofitwebdesign.com
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

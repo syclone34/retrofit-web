@@ -170,6 +170,25 @@ def update_lead_status(lead_id: int, new_status: str, notes: str = None, email: 
     finally:
         conn.close()
 
+def update_lead_full(lead_id: int, b_name: str, status: str, notes: str, lead_type: str, phone: str, email: str, address: str) -> bool:
+    """Fully updates a lead record from inline grid edits."""
+    _init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute('''
+            UPDATE leads 
+            SET business_name = ?, status = ?, notes = ?, lead_type = ?, phone_number = ?, email = ?, address = ?
+            WHERE id = ?
+        ''', (b_name, status, notes, lead_type, phone, email, address, lead_id))
+        conn.commit()
+        return True
+    except Exception as e:
+        print(f"Error updating lead full: {e}")
+        return False
+    finally:
+        conn.close()
+
 def delete_lead_by_id(lead_id: int) -> bool:
     """Delete a lead by its database ID."""
     _init_db()

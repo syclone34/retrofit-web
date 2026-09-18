@@ -8,7 +8,7 @@ import os
 import streamlit as st
 import pandas as pd
 from modules.brand_ui import apply_retrofit_theme, render_brand_header, render_icon_heading, ph_icon, LOGO_PATH
-from modules.pipeline_store import get_pipeline_df, update_lead_status, delete_lead_by_id
+from modules.pipeline_store import get_pipeline_df, update_lead_status, delete_lead_by_id, update_lead_full
 from modules.email_sender import send_pitch_email, get_smtp_config
 
 st.set_page_config(
@@ -71,15 +71,23 @@ else:
             view_df["Phone"].str.contains(kw, na=False)
         ]
 
-    # Data Table
+    # Data Table (Interactive Grid)
     display_cols = ["ID", "Business Name", "Status", "Rescue Score", "Notes", "Lead Type", "Phone", "Email", "Address", "Date Found"]
     available_cols = [c for c in display_cols if c in view_df.columns]
 
-    st.dataframe(
-        view_df[available_cols],
+    # Add Selection Column
+    view_df.insert(0, "Select", False)
+
+    st.caption("💡 **Tip:** Double-click any cell to edit it directly! Check the boxes on the left to select multiple leads for bulk actions.")
+
+    # Using session_state for data_editor key allows us to track changes, but for simplicity we can just compare edited_df to view_df
+    edited_df = st.data_editor(
+        view_df[["Select"] + available_cols],
         width='stretch',
         hide_index=True,
+        disabled=["ID", "Rescue Score", "Date Found"],
         column_config={
+            "Select": st.column_config.CheckboxColumn("Select", default=False),
             "ID": st.column_config.NumberColumn("ID", width="small"),
             "Rescue Score": st.column_config.ProgressColumn(
                 "Rescue Score",
@@ -88,16 +96,75 @@ else:
                 max_value=100,
                 width="small"
             ),
+            "Date Found": st.column_config.TextColumn("Date Found"),
             "Notes": st.column_config.TextColumn(
                 "Notes & Outreach Log",
                 width="large",
                 help="Outreach logs, audit flaws, and follow-up notes"
             ),
-            "Status": st.column_config.TextColumn("Status", width="small"),
+            "Status": st.column_config.SelectboxColumn("Status", width="small", options=[
+                "New", "Contacted", "Pitched Email", "Pitched SMS", "Followed Up", "Won ($299 Rescue)", "Won ($499 New Build)", "Lost / Not Interested"
+            ]),
+            "Lead Type": st.column_config.TextColumn("Lead Type", width="small"),
             "Phone": st.column_config.TextColumn("Phone", width="small"),
             "Email": st.column_config.TextColumn("Email", width="small"),
         }
     )
+
+    st.write("")
+    b_col1, b_col2, b_col3 = st.columns(3)
+
+    # Calculate selected rows
+    selected_rows = edited_df[edited_df["Select"] == True]
+    selected_ids = selected_rows["ID"].tolist()
+    has_selection = len(selected_ids) > 0
+
+    with b_col1:
+        if st.button(f"🗑️ Delete {len(selected_ids)} Selected Leads", type="primary", disabled=not has_selection, width="stretch"):
+            for lid in selected_ids:
+                delete_lead_by_id(lid)
+            st.success(f"Deleted {len(selected_ids)} leads!")
+            st.rerun()
+            
+    with b_col2:
+        bulk_status_options = ["Update Status (Bulk)"] + ["New", "Contacted", "Pitched Email", "Pitched SMS", "Followed Up", "Won ($299 Rescue)", "Won ($499 New Build)", "Lost / Not Interested"]
+        bulk_status = st.selectbox("Bulk Status", bulk_status_options, label_visibility="collapsed", disabled=not has_selection)
+        if bulk_status != "Update Status (Bulk)" and has_selection:
+            for lid in selected_ids:
+                update_lead_status(lid, bulk_status)
+            st.success(f"Updated {len(selected_ids)} leads to {bulk_status}!")
+            st.rerun()
+
+    with b_col3:
+        if st.button("💾 Save Inline Grid Edits", type="primary", width="stretch"):
+            # Identify changes between view_df and edited_df (excluding Select column)
+            updates_made = 0
+            for idx, row in edited_df.iterrows():
+                orig_row = view_df.iloc[idx]
+                if (row["Business Name"] != orig_row["Business Name"] or 
+                    row["Status"] != orig_row["Status"] or 
+                    row["Notes"] != orig_row["Notes"] or
+                    row["Lead Type"] != orig_row["Lead Type"] or
+                    row["Phone"] != orig_row["Phone"] or
+                    row["Email"] != orig_row["Email"] or
+                    row.get("Address", "") != orig_row.get("Address", "")):
+                    
+                    update_lead_full(
+                        row["ID"], 
+                        row["Business Name"], 
+                        row["Status"], 
+                        row.get("Notes", ""), 
+                        row.get("Lead Type", ""), 
+                        row.get("Phone", ""), 
+                        row.get("Email", ""),
+                        row.get("Address", "")
+                    )
+                    updates_made += 1
+            if updates_made > 0:
+                st.success(f"Successfully saved {updates_made} edited records to the database!")
+                st.rerun()
+            else:
+                st.info("No inline edits detected.")
 
     # Export Button
     csv_data = view_df.to_csv(index=False).encode("utf-8")
