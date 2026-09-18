@@ -31,9 +31,8 @@ export default function App() {
       <main>
         <Hero onOpenQuote={() => setIsQuoteOpen(true)} />
         <TrustStrip />
-        <BeforeAfterSlider />
+        <BeforeAfterSection onOpenQuote={() => setIsQuoteOpen(true)} />
         <Services onOpenQuote={() => setIsQuoteOpen(true)} />
-        <Portfolio />
         <SavingsComparison onOpenQuote={() => setIsQuoteOpen(true)} />
         <MeetRachael onOpenQuote={() => setIsQuoteOpen(true)} />
         <Testimonials />
@@ -78,37 +77,14 @@ function TopBar() {
   );
 }
 
-function BrandLogo() {
+function BrandLogo({ className = '' }) {
   return (
-    <a href="#" className="brand-logo" aria-label="Simply Rachael Home">
-      <div className="brand-logo-mark">
-        <svg width="40" height="40" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="brandGold" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f3deb0" />
-              <stop offset="50%" stopColor="#c5a059" />
-              <stop offset="100%" stopColor="#957434" />
-            </linearGradient>
-            <linearGradient id="brandGoldFill" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#c5a059" stopOpacity="0.12" />
-              <stop offset="100%" stopColor="#c5a059" stopOpacity="0.02" />
-            </linearGradient>
-          </defs>
-          {/* Architectural cabinet frame with beveled corners */}
-          <rect x="3" y="3" width="38" height="38" rx="7" stroke="url(#brandGold)" strokeWidth="1.5" fill="url(#brandGoldFill)" />
-          {/* Inner craftsman molding inset */}
-          <rect x="7.5" y="7.5" width="29" height="29" rx="3.5" stroke="url(#brandGold)" strokeWidth="0.8" strokeOpacity="0.5" />
-          {/* Modern craftsman stylized 'SR' monogram */}
-          <path d="M15 16.5C15 14.5 16.8 13.2 19.5 13.2C22.2 13.2 23.5 14.5 23.5 16.2C23.5 18.5 20.8 19.8 18 20.8C15 21.8 13.5 23.4 13.5 26C13.5 28.5 15.5 30.5 19 30.5C21.8 30.5 23.8 29.2 24.2 28" stroke="url(#brandGold)" strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M23 15.5H27C28.8 15.5 30 16.8 30 18.5C30 20.2 28.8 21.5 27 21.5H23V28.5M23 21.5H26.5L30 28.5" stroke="url(#brandGold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-          {/* Diamond point accent */}
-          <polygon points="22,5.5 23.5,7 22,8.5 20.5,7" fill="url(#brandGold)" />
-        </svg>
-      </div>
-      <div className="brand-text">
-        <span className="brand-title-main">Simply Rachael</span>
-        <span className="brand-subtitle">Fine Cabinetry & Woodwork</span>
-      </div>
+    <a href="#" className={`brand-logo ${className}`} aria-label="Simply Rachael - Fine Cabinetry & Wood Work">
+      <img
+        src="/brand_logo.png"
+        alt="Simply Rachael - Fine Cabinetry & Wood Work"
+        className="brand-logo-img"
+      />
     </a>
   );
 }
@@ -128,9 +104,8 @@ function Navbar({ onOpenQuote }) {
         <BrandLogo />
 
         <div className="nav-menu">
-          <a href="#transformations">Transformations</a>
+          <a href="#transformations">Before & Afters</a>
           <a href="#services">Services</a>
-          <a href="#portfolio">Gallery</a>
           <a href="#comparison">Why Refinish</a>
           <a href="#about">About</a>
           <a href="#reviews">Reviews</a>
@@ -157,7 +132,7 @@ function Hero({ onOpenQuote }) {
   return (
     <section className="hero">
       <div className="hero-background-art">
-        <img src="/hero.jpg" alt="Custom Kitchen Woodwork" />
+        <img src="/after.jpg" alt="Custom Kitchen Woodwork" />
       </div>
 
       <div className="container hero-grid">
@@ -212,19 +187,18 @@ function Hero({ onOpenQuote }) {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="hero-card-glow"></div>
-          <div className="hero-main-card">
+          <div className="hero-logo-showcase">
             <div className="hero-floating-badge">
-              <Sparkles size={14} /> Signature Refinishing
+              <Sparkles size={14} /> Master Craftsmanship
             </div>
-            <img src="/hero.jpg" alt="Simply Rachael Custom Kitchen" className="hero-card-img" />
-            <div className="hero-card-overlay">
-              <div>
-                <p className="hero-card-tag">Recent Transformation</p>
-                <h3 className="hero-card-title">Custom Kitchen Island & Cabinets</h3>
-              </div>
-              <a href="#transformations" className="btn-outline-gold" style={{ padding: '0.45rem 0.9rem', fontSize: '0.75rem' }}>
-                Explore
-              </a>
+            <img
+              src="/Simply_Rachael_Logo.png"
+              alt="Simply Rachael - Fine Cabinetry & Wood Work"
+              className="hero-showcase-logo-img"
+            />
+            <div className="hero-logo-showcase-footer">
+              <span className="hero-logo-showcase-tag">Elk River & NW Metro Local</span>
+              <span className="hero-logo-showcase-sub">Fine Cabinetry & Wood Work</span>
             </div>
           </div>
         </motion.div>
@@ -280,46 +254,174 @@ function TrustStrip() {
 }
 
 /* ============================================================
-   INTERACTIVE BEFORE & AFTER SLIDER
+   TRANSFORMATION PROJECTS DATA (11 REAL BEFORE & AFTERS)
    ============================================================ */
-function BeforeAfterSlider() {
-  const [sliderPos, setSliderPos] = useState(50);
-  const containerRef = useRef(null);
-  const isDragging = useRef(false);
+const TRANSFORMATION_PROJECTS = [
+  {
+    id: 1,
+    title: 'Full Kitchen & Island Enamel Transformation',
+    category: 'Kitchen Cabinets',
+    before: '/before.jpg',
+    after: '/after.jpg',
+    beforeDesc: 'Dated 90s Honey Oak & Mismatched Island',
+    afterDesc: 'Designer Sage Enamel & Dark Bronze Hardware',
+    details: 'Complete honey oak cabinet conversion to custom designer sage enamel with contrasting island and oil-rubbed bronze hardware.',
+    savings: '$14,000 Saved vs. Replacement',
+    timeline: '4 Days Turnaround',
+    finish: 'Sage Enamel • Matte Bronze Knobs',
+    tag: 'Flagship Project'
+  },
+  {
+    id: 2,
+    title: 'Under-Sink & Base Cabinet Makeover',
+    category: 'Kitchen Cabinets',
+    before: '/before_2.jpg',
+    after: '/after_2.jpg',
+    beforeDesc: 'Worn Golden Oak Sink Base',
+    afterDesc: 'Modern Slate Grey Satin Enamel',
+    details: 'Dated golden oak base cabinetry converted to modern slate grey enamel with precision edge spraying.',
+    savings: '$4,200 Saved',
+    timeline: '3 Days Turnaround',
+    finish: 'Slate Grey Satin Enamel',
+    tag: 'Base Cabinetry'
+  },
+  {
+    id: 3,
+    title: 'Full Perimeter Cabinetry Refinishing',
+    category: 'Kitchen Cabinets',
+    before: '/before_3.jpg',
+    after: '/after_3.jpg',
+    beforeDesc: 'Orange Builder Oak',
+    afterDesc: 'Crisp Architectural Enamel',
+    details: 'Full perimeter cabinet refinishing eliminating heavy orange wood tones for a bright, open aesthetic.',
+    savings: '$9,500 Saved',
+    timeline: '4 Days Turnaround',
+    finish: 'Architectural Enamel',
+    tag: 'Perimeter Wall'
+  },
+  {
+    id: 4,
+    title: 'Upper & Lower Wall Cabinet Renewal',
+    category: 'Kitchen Cabinets',
+    before: '/before_4.jpg',
+    after: '/after_4.jpg',
+    beforeDesc: 'Faded Oak Wall Run',
+    afterDesc: 'Ultra-Smooth Factory Finish',
+    details: 'Seamless wall cabinet renewal with multi-stage prep and industrial bonding primer.',
+    savings: '$8,000 Saved',
+    timeline: '3-4 Days Turnaround',
+    finish: 'Smooth Factory Enamel',
+    tag: 'Full Wall Run'
+  },
+  {
+    id: 5,
+    title: 'Kitchen Peninsula & Countertop Cabinet Refresh',
+    category: 'Kitchen Island',
+    before: '/before_5.jpg',
+    after: '/after_5.jpg',
+    beforeDesc: 'Scratched Oak Peninsula',
+    afterDesc: 'Eucalyptus Green Enamel',
+    details: 'Deep cleaning, grain-smoothing, and factory-smooth coating on high-traffic peninsula cabinets.',
+    savings: '$5,500 Saved',
+    timeline: '3 Days Turnaround',
+    finish: 'Eucalyptus Green Enamel',
+    tag: 'Peninsula Island'
+  },
+  {
+    id: 6,
+    title: 'Cooktop & Range Surround Cabinet Makeover',
+    category: 'Kitchen Cabinets',
+    before: '/before_6.jpg',
+    after: '/after_6.jpg',
+    beforeDesc: 'Grease-Stained Oak Range Cabinets',
+    afterDesc: 'Hardened Grease-Resistant Enamel',
+    details: 'Heat and grease-resistant industrial enamel application around stove and ventilation surround.',
+    savings: '$6,200 Saved',
+    timeline: '3 Days Turnaround',
+    finish: 'Heat & Grease-Resistant Enamel',
+    tag: 'Range Surround'
+  },
+  {
+    id: 7,
+    title: 'Mudroom Cubbies & Storage Makeover',
+    category: 'Mudroom & Storage',
+    before: '/before_7.jpg',
+    after: '/after_7.jpg',
+    beforeDesc: 'Dated Oak Cubbies',
+    afterDesc: 'Contemporary Warm Enamel',
+    details: 'Refinished mudroom cubbies and storage compartments with a highly durable, scuff-resistant coating, perfect for high-traffic areas.',
+    savings: '$4,500 Saved',
+    timeline: '3 Days Turnaround',
+    finish: 'Contemporary Warm Enamel',
+    tag: 'Mudroom'
+  },
+  {
+    id: 8,
+    title: 'Railing & Spindle Modernization',
+    category: 'Interior Woodwork',
+    before: '/before_8.jpg',
+    after: '/after_8.jpg',
+    beforeDesc: 'Outdated Wooden Railing',
+    afterDesc: 'Sleek Two-Tone Railing',
+    details: 'Modernized a dated oak railing with a striking two-tone finish, featuring crisp white spindles and a rich, dark handrail.',
+    savings: '$3,500 Saved',
+    timeline: '2-3 Days Turnaround',
+    finish: 'Durable Two-Tone Enamel',
+    tag: 'Railing'
+  },
+  {
+    id: 9,
+    title: 'Built-in Microwave Nook & Oven Surround',
+    category: 'Built-in Woodwork',
+    before: '/before_9.jpg',
+    after: '/after_9.jpg',
+    beforeDesc: 'Dated Oak Appliance Nook',
+    afterDesc: 'Satin Architectural Enamel',
+    details: 'Clean line transitions and factory edge detailing around appliance cutouts and crown moldings.',
+    savings: '$5,000 Saved',
+    timeline: '3 Days Turnaround',
+    finish: 'Satin Architectural Enamel',
+    tag: 'Appliance Surround'
+  },
+  {
+    id: 10,
+    title: 'Whirlpool Bathtub Woodwork Surround',
+    category: 'Bathroom Millwork',
+    before: '/before_10.jpg',
+    after: '/after_10.jpg',
+    beforeDesc: 'Outdated Oak Surround',
+    afterDesc: 'Modern Spa Aesthetic',
+    details: 'Refinished the bulky oak woodwork surrounding the whirlpool bathtub, transforming it into a clean, modern spa-like focal point.',
+    savings: '$2,800 Saved',
+    timeline: '2 Days Turnaround',
+    finish: 'Moisture-Resistant Enamel',
+    tag: 'Bathtub Surround'
+  },
+  {
+    id: 11,
+    title: 'Full Kitchen Cabinet Refinishing',
+    category: 'Kitchen Cabinets',
+    before: '/before_11.jpg',
+    after: '/after_11.jpg',
+    beforeDesc: 'Dated Oak Cabinets',
+    afterDesc: 'Deep Espresso Modern Finish',
+    details: 'Complete kitchen transformation applying a highly durable, deep espresso finish to all perimeter cabinets and the central island.',
+    savings: '$12,500 Saved vs. New Cabinets',
+    timeline: '5 Days Turnaround',
+    finish: 'Durable Semi-Gloss Enamel',
+    tag: 'Full Kitchen'
+  }
+];
 
-  const handleMove = (clientX) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const pos = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setSliderPos(pos);
+/* ============================================================
+   REAL TRANSFORMATIONS GALLERY (BEFORE & AFTER)
+   ============================================================ */
+function BeforeAfterSection({ onOpenQuote }) {
+  const [cardViews, setCardViews] = useState({});
+
+  const toggleCardView = (id, view) => {
+    setCardViews(prev => ({ ...prev, [id]: view }));
   };
-
-  const handleTouchMove = (e) => {
-    handleMove(e.touches[0].clientX);
-  };
-
-  const handleMouseDown = () => {
-    isDragging.current = true;
-  };
-
-  useEffect(() => {
-    const handleMouseUp = () => {
-      isDragging.current = false;
-    };
-    const handleMouseMove = (e) => {
-      if (isDragging.current) {
-        handleMove(e.clientX);
-      }
-    };
-
-    window.addEventListener('mouseup', handleMouseUp);
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
 
   return (
     <section id="transformations" className="transformation-section">
@@ -328,61 +430,85 @@ function BeforeAfterSlider() {
           <span className="section-eyebrow">Real Transformations</span>
           <h2 className="section-title">See The Difference In Every Detail</h2>
           <p className="section-subtitle">
-            Don't rip out quality wood. Our industrial bonding primers and factory enamel finishes turn tired 90s woodwork into sleek, modern centerpieces.
+            Don't rip out solid wood. Our multi-stage prep, industrial bonding primers, and hardened factory enamel finishes turn dated woodwork into stunning custom centerpieces.
           </p>
         </div>
 
-        <div className="comparison-wrapper">
-          <div className="comparison-meta-row">
-            <div className="project-pill">
-              <Sparkles size={14} /> Featured Project: St. Michael Staircase & Railing Makeover
-            </div>
-            <div className="comparison-stats-bar">
-              <div className="c-stat">
-                <span>Before:</span> <strong>Dated Honey Oak</strong>
-              </div>
-              <div className="c-stat">
-                <span>After:</span> <strong>Modern Espresso & Crisp White</strong>
-              </div>
-              <div className="c-stat">
-                <span>Client Saved:</span> <strong>~$7,500 vs New Railing</strong>
-              </div>
-            </div>
-          </div>
+        {/* 11 Transformations Showcase Grid */}
+        <div className="transformations-grid">
+          {TRANSFORMATION_PROJECTS.map((proj) => {
+            const currentView = cardViews[proj.id] || 'after';
+            const displayImg = currentView === 'before' ? proj.before : proj.after;
 
-          <div
-            ref={containerRef}
-            className="slider-container"
-            onMouseDown={handleMouseDown}
-            onTouchMove={handleTouchMove}
-            onClick={(e) => handleMove(e.clientX)}
-          >
-            {/* Base Image (After) */}
-            <img src="/service2.jpg" alt="After: Modern Staircase Railing Makeover" className="slider-img" />
+            return (
+              <motion.div
+                key={proj.id}
+                className="transformation-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35 }}
+              >
+                <div className="tcard-media-wrapper">
+                  <img
+                    src={displayImg}
+                    alt={`${currentView === 'before' ? 'Before' : 'After'} - ${proj.title}`}
+                    className="tcard-img"
+                  />
 
-            {/* Clipped Layer (Before) */}
-            <div className="slider-after-layer" style={{ width: `${sliderPos}%` }}>
-              <img
-                src="/service1.jpg"
-                alt="Before: Dated Oak Railing"
-                style={{ width: containerRef.current ? `${containerRef.current.clientWidth}px` : '100%' }}
-              />
-            </div>
+                  {/* View Badge */}
+                  <div className={`tcard-view-badge ${currentView === 'before' ? 'badge-is-before' : 'badge-is-after'}`}>
+                    {currentView === 'before' ? 'BEFORE (Original)' : 'AFTER (Simply Rachael)'}
+                  </div>
 
-            {/* Divider Handle */}
-            <div className="slider-divider" style={{ left: `${sliderPos}%` }}>
-              <div className="slider-handle">
-                <SlidersHorizontal size={18} />
-              </div>
-            </div>
+                  {/* Quick Toggle Controls */}
+                  <div className="tcard-toggle-bar">
+                    <button
+                      type="button"
+                      className={`tcard-toggle-btn ${currentView === 'before' ? 'active' : ''}`}
+                      onClick={(e) => { e.stopPropagation(); toggleCardView(proj.id, 'before'); }}
+                    >
+                      Before
+                    </button>
+                    <button
+                      type="button"
+                      className={`tcard-toggle-btn ${currentView === 'after' ? 'active' : ''}`}
+                      onClick={(e) => { e.stopPropagation(); toggleCardView(proj.id, 'after'); }}
+                    >
+                      After
+                    </button>
+                  </div>
+                </div>
 
-            <div className="badge-tag badge-before">BEFORE (Honey Oak)</div>
-            <div className="badge-tag badge-after">AFTER (Simply Rachael)</div>
-          </div>
+                <div className="tcard-content">
+                  <div className="tcard-tag-row">
+                    <span className="tcard-category">{proj.category}</span>
+                    <span className="tcard-savings">{proj.savings}</span>
+                  </div>
 
-          <div className="slider-hint">
-            <SlidersHorizontal size={14} /> Drag the gold slider left and right to reveal the full transformation
-          </div>
+                  <h4 className="tcard-title">{proj.title}</h4>
+                  <p className="tcard-desc">{proj.details}</p>
+
+                  <div className="tcard-meta-list">
+                    <div className="tcard-meta-item">
+                      <Clock size={13} /> <span>{proj.timeline}</span>
+                    </div>
+                    <div className="tcard-meta-item">
+                      <CheckCircle2 size={13} /> <span>{proj.finish}</span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="tcard-compare-btn"
+                    onClick={onOpenQuote}
+                  >
+                    <Sparkles size={14} /> Request Quote for Similar Project
+                  </button>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -471,105 +597,6 @@ function Services({ onOpenQuote }) {
   );
 }
 
-/* ============================================================
-   PORTFOLIO SHOWCASE
-   ============================================================ */
-function Portfolio() {
-  const [filter, setFilter] = useState('all');
-
-  const galleryItems = [
-    {
-      category: 'railings',
-      title: 'Modern Two-Tone Railing Makeover',
-      location: 'St. Michael, MN',
-      img: '/service2.jpg'
-    },
-    {
-      category: 'kitchens',
-      title: 'Custom Rustic Kitchen Island & Granite',
-      location: 'Elk River, MN',
-      img: '/hero.jpg'
-    },
-    {
-      category: 'railings',
-      title: 'Grand Entryway Staircase Transformation',
-      location: 'Otsego, MN',
-      img: '/railing_staircase.jpg'
-    },
-    {
-      category: 'railings',
-      title: 'St. Michael Open Staircase Angle',
-      location: 'St. Michael, MN',
-      img: '/railing_after_angle.jpg'
-    },
-    {
-      category: 'railings',
-      title: 'Original Honey Oak Railing (Before)',
-      location: 'St. Michael, MN',
-      img: '/service1.jpg'
-    },
-    {
-      category: 'kitchens',
-      title: 'Signature Kitchen Island & Hardwood',
-      location: 'Rogers, MN',
-      img: '/hero.jpg'
-    }
-  ];
-
-  const filtered = filter === 'all' ? galleryItems : galleryItems.filter((i) => i.category === filter);
-
-  return (
-    <section id="portfolio" className="portfolio-section">
-      <div className="container">
-        <div className="section-header-center">
-          <span className="section-eyebrow">Project Gallery</span>
-          <h2 className="section-title">Recent Work Across the NW Metro</h2>
-          <p className="section-subtitle">
-            Take a look at genuine projects completed for our Minnesota neighbors. Every project is backed by our signature warranty and factory-smooth standard.
-          </p>
-        </div>
-
-        <div className="portfolio-filter-tabs">
-          <button className={`tab-btn ${filter === 'all' ? 'active' : ''}`} onClick={() => setFilter('all')}>
-            All Projects
-          </button>
-          <button className={`tab-btn ${filter === 'kitchens' ? 'active' : ''}`} onClick={() => setFilter('kitchens')}>
-            Kitchen Cabinets
-          </button>
-          <button className={`tab-btn ${filter === 'railings' ? 'active' : ''}`} onClick={() => setFilter('railings')}>
-            Railings & Stairs
-          </button>
-          <button className={`tab-btn ${filter === 'vanities' ? 'active' : ''}`} onClick={() => setFilter('vanities')}>
-            Vanities & Woodwork
-          </button>
-        </div>
-
-        <div className="portfolio-masonry">
-          {filtered.map((item, idx) => (
-            <motion.div
-              key={idx}
-              className="portfolio-card"
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-            >
-              <div className="portfolio-thumb-wrapper">
-                <img src={item.img} alt={item.title} />
-                <div className="portfolio-overlay">
-                  <span className="portfolio-meta-tag">{item.category}</span>
-                  <h4 className="portfolio-title">{item.title}</h4>
-                  <div className="portfolio-location">
-                    <MapPin size={12} /> {item.location}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ============================================================
    SAVINGS COMPARISON
@@ -652,16 +679,22 @@ function MeetRachael({ onOpenQuote }) {
         <div className="about-grid">
           <div className="about-image-column">
             <div className="about-image-frame">
-              <img src="/logo.jpg" alt="Rachael - Owner & Craftswoman at Simply Rachael" />
+              <img src="/rachael_portrait.jpg" alt="Rachael - Owner & Craftswoman at Simply Rachael" />
               <div className="about-image-caption">
-                <span className="script-accent" style={{ fontSize: '2rem', display: 'block' }}>Simply Rachael</span>
-                <span style={{ fontSize: '0.85rem', color: '#e5e7eb' }}>Elk River, Minnesota • Hands-On Contractor</span>
+                <div className="about-caption-text">
+                  <span className="script-accent" style={{ fontSize: '1.9rem', display: 'block', lineHeight: 1.1 }}>Simply Rachael</span>
+                  <span style={{ fontSize: '0.82rem', color: '#e5e7eb', display: 'block', marginTop: '4px', lineHeight: 1.35 }}>
+                    Elk River, Minnesota<br />Hands-On Contractor
+                  </span>
+                </div>
               </div>
             </div>
             <div className="about-badge-card">
-              <div className="badge-icon">
-                <Award size={22} />
-              </div>
+              <img
+                src="/Simply_Rachael_Logo.png"
+                alt="Simply Rachael Seal"
+                style={{ width: 44, height: 44, objectFit: 'contain', flexShrink: 0 }}
+              />
               <div>
                 <h5>Locally Owned & Operated</h5>
                 <p>Elk River, MN & Surrounding Areas</p>
@@ -934,9 +967,8 @@ function Footer({ onOpenQuote }) {
           <div className="footer-col">
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="#transformations">Transformations</a></li>
+              <li><a href="#transformations">Before & After Gallery</a></li>
               <li><a href="#services">Our Services</a></li>
-              <li><a href="#portfolio">Recent Projects</a></li>
               <li><a href="#comparison">Cost Comparison</a></li>
               <li><a href="#about">About Rachael</a></li>
               <li><a href="#faq">Frequently Asked Questions</a></li>
