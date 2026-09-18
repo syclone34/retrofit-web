@@ -78,6 +78,41 @@ function TopBar() {
   );
 }
 
+function BrandLogo() {
+  return (
+    <a href="#" className="brand-logo" aria-label="Simply Rachael Home">
+      <div className="brand-logo-mark">
+        <svg width="40" height="40" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="brandGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f3deb0" />
+              <stop offset="50%" stopColor="#c5a059" />
+              <stop offset="100%" stopColor="#957434" />
+            </linearGradient>
+            <linearGradient id="brandGoldFill" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#c5a059" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="#c5a059" stopOpacity="0.02" />
+            </linearGradient>
+          </defs>
+          {/* Architectural cabinet frame with beveled corners */}
+          <rect x="3" y="3" width="38" height="38" rx="7" stroke="url(#brandGold)" strokeWidth="1.5" fill="url(#brandGoldFill)" />
+          {/* Inner craftsman molding inset */}
+          <rect x="7.5" y="7.5" width="29" height="29" rx="3.5" stroke="url(#brandGold)" strokeWidth="0.8" strokeOpacity="0.5" />
+          {/* Modern craftsman stylized 'SR' monogram */}
+          <path d="M15 16.5C15 14.5 16.8 13.2 19.5 13.2C22.2 13.2 23.5 14.5 23.5 16.2C23.5 18.5 20.8 19.8 18 20.8C15 21.8 13.5 23.4 13.5 26C13.5 28.5 15.5 30.5 19 30.5C21.8 30.5 23.8 29.2 24.2 28" stroke="url(#brandGold)" strokeWidth="1.8" strokeLinecap="round" />
+          <path d="M23 15.5H27C28.8 15.5 30 16.8 30 18.5C30 20.2 28.8 21.5 27 21.5H23V28.5M23 21.5H26.5L30 28.5" stroke="url(#brandGold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          {/* Diamond point accent */}
+          <polygon points="22,5.5 23.5,7 22,8.5 20.5,7" fill="url(#brandGold)" />
+        </svg>
+      </div>
+      <div className="brand-text">
+        <span className="brand-title-main">Simply Rachael</span>
+        <span className="brand-subtitle">Fine Cabinetry & Woodwork</span>
+      </div>
+    </a>
+  );
+}
+
 function Navbar({ onOpenQuote }) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -89,31 +124,25 @@ function Navbar({ onOpenQuote }) {
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container nav-container">
-        <a href="#" className="brand-logo">
-          <div className="logo-monogram">SR</div>
-          <div className="brand-text">
-            <span className="brand-title">Simply Rachael</span>
-            <span className="brand-subtitle">Custom Kitchens & Woodwork</span>
-          </div>
-        </a>
+      <div className="nav-container">
+        <BrandLogo />
 
         <div className="nav-menu">
           <a href="#transformations">Transformations</a>
           <a href="#services">Services</a>
-          <a href="#portfolio">Our Work</a>
+          <a href="#portfolio">Gallery</a>
           <a href="#comparison">Why Refinish</a>
-          <a href="#about">Meet Rachael</a>
+          <a href="#about">About</a>
           <a href="#reviews">Reviews</a>
           <a href="#faq">FAQ</a>
         </div>
 
         <div className="nav-actions">
-          <a href="tel:7633002920" className="btn-outline-gold" style={{ padding: '0.65rem 1.1rem', fontSize: '0.8rem' }}>
-            <Phone size={14} /> Call Now
+          <a href="tel:7633002920" className="nav-btn-call">
+            <Phone size={14} /> <span>(763) 300-2920</span>
           </a>
-          <button onClick={onOpenQuote} className="btn-gold" style={{ padding: '0.65rem 1.25rem', fontSize: '0.8rem' }}>
-            Get a Quote
+          <button onClick={onOpenQuote} className="nav-btn-quote">
+            <span>Get a Quote</span> <ArrowRight size={14} />
           </button>
         </div>
       </div>
@@ -891,12 +920,8 @@ function Footer({ onOpenQuote }) {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col">
-            <div className="brand-logo" style={{ marginBottom: '1.25rem' }}>
-              <div className="logo-monogram">SR</div>
-              <div className="brand-text">
-                <span className="brand-title">Simply Rachael</span>
-                <span className="brand-subtitle">Custom Kitchens & Woodwork</span>
-              </div>
+            <div style={{ marginBottom: '1.25rem' }}>
+              <BrandLogo />
             </div>
             <p style={{ color: 'var(--text-light-muted)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
               High-end custom kitchen cabinet painting, staircase railing updates, and woodwork refinishing in Elk River, MN and the NW Twin Cities.
