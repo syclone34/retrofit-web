@@ -1,2 +1,5 @@
 # Cloudflare Pages Redirect Rules
 # Example: /old-page /new-page 301
+
+/cstm-kitchens-mockup /cstm-kitchens-mockup/dist/index.html 200
+/cstm-kitchens-mockup/* /cstm-kitchens-mockup/dist/:splat 200
