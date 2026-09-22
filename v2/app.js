@@ -628,13 +628,13 @@ document.addEventListener('DOMContentLoaded', () => {
       planName = 'Website Rescue Package ($299)';
       highlightPackageCard(packRescue);
     } else if (pages <= 10) {
-      baseFlat = 599;
-      planName = 'Custom Site Overhaul ($599)';
-      highlightPackageCard(packOverhaul);
+      baseFlat = 0;
+      planName = 'Growth Partner Plan ($0 Upfront / $149/mo)';
+      highlightPackageCard(document.getElementById('packZeroDown'));
     } else {
-      baseFlat = 599 + (pages - 10) * 65;
-      planName = `Custom Site Overhaul (${pages} Pages)`;
-      highlightPackageCard(packOverhaul);
+      baseFlat = 0;
+      planName = `Growth Partner Plan (${pages} Pages)`;
+      highlightPackageCard(document.getElementById('packZeroDown'));
     }
 
     // Add-on calculations
@@ -668,7 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const requestedPlanSelect = document.getElementById('requestedPlan');
       const clientNotes = document.getElementById('clientNotes');
 
-      let targetPlan = pages <= 5 ? 'Website Rescue Package ($299)' : 'Custom Site Overhaul ($599)';
+      let targetPlan = pages <= 5 ? 'Website Rescue Package ($299)' : 'Growth Partner Plan ($0 Upfront / $149/mo)';
       if (requestedPlanSelect) requestedPlanSelect.value = targetPlan;
 
       if (clientNotes) {

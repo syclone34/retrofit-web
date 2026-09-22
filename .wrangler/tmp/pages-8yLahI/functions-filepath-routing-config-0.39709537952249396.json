@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/analyze",
+      "mountPath": "/api",
+      "method": "",
+      "module": [
+        "api/analyze.js:onRequest"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}
