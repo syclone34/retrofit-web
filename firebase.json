@@ -7,8 +7,12 @@
       "**/node_modules/**",
       "**/*.bat",
       "**/*.exe",
+      "**/.venv/**",
       "scratch/**",
-      "functions/**"
+      "functions/**",
+      "agency-hub/**",
+      "analyzer/**",
+      "seo-optimization-tool/**"
     ]
   }
 }
