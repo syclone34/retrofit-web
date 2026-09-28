@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard Demo | RetroFit Web Design</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #0a0f1a;
+      --panel-bg: #111827;
+      --border-color: #1f2937;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --accent-orange: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: 260px;
+      background-color: var(--panel-bg);
+      border-right: 1px solid var(--border-color);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 3rem;
+      color: white;
+    }
+
+    .brand img {
+      width: 32px;
+    }
+
+    .nav-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      background-color: rgba(59, 130, 246, 0.1);
+      color: var(--accent-blue);
+    }
+
+    .nav-item i {
+      font-size: 1.25rem;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      flex: 1;
+      padding: 2rem 3rem;
+      overflow-y: auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .header-title h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .header-title p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: var(--accent-green);
+      padding: 0.5rem 1rem;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      background-color: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .kpi-icon {
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+
+    .kpi-icon.blue { background-color: rgba(59, 130, 246, 0.1); color: var(--accent-blue); }
+    .kpi-icon.green { background-color: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
+    .kpi-icon.orange { background-color: rgba(245, 158, 11, 0.1); color: var(--accent-orange); }
+
+    .kpi-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .kpi-trend {
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .kpi-trend.up { color: var(--accent-green); }
+    .kpi-trend.down { color: #ef4444; }
+
+    /* Main Grid: Chart + Leads */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .panel {
+      background-color: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .panel-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .chart-container {
+      height: 300px;
+      width: 100%;
+    }
+
+    /* Leads List */
+    .lead-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .lead-item {
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+
+    .lead-item:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .lead-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .lead-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .lead-time {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .lead-service {
+      font-size: 0.85rem;
+      color: #d1d5db;
+      margin-bottom: 0.75rem;
+    }
+
+    .lead-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lead-source {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lead-status {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .status-new { background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+    .status-contacted { background-color: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+    .status-booked { background-color: rgba(16, 185, 129, 0.2); color: #34d399; }
+
+    @media (max-width: 1024px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); padding: 1rem; }
+      .brand { margin-bottom: 1rem; }
+      .nav-items { flex-direction: row; overflow-x: auto; }
+      .nav-item { white-space: nowrap; }
+      .main-content { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <!-- Using Phosphor icon as placeholder for logo -->
+      <i class="ph-fill ph-lightning" style="color: var(--accent-blue); font-size: 2rem;"></i>
+      <span>RetroFit.</span>
+    </div>
+    <nav class="nav-items">
+      <a href="#" class="nav-item active"><i class="ph ph-squares-four"></i> Overview</a>
+      <a href="#" class="nav-item"><i class="ph ph-users"></i> Lead Tracker</a>
+      <a href="#" class="nav-item"><i class="ph ph-chart-line-up"></i> Traffic & SEO</a>
+      <a href="#" class="nav-item"><i class="ph ph-gear"></i> Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    
+    <header class="header">
+      <div class="header-title">
+        <h1>Performance Engine</h1>
+        <p>Apex Plumbing & Heating (Demo Account)</p>
+      </div>
+      <div class="live-badge">
+        <div class="pulse"></div>
+        Live Tracking
+      </div>
+    </header>
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>Website Traffic (30d)</span>
+          <i class="ph ph-cursor kpi-icon blue"></i>
+        </div>
+        <div class="kpi-value">1,204</div>
+        <div class="kpi-trend up"><i class="ph-bold ph-arrow-up-right"></i> +42% vs last month</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>Phone Calls Tracked</span>
+          <i class="ph ph-phone kpi-icon green"></i>
+        </div>
+        <div class="kpi-value">38</div>
+        <div class="kpi-trend up"><i class="ph-bold ph-arrow-up-right"></i> +12% vs last month</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>Quote Requests</span>
+          <i class="ph ph-file-text kpi-icon orange"></i>
+        </div>
+        <div class="kpi-value">14</div>
+        <div class="kpi-trend down"><i class="ph-bold ph-arrow-down-right"></i> -2% vs last month</div>
+      </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+      
+      <!-- Chart -->
+      <div class="panel">
+        <div class="panel-title">Traffic & Lead Growth (6 Months)</div>
+        <div class="chart-container">
+          <canvas id="growthChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Leads -->
+      <div class="panel">
+        <div class="panel-title">Recent Leads Dashboard</div>
+        <div class="lead-list">
+          
+          <div class="lead-item">
+            <div class="lead-header">
+              <span class="lead-name">John Davis</span>
+              <span class="lead-time">Today, 8:45 AM</span>
+            </div>
+            <div class="lead-service">Emergency Leak Repair</div>
+            <div class="lead-footer">
+              <span class="lead-source"><i class="ph ph-google-logo"></i> Google Local</span>
+              <span class="lead-status status-new">New Lead</span>
+            </div>
+          </div>
+
+          <div class="lead-item">
+            <div class="lead-header">
+              <span class="lead-name">Sarah Miller</span>
+              <span class="lead-time">Yesterday</span>
+            </div>
+            <div class="lead-service">Water Heater Install Quote</div>
+            <div class="lead-footer">
+              <span class="lead-source"><i class="ph ph-globe"></i> Website Form</span>
+              <span class="lead-status status-contacted">Contacted</span>
+            </div>
+          </div>
+
+          <div class="lead-item">
+            <div class="lead-header">
+              <span class="lead-name">Mike Johnson</span>
+              <span class="lead-time">Sep 26</span>
+            </div>
+            <div class="lead-service">Main Line Backup</div>
+            <div class="lead-footer">
+              <span class="lead-source"><i class="ph ph-phone"></i> Direct Call</span>
+              <span class="lead-status status-booked">Job Scheduled</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    // Initialize Chart.js
+    const ctx = document.getElementById('growthChart').getContext('2d');
+    
+    // Gradient fill for area chart
+    const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient.addColorStop(0, 'rgba(59, 130, 246, 0.4)');
+    gradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        datasets: [{
+          label: 'Website Traffic',
+          data: [400, 300, 550, 700, 850, 1200],
+          borderColor: '#3b82f6',
+          backgroundColor: gradient,
+          borderWidth: 3,
+          pointBackgroundColor: '#0a0f1a',
+          pointBorderColor: '#3b82f6',
+          pointBorderWidth: 2,
+          pointRadius: 4,
+          fill: true,
+          tension: 0.4 // Smooth curves
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#1f2937',
+            titleColor: '#f3f4f6',
+            bodyColor: '#d1d5db',
+            borderColor: '#374151',
+            borderWidth: 1,
+            padding: 12,
+            displayColors: false,
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: '#1f2937', drawBorder: false },
+            ticks: { color: '#9ca3af', font: { family: 'Outfit' } }
+          },
+          x: {
+            grid: { display: false, drawBorder: false },
+            ticks: { color: '#9ca3af', font: { family: 'Outfit' } }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
