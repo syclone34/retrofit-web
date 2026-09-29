@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import { Lead } from '@/lib/db';
-import { deleteLeads, updateLeadStatus } from '../actions';
-import { Trash2, Edit3, Mail, CheckSquare } from 'lucide-react';
+import { deleteLeads, updateLeadStatus, updateLead } from '../actions';
+import { Trash2, Edit3, Mail, CheckSquare, X, Save } from 'lucide-react';
 
 export default function ClientList({ initialLeads }: { initialLeads: Lead[] }) {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [isDeleting, setIsDeleting] = useState(false);
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editForm, setEditForm] = useState<Partial<Lead>>({});
 
   const toggleSelect = (id: number) => {
     const next = new Set(selectedIds);
@@ -30,6 +32,20 @@ export default function ClientList({ initialLeads }: { initialLeads: Lead[] }) {
     await deleteLeads(Array.from(selectedIds));
     setSelectedIds(new Set());
     setIsDeleting(false);
+  };
+
+  const handleEditClick = (lead: Lead) => {
+    setEditingId(lead.id);
+    setEditForm({ business_name: lead.business_name, phone_number: lead.phone_number, status: lead.status });
+  };
+
+  const handleSaveEdit = async (id: number) => {
+    await updateLead(id, editForm);
+    setEditingId(null);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingId(null);
   };
 
   return (
@@ -98,17 +114,41 @@ export default function ClientList({ initialLeads }: { initialLeads: Lead[] }) {
                     />
                   </td>
                   <td className="p-4">
-                    <div className="font-semibold text-foreground max-w-[300px] truncate" title={lead.business_name}>
-                      {lead.business_name}
-                    </div>
-                    <div className="text-xs text-secondary truncate">
-                      {lead.website || 'No Website'}
-                    </div>
+                    {editingId === lead.id ? (
+                      <input 
+                        type="text" 
+                        value={editForm.business_name || ''} 
+                        onChange={(e) => setEditForm({...editForm, business_name: e.target.value})}
+                        className="w-full bg-black/40 border border-border/50 rounded px-2 py-1 text-sm focus:outline-none focus:border-primary"
+                      />
+                    ) : (
+                      <>
+                        <div className="font-semibold text-foreground max-w-[300px] truncate" title={lead.business_name}>
+                          {lead.business_name}
+                        </div>
+                        <div className="text-xs text-secondary truncate">
+                          {lead.website || 'No Website'}
+                        </div>
+                      </>
+                    )}
                   </td>
                   <td className="p-4">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-white/10 text-secondary">
-                      {lead.status}
-                    </span>
+                    {editingId === lead.id ? (
+                      <select 
+                        value={editForm.status || 'New'} 
+                        onChange={(e) => setEditForm({...editForm, status: e.target.value})}
+                        className="bg-black/40 border border-border/50 rounded px-2 py-1 text-sm focus:outline-none focus:border-primary text-foreground"
+                      >
+                        <option value="New">New</option>
+                        <option value="Contacted">Contacted</option>
+                        <option value="Pitched">Pitched</option>
+                        <option value="Closed">Closed</option>
+                      </select>
+                    ) : (
+                      <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-white/10 text-secondary">
+                        {lead.status}
+                      </span>
+                    )}
                   </td>
                   <td className="p-4">
                     <div className="flex items-center space-x-2">
@@ -121,11 +161,33 @@ export default function ClientList({ initialLeads }: { initialLeads: Lead[] }) {
                       <span className="text-xs font-semibold">{lead.rescue_score}</span>
                     </div>
                   </td>
-                  <td className="p-4 text-secondary">{lead.phone_number || 'N/A'}</td>
+                  <td className="p-4 text-secondary">
+                    {editingId === lead.id ? (
+                      <input 
+                        type="text" 
+                        value={editForm.phone_number || ''} 
+                        onChange={(e) => setEditForm({...editForm, phone_number: e.target.value})}
+                        className="w-28 bg-black/40 border border-border/50 rounded px-2 py-1 text-sm focus:outline-none focus:border-primary"
+                      />
+                    ) : (
+                      lead.phone_number || 'N/A'
+                    )}
+                  </td>
                   <td className="p-4 text-right">
-                    <button className="p-2 text-secondary hover:text-primary transition-colors rounded-lg hover:bg-white/5">
-                      <Edit3 size={16} />
-                    </button>
+                    {editingId === lead.id ? (
+                      <div className="flex justify-end space-x-1">
+                        <button onClick={() => handleSaveEdit(lead.id)} className="p-1.5 text-primary hover:bg-white/5 rounded-md">
+                          <Save size={16} />
+                        </button>
+                        <button onClick={handleCancelEdit} className="p-1.5 text-secondary hover:text-red-400 hover:bg-white/5 rounded-md">
+                          <X size={16} />
+                        </button>
+                      </div>
+                    ) : (
+                      <button onClick={() => handleEditClick(lead)} className="p-2 text-secondary hover:text-primary transition-colors rounded-lg hover:bg-white/5">
+                        <Edit3 size={16} />
+                      </button>
+                    )}
                   </td>
                 </tr>
               );
