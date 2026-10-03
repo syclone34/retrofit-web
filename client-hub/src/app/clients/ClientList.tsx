@@ -2,14 +2,30 @@
 
 import { useState } from 'react';
 import { Lead } from '@/lib/db';
-import { deleteLeads, updateLeadStatus, updateLead } from '../actions';
-import { Trash2, Edit3, Mail, CheckSquare, X, Save } from 'lucide-react';
+import { deleteLeads, updateLeadStatus, updateLead, generateSingleReport } from '../actions';
+import { Trash2, Edit3, Mail, CheckSquare, X, Save, FileDown } from 'lucide-react';
 
 export default function ClientList({ initialLeads }: { initialLeads: Lead[] }) {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [isDeleting, setIsDeleting] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editForm, setEditForm] = useState<Partial<Lead>>({});
+
+  const handleDownloadReport = async (clientId: number) => {
+    try {
+      const res = await generateSingleReport(clientId);
+      if (res.success && res.base64) {
+        const link = document.createElement('a');
+        link.href = `data:application/pdf;base64,${res.base64}`;
+        link.download = res.filename || 'report.pdf';
+        link.click();
+      } else {
+        alert(res.error || 'Failed to generate report');
+      }
+    } catch (e) {
+      alert('Error downloading report');
+    }
+  };
 
   const toggleSelect = (id: number) => {
     const next = new Set(selectedIds);
@@ -184,9 +200,14 @@ export default function ClientList({ initialLeads }: { initialLeads: Lead[] }) {
                         </button>
                       </div>
                     ) : (
-                      <button onClick={() => handleEditClick(lead)} className="p-2 text-secondary hover:text-primary transition-colors rounded-lg hover:bg-white/5">
-                        <Edit3 size={16} />
-                      </button>
+                      <div className="flex justify-end space-x-1">
+                        <button onClick={() => handleDownloadReport(lead.id)} title="Download Report" className="p-2 text-secondary hover:text-[#308882] transition-colors rounded-lg hover:bg-white/5">
+                          <FileDown size={16} />
+                        </button>
+                        <button onClick={() => handleEditClick(lead)} className="p-2 text-secondary hover:text-primary transition-colors rounded-lg hover:bg-white/5">
+                          <Edit3 size={16} />
+                        </button>
+                      </div>
                     )}
                   </td>
                 </tr>

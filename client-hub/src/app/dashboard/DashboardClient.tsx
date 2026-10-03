@@ -4,8 +4,9 @@ import React, { useState, useMemo } from 'react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area
 } from 'recharts';
-import { Users, PhoneCall, FileText, ArrowUpRight, ArrowDownRight, MapPin, CheckCircle, Download, Activity } from 'lucide-react';
+import { Users, PhoneCall, FileText, ArrowUpRight, ArrowDownRight, MapPin, CheckCircle, Download, Activity, Mail } from 'lucide-react';
 import type { Lead, AnalyticsRecord } from '@/lib/db';
+import { generateAndSendMonthlyReports } from '@/app/actions';
 
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -127,6 +128,28 @@ export default function DashboardClient({
                 </option>
               ))}
             </select>
+          </div>
+          
+          <div className="flex flex-col items-end">
+            <label className="text-xs font-bold text-secondary uppercase tracking-wider mb-2 opacity-0">Actions</label>
+            <button 
+              onClick={async () => {
+                setToastMessage("Generating and sending reports...");
+                setTimeout(() => setToastMessage(""), 3000);
+                const res = await generateAndSendMonthlyReports();
+                setTimeout(() => {
+                  if (res.success) {
+                    setToastMessage(res.message);
+                  } else {
+                    setToastMessage(res.error);
+                  }
+                  setTimeout(() => setToastMessage(""), 5000);
+                }, 100);
+              }}
+              className="bg-primary hover:bg-primary-dark text-white px-4 py-2.5 rounded-xl font-medium transition-colors flex items-center gap-2"
+            >
+              <Mail size={18} /> Send Monthly Reports
+            </button>
           </div>
         </div>
       </header>

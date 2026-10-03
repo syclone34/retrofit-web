@@ -1,0 +1,51 @@
+name: Deploy GCP Cloud Functions
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'analysis-pipeline/functions/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    # Add "id-token" with the intended permissions for Workload Identity Federation (Optional but recommended)
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          # Assuming you use a Service Account JSON key stored in GitHub Secrets.
+          # Alternatively, use workload_identity_provider for keyless authentication.
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - id: deploy-webhook
+        name: Deploy Webhook Function
+        uses: google-github-actions/deploy-cloud-functions@v2
+        with:
+          name: webhook-handler
+          runtime: python310
+          entry_point: webhook_handler
+          source_dir: analysis-pipeline/functions
+          region: us-central1
+          trigger_http: true
+
+      - id: deploy-scheduled
+        name: Deploy Scheduled Polling Function
+        uses: google-github-actions/deploy-cloud-functions@v2
+        with:
+          name: scheduled-polling-handler
+          runtime: python310
+          entry_point: scheduled_polling_handler
+          source_dir: analysis-pipeline/functions
+          region: us-central1
+          trigger_http: true
