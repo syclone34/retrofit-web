@@ -24,9 +24,8 @@ jobs:
         name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
-          # Assuming you use a Service Account JSON key stored in GitHub Secrets.
-          # Alternatively, use workload_identity_provider for keyless authentication.
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
+          service_account: '${{ secrets.SA_EMAIL }}'
 
       - id: deploy-webhook
         name: Deploy Webhook Function
